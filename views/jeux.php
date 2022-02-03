@@ -27,7 +27,7 @@
                     <div><a href="<?=URL?>accueil"><i class="fas fa-home"></i></a></div>
                     <div><a href="<?=URL?>jeux" id="active">Jeux</a></div>
                     <div><a href="<?=URL?>liste">Liste</a></div>
-                    <?php if($_SESSION){echo "<div><a href=\"".URL."option\">Option</a></div>";}?>
+                    <?php if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."option\">Option</a></div>";}?>
                     <?php if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}?>
                 </div>
                 <div>

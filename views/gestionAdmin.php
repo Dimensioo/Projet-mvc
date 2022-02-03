@@ -24,7 +24,7 @@
             </div>
             <div id="nav2">
                 <div>
-                    <div><a href="<?=URL?>accueil.php"><i class="fas fa-home"></i></a></div>
+                    <div><a href="<?=URL?>accueil"><i class="fas fa-home"></i></a></div>
                     <div><a href="<?=URL?>jeux">Jeux</a></div>
                     <div><a href="<?=URL?>liste">Liste</a></div>
                     <div><a href="<?=URL?>option">Option</a></div>

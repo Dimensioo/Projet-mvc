@@ -27,7 +27,7 @@
                     <div><a href="<?=URL?>accueil"><i class="fas fa-home"></i></a></div>
                     <div><a href="<?=URL?>jeux">Jeux</a></div>
                     <div><a href="<?=URL?>liste" id="active">Liste</a></div>
-                    <?php if($_SESSION){echo "<div><a href=\"".URL."option\">Option</a></div>";}?>
+                    <?php if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."option\">Option</a></div>";}?>
                     <?php if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}?>
                 </div>
                 <div>
@@ -42,7 +42,7 @@
         <div>
             <div id="userStat"> <!--User summary-->
                 <?php //Affichage image de profil utilisateur
-                    if($_SESSION){
+                    if($_SESSION && $_SESSION['image']){
                         echo '<img src="images/'.$_SESSION['image'].'" alt="Image de profil" height=250px>';
                     }
                     else{

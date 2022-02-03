@@ -31,11 +31,21 @@ try {
                 require "./views/liste.php";
                 break;
             case "option":
-                require "./views/option.php";
-                break;
+                if ($_SESSION && $_SESSION["pseudo"]) {
+                    require "./views/option.php";
+                    break;
+                }
+                else {
+                    throw new Exception("La page n'existe pas");
+                }
             case "admin":
-                require "./views/gestionAdmin.php";
-                break;
+                if ($_SESSION && $_SESSION["role"] == 2) {
+                    require "./views/gestionAdmin.php";
+                    break;
+                }
+                else {
+                    throw new Exception("La page n'existe pas");
+                }
             case "connexion":
                 require "./views/connexion.php";
                 break;
