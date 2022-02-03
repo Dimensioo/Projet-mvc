@@ -1,7 +1,7 @@
 <?php
     include_once('config.php');
-    include_once('class/news.php');
-    include_once('class/user.php');
+    include_once('models/news.php');
+    include_once('models/user.php');
 
     $database = new Database(); //connexion a la base de donnée
     $db = $database->getConnection();

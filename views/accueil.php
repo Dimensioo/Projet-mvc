@@ -71,7 +71,7 @@
                 <section id="news"> <!--Newsfeed-->
                     <h2>News <i class="far fa-newspaper"></i></h2>
                     <?php
-                        include_once('controllers/config.php');
+                        include_once('config.php');
                         $database = new Database();
                         $db = $database->getConnection();
                         $req = $db->prepare("SELECT * FROM news");

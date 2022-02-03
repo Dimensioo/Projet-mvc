@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste</title>
-    <link rel="stylesheet" href="../css/projet.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/autre.css">
-    <link rel="stylesheet" href="../css/anim.css">
+    <link rel="stylesheet" href="<?=URL?>styles/projet.css">
+    <link rel="stylesheet" href="<?=URL?>styles/header.css">
+    <link rel="stylesheet" href="<?=URL?>styles/autre.css">
+    <link rel="stylesheet" href="<?=URL?>styles/anim.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="icon" type="image/png" href="../../images/favicon.png"/>
+    <link rel="icon" type="image/png" href="<?=URL?>images/favicon.png"/>
     <script src="https://kit.fontawesome.com/3df32f415a.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -19,16 +19,16 @@
             <div id="nav1">
                 <div><h1>Game List <i class="fas fa-gamepad"></i></h1></div>
                 <?php
-                    include('../../REA6_backEnd/connected.php');
+                    include('controllers/connected.php');
                 ?>
             </div>
             <div id="nav2">
                 <div>
-                    <div><a href="accueil.php"><i class="fas fa-home"></i></a></div>
-                    <div><a href="jeux.php">Jeux</a></div>
-                    <div><a href="liste.php" id="active">Liste</a></div>
-                    <?php if($_SESSION){echo "<div><a href=\"option.php\">Option</a></div>";}?>
-                    <?php if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"gestionAdmin.php\">Admin</a></div>";}?>
+                    <div><a href="<?=URL?>accueil"><i class="fas fa-home"></i></a></div>
+                    <div><a href="<?=URL?>jeux">Jeux</a></div>
+                    <div><a href="<?=URL?>liste" id="active">Liste</a></div>
+                    <?php if($_SESSION){echo "<div><a href=\"".URL."option\">Option</a></div>";}?>
+                    <?php if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}?>
                 </div>
                 <div>
                     <div><input type="search" name="recherche" placeholder="Rechercher un jeu"></div>
@@ -43,10 +43,10 @@
             <div id="userStat"> <!--User summary-->
                 <?php //Affichage image de profil utilisateur
                     if($_SESSION){
-                        echo '<img src="../../images/'.$_SESSION['image'].'" alt="Image de profil" height=250px>';
+                        echo '<img src="images/'.$_SESSION['image'].'" alt="Image de profil" height=250px>';
                     }
                     else{
-                        echo '<img src="../../images/default_user.png" alt="Image de profil" height=250px>';
+                        echo '<img src="images/default_user.png" alt="Image de profil" height=250px>';
                     }
                 ?>
                 <div>
@@ -90,7 +90,7 @@
                         <th>Note</th>
                     </tr>
                     <tr>
-                        <td><a href="./descriptionJeu.php">Super Mario Bros</a></td>
+                        <td><a href="<?=URL?>jeux/description">Super Mario Bros</a></td>
                         <td>Nintendo</td>
                         <td>1983</td>
                         <td>14h</td>
@@ -98,7 +98,7 @@
                         <td>15.5/20</td>
                     </tr>
                     <tr>
-                        <td><a href="./descriptionJeu.php">Dark souls</a></td>
+                        <td><a href="<?=URL?>jeux/description">Dark souls</a></td>
                         <td>From Software</td>
                         <td>2011</td>
                         <td>254h</td>

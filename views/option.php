@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Option</title>
-    <link rel="stylesheet" href="../css/projet.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/autre.css">
-    <link rel="stylesheet" href="../css/anim.css">
-    <link rel="stylesheet" href="../css/posFooter.css">
-    <link rel="stylesheet" href="../css/display.css">
+    <link rel="stylesheet" href="<?=URL?>styles/projet.css">
+    <link rel="stylesheet" href="<?=URL?>styles/header.css">
+    <link rel="stylesheet" href="<?=URL?>styles/autre.css">
+    <link rel="stylesheet" href="<?=URL?>styles/anim.css">
+    <link rel="stylesheet" href="<?=URL?>styles/posFooter.css">
+    <link rel="stylesheet" href="<?=URL?>styles/display.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="icon" type="image/png" href="../../images/favicon.png"/>
+    <link rel="icon" type="image/png" href="<?=URL?>images/favicon.png"/>
     <script src="https://kit.fontawesome.com/3df32f415a.js" crossorigin="anonymous"></script>
-    <script src="../../REA5_frontEnd/displayOption.js" defer></script>
+    <script src="<?=URL?>js/displayOption.js" defer></script>
 </head>
 <body>
     <header>
@@ -22,16 +22,16 @@
             <div id="nav1">
                 <div><h1>Game List <i class="fas fa-gamepad"></i></h1></div>
                 <?php
-                    include('../../REA6_backEnd/connected.php');
+                    include('controllers/connected.php');
                 ?>
             </div>
             <div id="nav2">
                 <div>
-                    <div><a href="accueil.php"><i class="fas fa-home"></i></a></div>
-                    <div><a href="jeux.php">Jeux</a></div>
-                    <div><a href="liste.php">Liste</a></div>
-                    <div><a href="option.php" id="active">Option</a></div>
-                    <?php if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"gestionAdmin.php\">Admin</a></div>";}?>
+                    <div><a href="<?=URL?>accueil"><i class="fas fa-home"></i></a></div>
+                    <div><a href="<?=URL?>jeux">Jeux</a></div>
+                    <div><a href="<?=URL?>liste">Liste</a></div>
+                    <div><a href="<?=URL?>option" id="active">Option</a></div>
+                    <?php if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}?>
                 </div>
                 <div>
                     <div><input type="search" name="recherche" placeholder="Rechercher un jeu"></div>
@@ -53,10 +53,10 @@
                 <div>
                     <?php //Affichage image de profil utilisateur
                         if($_SESSION){
-                            echo '<img src="../../images/'.$_SESSION['image'].'" alt="Image de profil" class="sizeup" height=150px>';
+                            echo '<img src="images/'.$_SESSION['image'].'" alt="Image de profil" class="sizeup" height=150px>';
                         }
                         else{
-                            echo '<img src="../../images/default_user.png" alt="Image de profil" class="sizeup" height=150px>';
+                            echo '<img src="images/default_user.png" alt="Image de profil" class="sizeup" height=150px>';
                         }
                     ?>
                 </div>
@@ -75,7 +75,7 @@
                 <label for="verif_mdp_pseudo">Entrer votre mot de passe</label><br>
                 <input type="password" name="verif_mdp_pseudo" required><br>
                 <input type="submit" value="Modifier Pseudo" class="sizeup">
-                <?php include('../../REA6_backEnd/updatePseudo.php') ?>
+                <?php include('controllers/updatePseudo.php') ?>
             </form>
             <form action="" method="post" class="invisible" id="change_pic"> <!--formulaire modification image de profil -->
                 <label for="new_pic">Nouvelle image de profil</label><br>
@@ -88,7 +88,7 @@
                 <label for="verif_mdp_mail">Entrer votre mot de passe</label><br>
                 <input type="password" name="verif_mdp_mail" required><br>
                 <input type="submit" value="Modifier E-mail" class="sizeup">
-                <?php include('../../REA6_backEnd/updateMail.php') ?>
+                <?php include('controllers/updateMail.php') ?>
             </form>
             <form action="" method="post" class="invisible" id="change_mdp"> <!--formulaire modification mot de passe -->
                 <label for="verif_mdp">Ancien mot de passe</label><br>
@@ -96,13 +96,13 @@
                 <label for="new_mdp">Nouveau mot de passe</label><br>
                 <input type="password" name="new_mdp" required><br>
                 <input type="submit" value="Modifier mot de passe" class="sizeup">
-                <?php include('../../REA6_backEnd/updatePassword.php') ?>
+                <?php include('controllers/updatePassword.php') ?>
             </form>
             <form action="" method="post" class="invisible" id="delete_account"> <!--formulaire supression du compte -->
                 <label for="verif_del_mdp">Entrer votre mot de passe</label><br>
                 <input type="password" name="verif_del_mdp" required><br>
                 <input type="submit" value="Suprimer mon compte" class="sizeup">
-                <?php include('../../REA6_backEnd/deleteUser.php') ?>
+                <?php include('controllers/deleteUser.php') ?>
             </form>
         </div>
         <aside></aside>

@@ -16,8 +16,14 @@ try {
                 require "./views/accueil.php";
                 break;
             case "jeux":
-                require "./views/jeux.php";
-                break;
+                if (empty($url[1])){
+                    require "./views/jeux.php";
+                    break;
+                }
+                else if ($url[1] === "description") {
+                    require "./views/descriptionJeu.php";
+                    break;
+                }
             case "liste":
                 require "./views/liste.php";
                 break;

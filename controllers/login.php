@@ -1,6 +1,6 @@
 <?php
     include_once('config.php');
-    include_once('class/user.php');
+    include_once('models/user.php');
     session_destroy();
 
     $database = new Database(); //connexion a la base de donnée

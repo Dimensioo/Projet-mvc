@@ -99,7 +99,7 @@
                         $_SESSION['email'] = $test['email_user'];
                         $_SESSION['role'] = $test['id_role'];
                         $_SESSION['image'] = $test['img_user'];
-                        header("location: ./accueil.php");
+                        header("location: ".URL."accueil");
                     }
                     else {
                         echo "<p>Invalid password</p>";
