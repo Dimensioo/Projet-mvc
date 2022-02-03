@@ -1,8 +1,5 @@
 <?php
-    //deconexion de l'utilisateur
-    session_start();
-
     if(session_destroy()) {
-        header("location: ".URL);
+        header("location: ".URL."connexion"); //deconexion de l'utilisateur
     }
 ?>

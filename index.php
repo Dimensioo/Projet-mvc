@@ -24,6 +24,9 @@ try {
                     require "./views/descriptionJeu.php";
                     break;
                 }
+                else {
+                    throw new Exception("La page n'existe pas");
+                }
             case "liste":
                 require "./views/liste.php";
                 break;
@@ -36,12 +39,15 @@ try {
             case "connexion":
                 require "./views/connexion.php";
                 break;
+            case "logout":
+                require "./controllers/logout.php";
+                break;
             default:
                 throw new Exception("La page n'existe pas");
         }
     }
 }
 catch (Exception $e) {
-    $error = $e->getMessage();
+    echo $e->getMessage();
     // require "views/error.view.php";
 }
