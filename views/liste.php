@@ -43,10 +43,10 @@
             <div id="userStat"> <!--User summary-->
                 <?php //Affichage image de profil utilisateur
                     if($_SESSION && $_SESSION['image']){
-                        echo '<img src="images/'.$_SESSION['image'].'" alt="Image de profil" height=250px>';
+                        echo '<img src="images/img_users/'.$_SESSION['image'].'" alt="Image de profil" height=250px>';
                     }
                     else{
-                        echo '<img src="images/default_user.png" alt="Image de profil" height=250px>';
+                        echo '<img src="images/img_users/default_user.png" alt="Image de profil" height=250px>';
                     }
                 ?>
                 <div>

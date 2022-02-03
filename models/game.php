@@ -57,13 +57,27 @@
                     }
                 }
             }
+            catch (Exception $e) {
+                die('Erreur : '.$e->getMessage());
+            }
+        }
+
+        public function readAllGame() {
+            try {
+                $req = $this->conn->prepare("SELECT * FROM game");
+                $req->execute();
+                while($donnees = $req->fetch()) {
+                    $games[] = $donnees;
+                }
+                return $games;
+            }
             catch(Exception $e) {
                 die('Erreur : '.$e->getMessage());
             }
         }
 
         public function deleteGame(){
-            try{
+            try {
                 $req = $this->conn->prepare("DELETE FROM game WHERE nom_game = ?");
                 $req->execute(array($this->nom_game));
                 if($req){
