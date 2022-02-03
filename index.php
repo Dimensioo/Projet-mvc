@@ -25,7 +25,7 @@ try {
                     break;
                 }
                 else {
-                    throw new Exception("La page n'existe pas");
+                    throw new Exception;
                 }
             case "liste":
                 require "./views/liste.php";
@@ -36,7 +36,7 @@ try {
                     break;
                 }
                 else {
-                    throw new Exception("La page n'existe pas");
+                    throw new Exception;
                 }
             case "admin":
                 if ($_SESSION && $_SESSION["role"] == 2) {
@@ -53,11 +53,10 @@ try {
                 require "./controllers/logout.php";
                 break;
             default:
-                throw new Exception("La page n'existe pas");
+                throw new Exception;
         }
     }
 }
-catch (Exception $e) {
-    echo $e->getMessage();
-    // require "views/error.view.php";
+catch (Exception) {
+    require "views/error404.php";
 }
