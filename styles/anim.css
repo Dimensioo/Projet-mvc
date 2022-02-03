@@ -1,0 +1,8 @@
+/*Agrandir l'element*/
+.sizeup {
+    transition: transform 250ms;
+}
+
+.sizeup:hover {
+    transform: scale(1.02);
+}
