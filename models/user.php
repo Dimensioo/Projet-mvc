@@ -139,7 +139,7 @@
                                     ));
                                     if($req){
                                         $_SESSION['pseudo'] = $this->pseudo_user;
-                                        header("Refresh:0; url=./option.php");
+                                        header("Refresh:0; url=./option");
                                         echo "<script>alert(\"Pseudo modifié\")</script>";
                                     }
                                 }
@@ -163,7 +163,21 @@
         }
 
         public function updateImg(){
-            //CONTINUE
+            try {
+                $req = $this->conn->prepare("UPDATE user SET img_user = :img WHERE email_user = :email");
+                $req->execute(array(
+                    "img"=> $this->img_user,
+                    "email"=> $_SESSION["email"]
+                ));
+                if($req){
+                    $_SESSION["image"] = $this->img_user;
+                    header("Refresh:0; url=./option");
+                    echo "<script>alert(\"Image de profil mise à jour\")</script>";
+                }
+            }
+            catch(Exception $e) {
+                die('Erreur : '.$e->getMessage());
+            }
         }
 
         public function updateMail(){
@@ -192,7 +206,7 @@
                                     ));
                                     if($req){
                                         $_SESSION['email'] = $this->email_user;
-                                        header("Refresh:0; url=./option.php");
+                                        header("Refresh:0; url=./option");
                                         echo "<script>alert(\"E-mail modifié\")</script>";
                                     }
                                 }
@@ -229,7 +243,7 @@
                             'email'=>$_SESSION['email']
                         ));
                         if($req){
-                            header("Refresh:0");
+                            header("Refresh:0; url=./option");
                             echo "<script>alert(\"Mot de passe modifié\")</script>";
                         }
                     }

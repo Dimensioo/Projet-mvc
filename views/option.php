@@ -53,7 +53,7 @@
                 <div>
                     <?php //Affichage image de profil utilisateur
                         if($_SESSION){
-                            echo '<img src="images/img_users/'.$_SESSION['image'].'" alt="Image de profil" class="sizeup" height=150px>';
+                            echo '<img src="'.$_SESSION['image'].'" alt="Image de profil" class="sizeup" height=150px>';
                         }
                         else{
                             echo '<img src="images/img_users/default_user.png" alt="Image de profil" class="sizeup" height=150px>';
@@ -77,10 +77,12 @@
                 <input type="submit" value="Modifier Pseudo" class="sizeup">
                 <?php include('controllers/updatePseudo.php') ?>
             </form>
-            <form action="" method="post" class="invisible" id="change_pic"> <!--formulaire modification image de profil -->
+            <form action="" method="post" class="invisible" id="change_pic" enctype="multipart/form-data"> <!--formulaire modification image de profil -->
                 <label for="new_pic">Nouvelle image de profil</label><br>
+                <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
                 <input type="file" accept=".jpg, .png" name="new_pic" required><br>
                 <input type="submit" value="Modifier Image de profil" class="sizeup">
+                <?php include('controllers/updateImg.php') ?>
             </form>
             <form action="" method="post" class="invisible" id="change_mail"> <!--formulaire modification e-mail -->
                 <label for="new_email">Nouveau E-mail</label><br>
