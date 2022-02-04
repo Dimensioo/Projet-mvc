@@ -55,6 +55,20 @@
             }
         }
 
+        public function readAllNews() {
+            try {
+                $req = $this->conn->prepare("SELECT * FROM news");
+                $req->execute();
+                while($donnees = $req->fetch()){
+                    $news[] = $donnees;
+                }
+                return $news;
+            }
+            catch(Exception $e) {
+                die('Erreur : '.$e->getMessage());
+            }
+        }
+
         public function deleteNews(){
             try{
                 $req = $this->conn->prepare("DELETE FROM news WHERE titre_news = ?");

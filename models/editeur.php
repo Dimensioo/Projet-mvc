@@ -56,6 +56,20 @@
             }
         }
 
+        public function readAllEditeur() {
+            try {
+                $req = $this->conn->prepare("SELECT * FROM editeur ORDER BY nom_editeur");
+                $req->execute();
+                while($donnees = $req->fetch()){
+                    $editeur[] = $donnees;
+                }
+                return $editeur;
+            }
+            catch(Exception $e) {
+                die('Erreur : '.$e->getMessage());
+            }
+        }
+
         public function deleteEditeur(){
             try{
                 $req = $this->conn->prepare("DELETE FROM editeur WHERE nom_editeur = ?");

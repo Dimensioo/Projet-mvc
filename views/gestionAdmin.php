@@ -42,7 +42,7 @@
         <div id="admin">
             <h2>Gestion Jeux</h2> <!--Resumé information du compte-->
             <div>
-                <form action="#" method="post"> <!--Ajout d'un jeu a la DB-->
+                <form action="#" method="post" enctype="multipart/form-data"> <!--Ajout d'un jeu a la DB-->
                     <h3>Ajouter Jeu</h3>
                     <input type="text" name="nom_game" placeholder="Non du jeu" required>
                     <input type="date" name="date_game" required>
@@ -50,16 +50,14 @@
                     <select name="id_editeur" required>
                     <option>Selectioner un éditeur</option>
                         <?php
-                            include_once('config.php');
-                            $database = new Database();
-                            $db = $database->getConnection();
-                            $req = $db->prepare("SELECT * FROM editeur");
-                            $req->execute();
-                            while($donnees = $req->fetch()){
-                                echo '<option>'.$donnees['nom_editeur'].'</option>';
-                            }
+                            require "./controllers/readAllEditeur.php";
+                            foreach ($editeurs as $editeur) : 
                         ?>
+                        <option><?= $editeur["nom_editeur"]?></option>
+                        <?php endforeach; ?>
                     </select>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+                    <input type="file" name="img_game" accept=".jpg, .png" required>
                     <input type="submit" value="Ajouter" class="sizeup">
                     <?php include('controllers/createGame.php') ?>
                 </form>
@@ -68,15 +66,11 @@
                     <select name="nom_game2" required>
                         <option>Selectioner un jeu</option>
                         <?php
-                            include_once('config.php');
-                            $database = new Database();
-                            $db = $database->getConnection();
-                            $req = $db->prepare("SELECT * FROM game");
-                            $req->execute();
-                            while($donnees = $req->fetch()){
-                                echo '<option>'.$donnees['nom_game'].'</option>';
-                            }
+                            require "./controllers/readAllGame.php";
+                            foreach ($games as $game) : 
                         ?>
+                        <option><?= $game["nom_game"]?></option>
+                        <?php endforeach; ?>
                     </select>
                     <input type="submit" value="Suprimer" class="sizeup">
                     <?php include('controllers/deleteGame.php') ?>
@@ -95,15 +89,11 @@
                     <select name="nom_editeur2" required>
                         <option>Selectioner un editeur</option>
                         <?php
-                            include_once('config.php');
-                            $database = new Database();
-                            $db = $database->getConnection();
-                            $req = $db->prepare("SELECT * FROM editeur");
-                            $req->execute();
-                            while($donnees = $req->fetch()){
-                                echo '<option>'.$donnees['nom_editeur'].'</option>';
-                            }
+                            require "./controllers/readAllEditeur.php";
+                            foreach ($editeurs as $editeur) : 
                         ?>
+                        <option><?= $editeur["nom_editeur"]?></option>
+                        <?php endforeach; ?>
                     </select>
                     <input type="submit" value="Suprimer" class="sizeup">
                     <?php include('controllers/deleteEditeur.php') ?>
@@ -123,15 +113,11 @@
                     <select name="nom_news" required>
                         <option>Selectioner une news</option>
                         <?php
-                            include_once('config.php');
-                            $database = new Database();
-                            $db = $database->getConnection();
-                            $req = $db->prepare("SELECT * FROM news");
-                            $req->execute();
-                            while($donnees = $req->fetch()){
-                                echo '<option>'.$donnees['titre_news'].'</option>';
-                            }
+                            require "./controllers/readAllNews.php";
+                            foreach ($news as $new) : 
                         ?>
+                        <option><?= $new["titre_news"]?></option>
+                        <?php endforeach; ?>
                     </select>
                     <input type="submit" value="Suprimer" class="sizeup">
                     <?php include('controllers/deleteNews.php') ?>

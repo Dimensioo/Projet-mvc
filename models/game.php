@@ -40,12 +40,13 @@
                 }
                 else{
                     try{
-                        $req = $this->conn->prepare("INSERT INTO game (nom_game, date_game, description_game, id_editeur)
-                            VALUES (:nom, :date, :description, :editeur)");
+                        $req = $this->conn->prepare("INSERT INTO game (nom_game, date_game, description_game, img_game, id_editeur)
+                            VALUES (:nom, :date, :description, :img, :editeur)");
                         $req->execute(array(
                             'nom'=> $this->nom_game,
                             'date'=> $this->date_game,
                             'description'=> $this->description_game,
+                            'img'=> $this->img_game,
                             'editeur'=> $this->id_editeur
                         ));
                         if($req){
@@ -64,7 +65,7 @@
 
         public function readAllGame() {
             try {
-                $req = $this->conn->prepare("SELECT * FROM game");
+                $req = $this->conn->prepare("SELECT * FROM game ORDER BY nom_game");
                 $req->execute();
                 while($donnees = $req->fetch()) {
                     $games[] = $donnees;

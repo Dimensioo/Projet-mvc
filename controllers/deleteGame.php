@@ -7,7 +7,7 @@ $db = $database->getConnection();
 
 if(isset($_POST['nom_game2'])){
     $user = new Game($db); //creation de l'objet
-    $user->set_nom_game($_POST['nom_game']); //assignation dans les attributs de l'objet
+    $user->set_nom_game($_POST['nom_game2']); //assignation dans les attributs de l'objet
 
     $user->deleteGame(); //fonction supression Jeu
 }

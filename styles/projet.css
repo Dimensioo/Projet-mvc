@@ -141,6 +141,10 @@ a>h3:hover {
     color: #3093CD;
 }
 
+#listDate {
+    margin: 0;
+}
+
 /*Description Jeu*/
 #description {
     display: flex;
@@ -329,7 +333,7 @@ form input[type="submit"]:hover {
         flex-direction: column;
     }
 
-    #listGame div div {
+    #listGame div div, #listDate {
         align-self: center;
     }
 
