@@ -45,43 +45,28 @@
         <div>
             <div id="body1">
                 <section id="release"> <!--Last released game-->
-                    <h2>Dernières sortie</h2>
+                    <h2>Dernier ajout </h2>
                     <div>
+                        <?php
+                            require "./controllers/readLastGame.php";
+                            foreach ($lastGames as $lastGame) :
+                        ?>
                         <div class="sizeup"> 
-                            <img src="https://picsum.photos/150/200?random=1" alt="image du jeu">
-                            <h3>Titre jeu</h3>
+                            <img src="<?= $lastGame["img_game"] ?>" alt="image du jeu" height="200px" width="150px">
+                            <h3><?= $lastGame["nom_game"] ?></h3>
                         </div>
-                        <div class="sizeup">
-                            <img src="https://picsum.photos/150/200?random=2" alt="image du jeu">
-                            <h3>Titre jeu</h3>
-                        </div>
-                        <div class="sizeup">
-                            <img src="https://picsum.photos/150/200?random=3" alt="image du jeu">
-                            <h3>Titre jeu</h3>
-                        </div>
-                        <div class="sizeup">
-                            <img src="https://picsum.photos/150/200?random=4" alt="image du jeu">
-                            <h3>Titre jeu</h3>
-                        </div>
-                        <div class="sizeup">
-                            <img src="https://picsum.photos/150/200?random=5" alt="image du jeu">
-                            <h3>Titre jeu</h3>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </section>
                 <section id="news"> <!--Newsfeed-->
                     <h2>News <i class="far fa-newspaper"></i></h2>
                     <?php
-                        include_once('config.php');
-                        $database = new Database();
-                        $db = $database->getConnection();
-                        $req = $db->prepare("SELECT * FROM news");
-                        $req->execute();
-                        while($donnees = $req->fetch()){
-                            echo '<h3>'.$donnees['titre_news'].'</h3>
-                            <p>'.$donnees['contenu_news'].'</p>';
-                        }
+                        require "./controllers/readAllNews.php";
+                        foreach ($news as $new) : 
                     ?>
+                    <h3><?= $new['titre_news'] ?></h3>
+                    <p><?= $new['contenu_news'] ?></p>
+                    <?php endforeach; ?>
                 </section>
             </div>
             <div id="body2">

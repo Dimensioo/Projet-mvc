@@ -67,7 +67,13 @@ aside {
 
 #release img, #ranking img, #release h3 {
     margin: 10px;
-    border-radius: 5px
+    border-radius: 5px;
+    align-self: center;
+    max-width: 150px;
+}
+
+#release h3:hover {
+    color: #3093CD;
 }
 
 #ranking img {

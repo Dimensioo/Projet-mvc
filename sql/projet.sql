@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 07, 2021 at 12:05 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Hôte : 127.0.0.1
+-- Généré le : ven. 04 fév. 2022 à 22:53
+-- Version du serveur : 10.4.21-MariaDB
+-- Version de PHP : 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `projet`
+-- Base de données : `projet`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `completer`
+-- Structure de la table `completer`
 --
 
 CREATE TABLE `completer` (
@@ -38,7 +38,7 @@ CREATE TABLE `completer` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editeur`
+-- Structure de la table `editeur`
 --
 
 CREATE TABLE `editeur` (
@@ -47,20 +47,24 @@ CREATE TABLE `editeur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `editeur`
+-- Déchargement des données de la table `editeur`
 --
 
 INSERT INTO `editeur` (`id_editeur`, `nom_editeur`) VALUES
 (1, 'Nintendo'),
 (4, 'Ubisoft'),
 (7, 'Riot'),
-(14, 'Ankama'),
-(15, 'From Software');
+(15, 'From Software'),
+(16, 'Valve'),
+(17, 'Re-Logic'),
+(18, 'IO Interactive'),
+(19, 'Extremely OK Games'),
+(20, 'Bethesda');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `game`
+-- Structure de la table `game`
 --
 
 CREATE TABLE `game` (
@@ -73,17 +77,24 @@ CREATE TABLE `game` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `game`
+-- Déchargement des données de la table `game`
 --
 
 INSERT INTO `game` (`id_game`, `nom_game`, `date_game`, `description_game`, `img_game`, `id_editeur`) VALUES
-(1, 'Super mario bros', '1991-12-11', 'lorem', '', 1),
-(7, 'Dark souls', '2011-03-06', '...', '', 15);
+(7, 'DARK SOULS', '2011-03-06', 'Vint alors l\'avènement du Feu... Redécouvrez le jeu de référence salué par la critique. Dans cette splendide version remastérisée, retrouvez Lordran et ses décors époustouflants en haute définition et en 60 fps.', 'images/img_jeux/dark_souls.jpg', 15),
+(8, 'Counter-Strike: Global Offensive', '2012-08-21', 'Counter-Strike: Global Offensive (CS:GO) étend le genre du jeu d\'action en équipe dont Counter-Strike fut le pionnier lors de sa sortie, en 1999. CS:GO offre de nouvelles cartes et armes ainsi que de nouveaux personnages et modes de jeu, et renouvelle les cartes classiques telles que de_dust2.', 'images/img_jeux/counter_strike.jpg', 16),
+(9, 'Dota 2', '2013-07-09', 'Chaque jour dans le monde, des millions de personnes incarnent un personnage parmi plus de cent et s\'affrontent dans Dota 2. Il y a toujours quelque chose à découvrir, car le gameplay, les fonctionnalités et les personnages évoluent sans cesse au fil des mises à jour.', 'images/img_jeux/dota2.jpg', 16),
+(10, 'DARK SOULS II', '2014-04-25', 'Développé par FROM SOFTWARE, DARK SOULS™ II est la suite tant attendue du redoutable Dark Souls™, qui a connu un succès fracassant en 2011. Les terribles défis et les émotions intenses de cet action-rpg au caractère unique et old school ont enflammé l\'imagination de nombreux joueurs à travers le monde.\r\n\r\nDans DARK SOULS™ II, la difficulté et les innovations désormais marque de fabrique de la franchise sont de retour, à la fois en solo et en multijoueur.\r\nPrenez part à ce sombre périple, affrontez de redoutables ennemis, bravez tous les dangers, et relevez les innombrables défis dont FROM SOFTWARE a le secret.', 'images/img_jeux/dark_souls2.jpg', 15),
+(11, 'DARK SOULS III', '2016-04-11', 'Dark Souls repousse une fois de plus ses limites avec un nouveau chapitre ambitieux de la série légendaire et encensée par la critique. Préparez-vous à embrasser les ténèbres !', 'images/img_jeux/dark_souls3.jpg', 15),
+(12, 'Terraria', '2011-05-16', 'Creuser, survivre, explorer, construire ! Tout est possible dans ce jeu d\'aventure bourré d\'action. Le monde est votre toile et le sol votre peinture.\r\nPrenez vos outils, et c\'est parti ! Fabriquez des armes pour lutter contre toutes sortes d\'ennemis. Creusez en profondeur pour trouver des accessoires, de l\'argent et plein d\'autres objets qui pourront vous être utiles. Partez à la recherche de matériaux pour fabriquer tout ce qu\'il vous faut pour créer votre propre monde. Construisez une maison, un fort ou pourquoi pas un château. Des gens s\'installeront et vendront peut-être même leurs services pour vous aider dans votre voyage.', 'images/img_jeux/terraria.jpg', 17),
+(13, 'HITMAN 2', '2018-11-13', 'Parcourez le monde et traquez vos cibles dans les lieux exotiques du jeu HITMAN™ 2. Des rues baignées de soleil aux sombres et dangereuses forêts tropicales, dans cette histoire d\'espionnage exceptionnelle, aucun endroit n\'échappe à l\'assassin le plus créatif du monde : l\'Agent 47.', 'images/img_jeux/hitman2.jpg', 18),
+(14, 'Celeste', '2018-01-25', 'Aidez Madeline à survivre à ses démons intérieurs au mont Celeste, dans ce jeu de plateformes ultra relevé, réalisé par les créateurs du classique TowerFall. Relevez des centaines de défis faits à la main, découvrez tous les secrets et dévoilez le mystère de la montagne.', 'images/img_jeux/celeste.jpg', 19),
+(16, 'The Elder Scrolls V: Skyrim', '2011-11-11', 'Le nouveau chapitre très attendu de la saga Elder Scrolls nous arrive des créateurs du jeu de l\'année 2006 et 2008, Bethesda Game Studios. Skyrim réinvente et révolutionne le monde ouvert, ramenant à la vie un monde complet que vous pourrez librement explorer.', 'images/img_jeux/df69ee8d4242da32ed61b4fe14e5fe0a.jpg', 20);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Structure de la table `news`
 --
 
 CREATE TABLE `news` (
@@ -94,7 +105,7 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `news`
+-- Déchargement des données de la table `news`
 --
 
 INSERT INTO `news` (`id_news`, `titre_news`, `contenu_news`, `id_user`) VALUES
@@ -105,7 +116,7 @@ INSERT INTO `news` (`id_news`, `titre_news`, `contenu_news`, `id_user`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Structure de la table `role`
 --
 
 CREATE TABLE `role` (
@@ -114,7 +125,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `role`
+-- Déchargement des données de la table `role`
 --
 
 INSERT INTO `role` (`id_role`, `type_role`) VALUES
@@ -124,7 +135,7 @@ INSERT INTO `role` (`id_role`, `type_role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Structure de la table `user`
 --
 
 CREATE TABLE `user` (
@@ -137,117 +148,118 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id_user`, `pseudo_user`, `email_user`, `mdp_user`, `img_user`, `id_role`) VALUES
-(30, 'Dimensio', 'walther.maxime@gmail.com', '$2y$10$wRbI0eEIaDZicfytYKRp0u4sN9StOKliX8KL45fAN49ctGk2kuMQ2', 'img_dimensio.jpg', 2),
+(30, 'Dimensio', 'walther.maxime@gmail.com', '$2y$10$wRbI0eEIaDZicfytYKRp0u4sN9StOKliX8KL45fAN49ctGk2kuMQ2', 'dimensio.jpg', 2),
 (31, 'test', 'test@test', '$2y$10$kOvKcPTDatJ5n4n0LNUtOej5HnCVkul7ef6B5H.Wdb5dNp.0E8zGO', 'default_user.png', 1),
-(32, 'solo', 'solo@t', '$2y$10$toTBQ43.3mf2bJiNhqxm3uXqv64U3hemUyZYzK/eHghFgsFdlXk4W', 'default_user.png', 1);
+(32, 'solo', 'solo@t', '$2y$10$toTBQ43.3mf2bJiNhqxm3uXqv64U3hemUyZYzK/eHghFgsFdlXk4W', 'default_user.png', 1),
+(33, 'Admin', 'admin@admin', '$2y$10$NHvqMykypMPAANIhvEz6aepudOVCbLJIsK8ob4miBuoWP72u8d3ni', 'images/img_users/cf1d5b1664e5e427ea86c41e628c3e4c.jpg', 2);
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `completer`
+-- Index pour la table `completer`
 --
 ALTER TABLE `completer`
   ADD PRIMARY KEY (`id_game`,`id_user`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `editeur`
+-- Index pour la table `editeur`
 --
 ALTER TABLE `editeur`
   ADD PRIMARY KEY (`id_editeur`);
 
 --
--- Indexes for table `game`
+-- Index pour la table `game`
 --
 ALTER TABLE `game`
   ADD PRIMARY KEY (`id_game`),
   ADD KEY `id_editeur` (`id_editeur`);
 
 --
--- Indexes for table `news`
+-- Index pour la table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id_news`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `role`
+-- Index pour la table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id_role`);
 
 --
--- Indexes for table `user`
+-- Index pour la table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`),
   ADD KEY `id_role` (`id_role`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `editeur`
+-- AUTO_INCREMENT pour la table `editeur`
 --
 ALTER TABLE `editeur`
-  MODIFY `id_editeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_editeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `game`
+-- AUTO_INCREMENT pour la table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT pour la table `news`
 --
 ALTER TABLE `news`
   MODIFY `id_news` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `role`
+-- AUTO_INCREMENT pour la table `role`
 --
 ALTER TABLE `role`
   MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `completer`
+-- Contraintes pour la table `completer`
 --
 ALTER TABLE `completer`
   ADD CONSTRAINT `completer_ibfk_1` FOREIGN KEY (`id_game`) REFERENCES `game` (`id_game`),
   ADD CONSTRAINT `completer_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
--- Constraints for table `game`
+-- Contraintes pour la table `game`
 --
 ALTER TABLE `game`
   ADD CONSTRAINT `game_ibfk_1` FOREIGN KEY (`id_editeur`) REFERENCES `editeur` (`id_editeur`);
 
 --
--- Constraints for table `news`
+-- Contraintes pour la table `news`
 --
 ALTER TABLE `news`
   ADD CONSTRAINT `news_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
--- Constraints for table `user`
+-- Contraintes pour la table `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`);

@@ -7,7 +7,7 @@ $database = new Database(); //connexion a la base de donnée
 $db = $database->getConnection();
 
 if(isset($_POST['nom_game'], $_POST['date_game'], $_POST['description_game'], $_POST['id_editeur'], $_FILES["img_game"])) {
-    $filename = $_FILES["img_game"]["name"]; //recup non du fichier
+    $filename = $_FILES["img_game"]["name"]; //recup nom du fichier
     $fileExt = "." . strtolower(substr(strchr($filename, "."), 1)); //conversion extension du fichier en lower case
     $tmpName = $_FILES["img_game"]["tmp_name"]; //recup nom temporaire du fichier
     $uniqueName = md5(uniqid(rand(), TRUE)); //generation nom de fichier unique
