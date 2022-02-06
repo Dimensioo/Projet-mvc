@@ -6,7 +6,7 @@ $database = new Database(); //connexion a la base de donnée
 $db = $database->getConnection();
 
 $editeur = new Editeur($db);
-$idEditeur = $editeur->readEditeur($game["id_editeur"]);
+$idEditeur = $editeur->readEditeuryById($game["id_editeur"]);
 
 if($idEditeur){
     $editeur = $idEditeur;

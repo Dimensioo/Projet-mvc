@@ -63,7 +63,7 @@ class Game {
         }
     }
 
-    public function readGame($id) {
+    public function readGameByID($id) {
         try {
             $req = $this->conn->prepare("SELECT * FROM game WHERE id_game = :id");
             $req->execute(array('id'=>$id));

@@ -6,7 +6,7 @@ $database = new Database(); //connexion a la base de donnée
 $db = $database->getConnection();
 
 $game = new Game($db);
-$idGame = $game->readGame($url[2]);
+$idGame = $game->readGameById($url[2]);
 
 if($idGame){
     $game = $idGame;
