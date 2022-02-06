@@ -72,10 +72,6 @@ aside {
     max-width: 150px;
 }
 
-#release h3:hover {
-    color: #3093CD;
-}
-
 #ranking img {
     border: 1px solid black;
 }

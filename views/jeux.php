@@ -46,10 +46,10 @@
                 foreach ($games as $game) : 
             ?>
             <div>
-                <div><a href="<?=URL?>jeux/description"><img src="<?= $game["img_game"]?>" alt="<?= $game["nom_game"]?>" class="sizeup" height="200px"></a></div>
+                <div><a href="<?=URL?>jeux/description/<?= $game["id_game"]?>"><img src="<?= $game["img_game"]?>" alt="<?= $game["nom_game"]?>" class="sizeup" height="200px"></a></div>
                 <article>
                     <div>
-                        <a href="<?=URL?>jeux/description"><h3><?= $game["nom_game"]?></h3></a>
+                        <a href="<?=URL?>jeux/description/<?= $game["id_game"]?>"><h3><?= $game["nom_game"]?></h3></a>
                         <a href="#" class="sizeup">Ajouter à votre liste</a>
                     </div>
                     <p id="listDate"><b>Date de sortie : </b><?= $game["date_game"]?></p>

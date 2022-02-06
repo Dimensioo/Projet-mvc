@@ -20,13 +20,16 @@ try {
                     require "./views/jeux.php";
                     break;
                 }
-                else if ($url[1] === "description") {
-                    require "./views/descriptionJeu.php";
-                    break;
+                else if ($url[1] == "description") {
+                    if(!empty($url[2])){
+                        require "./controllers/readGame.php";
+                        break;
+                    }
+                    else {
+                        throw new Exception;
+                    }
                 }
-                else {
-                    throw new Exception;
-                }
+                break;
             case "liste":
                 require "./views/liste.php";
                 break;
@@ -38,6 +41,7 @@ try {
                 else {
                     throw new Exception;
                 }
+                break;
             case "admin":
                 if ($_SESSION && $_SESSION["role"] == 2) {
                     require "./views/gestionAdmin.php";
@@ -46,6 +50,7 @@ try {
                 else {
                     throw new Exception("La page n'existe pas");
                 }
+                break;
             case "connexion":
                 require "./views/connexion.php";
                 break;

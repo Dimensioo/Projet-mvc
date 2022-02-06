@@ -44,12 +44,12 @@ class Editeur {
         }
     }
 
-    public function readEditeur(){
+    public function readEditeur($id){
         try{
-            $req = $this->conn->prepare("SELECT * FROM editeur WHERE nom_editeur = :nom");
-            $req->execute(array('nom'=>$this->nom_editeur));
-            $test = $req->fetch();
-            return $test['id_editeur'];
+            $req = $this->conn->prepare("SELECT * FROM editeur WHERE id_editeur = :id");
+            $req->execute(array('id'=>$id));
+            $result = $req->fetch();
+            return $result;
         }
         catch(Exception $e) {
             die('Erreur : '.$e->getMessage());

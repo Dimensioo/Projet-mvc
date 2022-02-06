@@ -63,6 +63,20 @@ class Game {
         }
     }
 
+    public function readGame($id) {
+        try {
+            $req = $this->conn->prepare("SELECT * FROM game WHERE id_game = :id");
+            $req->execute(array('id'=>$id));
+            $result = $req->fetch();
+            if($result) {
+                return $result;
+            }
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
     public function readAllGame() {
         try {
             $req = $this->conn->prepare("SELECT * FROM game ORDER BY nom_game");

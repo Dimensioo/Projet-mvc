@@ -51,10 +51,10 @@
                             require "./controllers/readLastGame.php";
                             foreach ($lastGames as $lastGame) :
                         ?>
-                        <div class="sizeup"> 
+                        <div class="sizeup"><a href="<?=URL?>jeux/description/<?= $lastGame["id_game"]?>"> 
                             <img src="<?= $lastGame["img_game"] ?>" alt="image du jeu" height="200px" width="150px">
                             <h3><?= $lastGame["nom_game"] ?></h3>
-                        </div>
+                        </a></div>
                         <?php endforeach; ?>
                     </div>
                 </section>
