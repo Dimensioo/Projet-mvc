@@ -29,7 +29,16 @@ try {
                         throw new Exception;
                     }
                 }
-                break;
+                else if ($url[1] == "ajout"){
+                    if(!empty($url[2])) {
+                        require "./controllers/readGame.php";
+                        break;
+                    }
+                    else {
+                        throw new Exception;
+                    }
+                }
+                break;  
             case "liste":
                 require "./views/liste.php";
                 break;

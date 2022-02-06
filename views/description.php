@@ -58,7 +58,7 @@
                 <div id="descriptionData"> <!--2eme colone avec informations-->
                     <div>
                         <h2><?= $game["nom_game"]?></h2>
-                        <a href="#" class="sizeup">Ajouter à votre liste</a>
+                        <a href="<?=URL?>jeux/ajout/<?= $game["id_game"]?>" class="sizeup">Ajouter à votre liste</a>
                     </div>
                     <div>
                         <?php require "./controllers/readEditeur.php"; ?>

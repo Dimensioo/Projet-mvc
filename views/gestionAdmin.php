@@ -48,7 +48,7 @@
                     <input type="date" name="date_game" required>
                     <input type="text" name="description_game" placeholder="Description" required>
                     <select name="id_editeur" required>
-                    <option>Selectioner un éditeur</option>
+                        <option>Selectioner un éditeur</option>
                         <?php
                             require "./controllers/readAllEditeur.php";
                             foreach ($editeurs as $editeur) : 
