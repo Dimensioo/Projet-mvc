@@ -47,12 +47,13 @@
                         <img src="../../<?= $game["img_game"]?>" alt="<?= $game["nom_game"]?>" class="sizeup" width="200px">
                     </div>
                     <div>
+                        <?php require "./controllers/readSummaryGame.php"; ?>
                         <h3><i class="fas fa-star-half-alt"></i> Note :</h3>
-                        <p>--/20</p>
+                        <p><?= round($globalNote, 2) ?> / 10</p>
                         <h3><i class="fas fa-trophy"></i> Classement :</h3>
-                        <p>#12</p>
+                        <p>#__</p>
                         <h3>Nombre d'Utilisateur :</h3>
-                        <p>12 700</p>
+                        <p><?= $totalUser ?></p>
                     </div>
                 </div>
                 <div id="descriptionData"> <!--2eme colone avec informations-->

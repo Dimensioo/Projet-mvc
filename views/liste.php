@@ -60,21 +60,22 @@
                         }
                     ?></h2>
                     <table>
+                        <?php require "./controllers/readSummaryUser.php"; ?>
                         <tr>
                             <td >Nombre de jeux :</td>
                             <td>Nombre total d'heures joués :</td>
                         </tr>
                         <tr>
-                            <td class="bold">...</td>
-                            <td class="bold">...h</td>
+                            <td class="bold"><?= $totalGame ?></td>
+                            <td class="bold"><?= $playTime ?> h</td>
                         </tr>
                         <tr>
-                            <td>Succès/Achievements obtenues :</td>
+                            <td>Succès / Achievements obtenues :</td>
                             <td>Note moyenne données :</td>
                         </tr>
                         <tr>
-                            <td class="bold">...</td>
-                            <td class="bold">.../10</td>
+                            <td class="bold"><?= $achievements ?></td>
+                            <td class="bold"><?= round($avgNote, 2) ?> / 10</td>
                         </tr>
                     </table>
                 </div>

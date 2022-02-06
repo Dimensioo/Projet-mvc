@@ -75,4 +75,82 @@ class Completer {
             die('Erreur : '.$e->getMessage());
         }
     }
+
+    public function totalGameUser($userId){
+        $totalGame = 0;
+        try {
+            $req = $this->conn->prepare("SELECT * FROM completer WHERE id_user = :user");
+            $req->execute(array('user'=>$userId));
+            while($req->fetch()) {
+                $totalGame++;
+            }
+            return $totalGame;
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    public function totalPlayTime($userId){
+        try {
+            $req = $this->conn->prepare("SELECT SUM(temps_completer) AS temps_total FROM completer WHERE id_user = :user");
+            $req->execute(array('user'=>$userId));
+            $playTime = $req->fetch();
+            return $playTime['temps_total'];
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    public function totalAchievement($userId){
+        try {
+            $req = $this->conn->prepare("SELECT SUM(achievement_completer) AS achievement_total FROM completer WHERE id_user = :user");
+            $req->execute(array('user'=>$userId));
+            $achievement = $req->fetch();
+            return $achievement['achievement_total'];
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    public function averageNote($userId) {
+        try {
+            $req = $this->conn->prepare("SELECT AVG(note_completer) AS note_avg FROM completer WHERE id_user = :user");
+            $req->execute(array('user'=>$userId));
+            $avg = $req->fetch();
+            return $avg['note_avg'];
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    public function totalUser($gameId) {
+        $totalUser = 0;
+        try {
+            $req = $this->conn->prepare("SELECT * FROM completer WHERE id_game = :game");
+            $req->execute(array('game'=>$gameId));
+            while($req->fetch()) {
+                $totalUser++;
+            }
+            return $totalUser;
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    public function globalNote($gameId) {
+        try {
+            $req = $this->conn->prepare("SELECT AVG(note_completer) AS note_avg FROM completer WHERE id_game = :game");
+            $req->execute(array('game'=>$gameId));
+            $avg = $req->fetch();
+            return $avg['note_avg'];
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
 }
