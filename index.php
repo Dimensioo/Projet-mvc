@@ -30,8 +30,12 @@ try {
                     }
                 }
                 else if ($url[1] == "ajout"){
-                    if(!empty($url[2])) {
+                    if($_SESSION && $_SESSION["pseudo"] && !empty($url[2])) {
                         require "./controllers/readGame.php";
+                        break;
+                    }
+                    else if(empty($_SESSION)) {
+                        require "./views/errorConnexion.php";
                         break;
                     }
                     else {
@@ -40,8 +44,17 @@ try {
                 }
                 break;  
             case "liste":
-                require "./views/liste.php";
-                break;
+                if ($_SESSION && $_SESSION["pseudo"]) {
+                    require "./views/liste.php";
+                    break;
+                }
+                else if(empty($_SESSION)) {
+                    require "./views/errorConnexion.php";
+                    break;
+                }
+                else {
+                    throw new Exception;
+                }
             case "option":
                 if ($_SESSION && $_SESSION["pseudo"]) {
                     require "./views/option.php";
@@ -57,7 +70,7 @@ try {
                     break;
                 }
                 else {
-                    throw new Exception("La page n'existe pas");
+                    throw new Exception;
                 }
                 break;
             case "connexion":
