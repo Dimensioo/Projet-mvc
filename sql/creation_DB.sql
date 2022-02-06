@@ -40,9 +40,9 @@ create table `news` (
 create table `completer` (
 	id_game int,
     id_user int,
-    temps_completer varchar(50),
-    note_completer varchar(10),
-    achievement_completer varchar(50),
+    temps_completer int,
+    note_completer int,
+    achievement_completer int,
     primary key (id_game, id_user)
 );
 

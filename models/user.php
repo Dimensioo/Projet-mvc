@@ -94,6 +94,7 @@ class User {
             $test = $req->fetch();
             if($test) {
                 if (password_verify($this->mdp_user, $test['mdp_user'])) { //verification du mot de passe
+                    $_SESSION['id'] = $test['id_user'];
                     $_SESSION['pseudo'] = $test['pseudo_user'];
                     $_SESSION['email'] = $test['email_user'];
                     $_SESSION['role'] = $test['id_role'];

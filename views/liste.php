@@ -65,16 +65,16 @@
                             <td>Nombre total d'heures joués :</td>
                         </tr>
                         <tr>
-                            <td class="bold">64</td>
-                            <td class="bold">1546h</td>
+                            <td class="bold">...</td>
+                            <td class="bold">...h</td>
                         </tr>
                         <tr>
                             <td>Succès/Achievements obtenues :</td>
                             <td>Note moyenne données :</td>
                         </tr>
                         <tr>
-                            <td class="bold">589 / 2504</td>
-                            <td class="bold">12.5/20</td>
+                            <td class="bold">...</td>
+                            <td class="bold">.../10</td>
                         </tr>
                     </table>
                 </div>
@@ -89,182 +89,22 @@
                         <th>Succès</th>
                         <th>Note</th>
                     </tr>
+                    <?php
+                        require "./controllers/readCompleter.php";
+                        foreach ($listGameUser as $completer) : 
+                    ?>
                     <tr>
-                        <td><a href="<?=URL?>jeux/description">Super Mario Bros</a></td>
-                        <td>Nintendo</td>
-                        <td>1983</td>
-                        <td>14h</td>
-                        <td>0/0</td>
-                        <td>15.5/20</td>
+                        <?php 
+                            require "./controllers/readList.php"; 
+                        ?>
+                        <td><a href="<?=URL?>jeux/description/<?= $completer["id_game"]?>"><?= $idGame["nom_game"]?></a></td>
+                        <td><?= $idEditeur["nom_editeur"]?></td>
+                        <td><?= $idGame["date_game"]?></td>
+                        <td><?= $completer["temps_completer"]?></td>
+                        <td><?= $completer["achievement_completer"]?></td>
+                        <td><?= $completer["note_completer"]?> / 10</td>
                     </tr>
-                    <tr>
-                        <td><a href="<?=URL?>jeux/description">Dark souls</a></td>
-                        <td>From Software</td>
-                        <td>2011</td>
-                        <td>254h</td>
-                        <td>41/41</td>
-                        <td>19/20</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
+                    <?php endforeach; ?>
                 </table>
             </div>
         </div>

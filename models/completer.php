@@ -26,4 +26,53 @@ class Completer {
     }
 
     //méthodes
+    public function createCompleter() {
+        try {
+            $req = $this->conn->prepare("SELECT * FROM completer WHERE id_game = :game AND id_user = :user");
+            $req->execute(array(
+                'game' => $this->id_game,
+                'user' => $this->id_user
+            ));
+            $test = $req->fetch();
+            if($test){
+                echo "<p>Ce jeu est déja dans votre liste</p>";
+            }
+            else {
+                try {
+                    $req = $this->conn->prepare("INSERT INTO completer (id_game, id_user, temps_completer, note_completer, achievement_completer)
+                        VALUES (:game, :user, :temps, :note, :achievement)");
+                    $req->execute(array(
+                        'game' => $this->id_game,
+                        'user' => $this->id_user,
+                        'temps' => $this->temps_completer,
+                        'note' => $this->note_completer,
+                        'achievement' => $this->achievement_completer
+                    ));
+                    if($req){
+                        echo "<p>Jeu ajouter à votre liste !</p>";
+                    }
+                }
+                catch(Exception $e) {
+                    die('Erreur : '.$e->getMessage());
+                }
+            }
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    public function readCompleter($userId) {
+        try {
+            $req = $this->conn->prepare("SELECT * FROM completer WHERE id_user = :user ORDER BY note_completer DESC");
+            $req->execute(array('user'=>$userId));
+            while($donnees = $req->fetch()) {
+                $userGames[] = $donnees;
+            }
+            return $userGames;
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
 }
