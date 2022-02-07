@@ -57,8 +57,6 @@
                 </article>
             </div>
             <?php endforeach; ?>
-
-
         </div>
         <aside></aside>
     </div>
