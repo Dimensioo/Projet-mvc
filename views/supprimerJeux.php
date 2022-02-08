@@ -43,7 +43,7 @@
             <div>
                 <form action="#" method="post">
                     <h3>Selectioner le jeu à supprimer</h3>
-                    <select name="id_game" required>
+                    <select name="nom_game" required>
                         <?php
                             require "./controllers/readCompleter_forUpdate.php";
                             foreach ($listGameUser as $game) : 
@@ -52,7 +52,7 @@
                         <?php endforeach; ?>
                     </select><br>
                     <input type="submit" value="Supprimer" class="sizeup">
-                    
+                    <?php include('controllers/deleteCompleter.php') ?>
                 </form>
             </div>
         </div>

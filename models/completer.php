@@ -172,4 +172,20 @@ class Completer {
             die('Erreur : '.$e->getMessage());
         }
     }
+
+    public function deleteCompleter() {
+        try {
+            $req = $this->conn->prepare("DELETE FROM completer WHERE id_game = :game AND id_user = :user");
+            $req->execute(array(
+                "game"=>$this->id_game,
+                "user"=>$this->id_user
+            ));
+            if($req){
+                echo "<h4>Jeu suprimer de votre liste !</h4>";
+            }
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
 }
