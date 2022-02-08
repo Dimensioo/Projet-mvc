@@ -46,7 +46,7 @@
             <div id="userStat"> <!--User summary-->
                 <img src="../<?= $user['img_user'] ?>" alt="Image de profil" height=250px><!-- Affichage image de profil utilisateur -->
                 <div>
-                    <h2><i class="fas fa-user"></i><?= $user['pseudo_user'] ?></h2>
+                    <h2><i class="fas fa-user"></i> <?= $user['pseudo_user'] ?></h2>
                     <table>
                         <?php require "./controllers/readSummaryUser.php"; ?>
                         <tr>

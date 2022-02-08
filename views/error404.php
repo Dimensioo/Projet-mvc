@@ -44,7 +44,7 @@
         <div>
             <div>
                 <h1><i class="fas fa-times"></i> ERREUR 404</h1>
-                <p>La page n'existe pas</p>
+                <h4>La page n'existe pas</h4>
             </div>
         </div>
         <aside></aside>

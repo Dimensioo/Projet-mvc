@@ -42,7 +42,9 @@ try {
                         throw new Exception;
                     }
                 }
-                break;  
+                else {
+                    throw new Exception;
+                }
             case "liste":
                 if ($_SESSION && $_SESSION["pseudo"]) {
                     require "./controllers/readUser.php";
@@ -63,7 +65,6 @@ try {
                 else {
                     throw new Exception;
                 }
-                break;
             case "admin":
                 if ($_SESSION && $_SESSION["role"] == 2) {
                     require "./views/gestionAdmin.php";
@@ -72,7 +73,6 @@ try {
                 else {
                     throw new Exception;
                 }
-                break;
             case "connexion":
                 require "./views/connexion.php";
                 break;

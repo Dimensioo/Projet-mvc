@@ -225,6 +225,10 @@ td a {
     color: black;
 }
 
+td a:hover {
+    color: #3093CD;
+}
+
 #userList th {
     color: white;
     background-color: #282A35;

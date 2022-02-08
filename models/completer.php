@@ -64,7 +64,7 @@ class Completer {
 
     public function readCompleter($userId) {
         try {
-            $req = $this->conn->prepare("SELECT * FROM completer INNER JOIN game ON completer.id_game = game.id_game WHERE id_user = :user ORDER BY note_completer DESC");
+            $req = $this->conn->prepare("SELECT * FROM completer INNER JOIN game ON completer.id_game = game.id_game WHERE id_user = :user ORDER BY nom_game ASC");
             $req->execute(array('user'=>$userId));
             while($donnees = $req->fetch()) {
                 $userGames[] = $donnees;

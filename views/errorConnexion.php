@@ -44,7 +44,7 @@
         <div>
             <div>
                 <h1><i class="fas fa-times"></i> ERREUR</h1>
-                <p>Vous devez être connecté pour réaliser cette action !</p>
+                <h4>Vous devez être connecté pour réaliser cette action !</h4>
             </div>
         </div>
         <aside></aside>
