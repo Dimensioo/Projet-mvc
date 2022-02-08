@@ -6,7 +6,7 @@ $database = new Database(); //connexion a la base de donnée
 $db = $database->getConnection();
 
 $completer = new Completer($db);
-$totalGame = $completer->totalGameUser($_SESSION['id']);
-$playTime = $completer->totalPlayTime($_SESSION['id']);
-$achievements = $completer->totalAchievement($_SESSION['id']);
-$avgNote = $completer->averageNote($_SESSION['id']);
+$totalGame = $completer->totalGameUser($user['id_user']);
+$playTime = $completer->totalPlayTime($user['id_user']);
+$achievements = $completer->totalAchievement($user['id_user']);
+$avgNote = $completer->averageNote($user['id_user']);

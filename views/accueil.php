@@ -20,17 +20,18 @@
         <nav>
             <div id="nav1">
                 <div><h1>Game List <i class="fas fa-gamepad"></i></h1></div>
-                <?php
-                    include('controllers/connected.php');
-                ?>
+                <?php include('controllers/connected.php') ?>
             </div>
             <div id="nav2">
                 <div>
                     <div><a href="<?=URL?>accueil" id="active"><i class="fas fa-home"></i></a></div>
                     <div><a href="<?=URL?>jeux">Jeux</a></div>
-                    <div><a href="<?=URL?>liste">Liste</a></div>
-                    <?php if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."option\">Option</a></div>";}?>
-                    <?php if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}?>
+                    <?php 
+                        if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."liste/".$_SESSION["id"]."\">Liste</a></div>";}
+                        else{echo "<div><a href=\"".URL."liste\">Liste</a></div>";}
+                        if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."option\">Option</a></div>";}
+                        if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}
+                    ?>
                 </div>
                 <div>
                     <div><input type="search" name="recherche" placeholder="Rechercher un jeu"></div>

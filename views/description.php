@@ -17,19 +17,20 @@
 <body>
     <header>
         <nav>
-        <div id="nav1">
-            <div><h1>Game List <i class="fas fa-gamepad"></i></h1></div>
-            <?php
-                include('controllers/connected.php');
-            ?>
-        </div>
-        <div id="nav2">
-            <div>
-                <div><a href="<?=URL?>accueil"><i class="fas fa-home"></i></a></div>
-                <div><a href="<?=URL?>jeux" id="active">Jeux</a></div>
-                <div><a href="<?=URL?>liste">Liste</a></div>
-                <?php if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."option\">Option</a></div>";}?>
-                <?php if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}?>
+            <div id="nav1">
+                <div><h1>Game List <i class="fas fa-gamepad"></i></h1></div>
+                <?php include('controllers/connected.php') ?>
+            </div>
+            <div id="nav2">
+                <div>
+                    <div><a href="<?=URL?>accueil"><i class="fas fa-home"></i></a></div>
+                    <div><a href="<?=URL?>jeux" id="active">Jeux</a></div>
+                    <?php 
+                        if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."liste/".$_SESSION["id"]."\">Liste</a></div>";}
+                        else{echo "<div><a href=\"".URL."liste\">Liste</a></div>";}
+                        if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."option\">Option</a></div>";}
+                        if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}
+                    ?>
                 </div>
                 <div>
                     <div><input type="search" name="recherche" placeholder="Rechercher un jeu"></div>
@@ -59,12 +60,11 @@
                 <div id="descriptionData"> <!--2eme colone avec informations-->
                     <div>
                         <h2><?= $game["nom_game"]?></h2>
-                        <a href="<?=URL?>jeux/ajout/<?= $game["id_game"]?>" class="sizeup">Ajouter à votre liste</a>
+                        <a href="<?=URL?>jeux/ajout/<?= $game["id_game"] ?>" class="sizeup">Ajouter à votre liste</a>
                     </div>
                     <div>
-                        <?php require "./controllers/readEditeur.php"; ?>
-                        <h3>Editeur : <?= $editeur["nom_editeur"]?></h3>
-                        <h3>Date de sortie : <?= $game["date_game"]?></h3>
+                        <h3>Editeur : <?= $game["nom_editeur"] ?></h3>
+                        <h3>Date de sortie : <?= $game["date_game"] ?></h3>
                     </div>
                     <p><?= $game["description_game"] ?></p>
                 </div>

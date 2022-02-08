@@ -26,9 +26,12 @@
                 <div>
                     <div><a href="<?=URL?>accueil"><i class="fas fa-home"></i></a></div>
                     <div><a href="<?=URL?>jeux">Jeux</a></div>
-                    <div><a href="<?=URL?>liste" id="active">Liste</a></div>
-                    <?php if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."option\">Option</a></div>";}?>
-                    <?php if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}?>
+                    <?php 
+                        if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."liste/".$_SESSION["id"]."\" id=\"active\">Liste</a></div>";}
+                        else{echo "<div><a href=\"".URL."liste\">Liste</a></div>";}
+                        if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."option\">Option</a></div>";}
+                        if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}
+                    ?>
                 </div>
                 <div>
                     <div><input type="search" name="recherche" placeholder="Rechercher un jeu"></div>
@@ -41,24 +44,9 @@
         <aside></aside>
         <div>
             <div id="userStat"> <!--User summary-->
-                <?php //Affichage image de profil utilisateur
-                    if($_SESSION && $_SESSION['image']){
-                        echo '<img src="'.$_SESSION['image'].'" alt="Image de profil" height=250px>';
-                    }
-                    else{
-                        echo '<img src="images/img_users/default_user.png" alt="Image de profil" height=250px>';
-                    }
-                ?>
+                <img src="../<?= $user['img_user'] ?>" alt="Image de profil" height=250px><!-- Affichage image de profil utilisateur -->
                 <div>
-                    <h2><i class="fas fa-user"></i>
-                    <?php 
-                        if($_SESSION){
-                            echo $_SESSION['pseudo'];
-                        }
-                        else{
-                            echo "Nom Utilisateur : ";
-                        }
-                    ?></h2>
+                    <h2><i class="fas fa-user"></i><?= $user['pseudo_user'] ?></h2>
                     <table>
                         <?php require "./controllers/readSummaryUser.php"; ?>
                         <tr>
@@ -95,19 +83,25 @@
                         foreach ($listGameUser as $completer) : 
                     ?>
                     <tr>
-                        <?php 
-                            require "./controllers/readList.php"; 
-                        ?>
-                        <td><a href="<?=URL?>jeux/description/<?= $completer["id_game"]?>"><?= $idGame["nom_game"]?></a></td>
+                        <?php require "./controllers/readList.php" ?>
+                        <td><a href="<?=URL?>jeux/description/<?= $completer["id_game"]?>"><?= $completer["nom_game"]?></a></td>
                         <td><?= $idEditeur["nom_editeur"]?></td>
-                        <td><?= $idGame["date_game"]?></td>
+                        <td><?= $completer["date_game"]?></td>
                         <td><?= $completer["temps_completer"]?></td>
                         <td><?= $completer["achievement_completer"]?></td>
                         <td><?= $completer["note_completer"]?> / 10</td>
                     </tr>
                     <?php endforeach; ?>
-                </table>
+                </table><br>
             </div>
+            <?php 
+                if($url[1]==$_SESSION['id']){
+                    echo "<div>
+                        <a href=\"".URL."liste/modifier\" id=\"modify\" >Modifier un jeu</a>
+                        <a href=\"".URL."liste/supprimer\" id=\"modify\" >Supprimer un jeu</a>
+                    </div><br>";
+                }
+            ?>
         </div>
         <aside></aside>
     </div>

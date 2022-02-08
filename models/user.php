@@ -87,6 +87,20 @@ class User {
         }
     }
 
+    public function readUserByID($id) {
+        try {
+            $req = $this->conn->prepare("SELECT * FROM user WHERE id_user = :id");
+            $req->execute(array('id'=>$id));
+            $result = $req->fetch();
+            if($result) {
+                return $result;
+            }
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
     public function login(){            
         try {
             $req = $this->conn->prepare("SELECT * FROM user WHERE email_user = ?"); //verification si l'e-mail existe

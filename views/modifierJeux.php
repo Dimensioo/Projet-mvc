@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajout- <?= $game["nom_game"]?></title>
+    <title>Modifier un jeu</title>
     <link rel="stylesheet" href="<?=URL?>styles/admin.css">
     <link rel="stylesheet" href="<?=URL?>styles/header.css">
     <link rel="stylesheet" href="<?=URL?>styles/autre.css">
@@ -24,8 +24,8 @@
             <div id="nav2">
                 <div>
                     <div><a href="<?=URL?>accueil"><i class="fas fa-home"></i></a></div>
-                    <div><a href="<?=URL?>jeux" id="active">Jeux</a></div>
-                    <div><a href="<?=URL?>liste/<?= $_SESSION["id"] ?>">Liste</a></div>
+                    <div><a href="<?=URL?>jeux">Jeux</a></div>
+                    <div><a href="<?=URL?>liste/<?= $_SESSION["id"] ?>" id="active">Liste</a></div>
                     <div><a href="<?=URL?>option">Option</a></div>
                     <?php if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}?>
                 </div>
@@ -39,11 +39,20 @@
     <div id=container>
         <aside></aside>
         <div id="admin">
-            <h2>Ajout d'un jeu</h2>
+            
+            <h2>Modifier un jeu de ma liste</h2>
             <div>
                 <form action="#" method="post">
-                    <h3><?= $game["nom_game"]?></h3>
-                    <div><img src="../../<?= $game["img_game"]?>" alt="<?= $game["nom_game"]?>" class="sizeup" width="200px"></div>
+                    <h3>Selectioner le jeu à modifier</h3>
+                    <select name="nom_game" required>
+                        <?php
+                            require "./controllers/readCompleter_forUpdate.php";
+                            foreach ($listGameUser as $game) : 
+                        ?>
+                        <option><?= $game["nom_game"]?></option>
+                        <?php endforeach; ?>
+                    </select><br>
+                    <h3>Indiquer les nouvelles Informations</h3>
                     <label for="temps_completer">Indiquer votre temps de jeu : </label>
                     <input type="number" name="temps_completer" placeholder="Temps de jeu" required><br>
                     <label for="note_completer">Veuillez donner une note : </label>
@@ -62,8 +71,8 @@
                     </select><br>
                     <label for="note_completer">Indiquer le nombre d'achievement obtenus : </label>
                     <input type="number" name="achievement_completer" placeholder="Achievements obtenus" required>
-                    <input type="submit" value="Ajouter" class="sizeup">
-                    <?php include('controllers/createCompleter.php') ?>
+                    <input type="submit" value="Modifier" class="sizeup">
+                    <?php include('controllers/updateCompleter.php') ?>
                 </form>
             </div>
         </div>

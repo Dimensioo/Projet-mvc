@@ -6,15 +6,15 @@ $database = new Database(); //connexion a la base de donnée
 $db = $database->getConnection();
 
 $game = new Game($db);
-$idGame = $game->readGameById($url[2]);
+$game = $game->readGameById($url[2]);
 
-if($idGame && $url[1] == "description"){
-    $game = $idGame;
+if($game && $url[1] == "description"){
     require "./views/description.php";
+    exit;
 }
-else if($idGame && $url[1] == "ajout") {
-    $game = $idGame;
+else if($game && $url[1] == "ajout") {
     require "./views/ajout.php";
+    exit;
 }
 else {
     require "./views/error404.php";

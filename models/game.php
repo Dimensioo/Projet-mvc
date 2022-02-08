@@ -65,8 +65,22 @@ class Game {
 
     public function readGameByID($id) {
         try {
-            $req = $this->conn->prepare("SELECT * FROM game WHERE id_game = :id");
+            $req = $this->conn->prepare("SELECT * FROM game INNER JOIN editeur ON game.id_editeur = editeur.id_editeur WHERE id_game = :id");
             $req->execute(array('id'=>$id));
+            $result = $req->fetch();
+            if($result) {
+                return $result;
+            }
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    public function readGameByName($name) {
+        try {
+            $req = $this->conn->prepare("SELECT * FROM game INNER JOIN editeur ON game.id_editeur = editeur.id_editeur WHERE nom_game = :nom");
+            $req->execute(array('nom'=>$name));
             $result = $req->fetch();
             if($result) {
                 return $result;
@@ -79,7 +93,7 @@ class Game {
 
     public function readAllGame() {
         try {
-            $req = $this->conn->prepare("SELECT * FROM game ORDER BY nom_game");
+            $req = $this->conn->prepare("SELECT * FROM game INNER JOIN editeur ON game.id_editeur = editeur.id_editeur ORDER BY nom_game");
             $req->execute();
             while($donnees = $req->fetch()) {
                 $games[] = $donnees;

@@ -21,15 +21,13 @@
         <nav>
             <div id="nav1">
                 <div><h1>Game List <i class="fas fa-gamepad"></i></h1></div>
-                <?php
-                    include('controllers/connected.php');
-                ?>
+                <?php include('controllers/connected.php') ?>
             </div>
             <div id="nav2">
                 <div>
                     <div><a href="<?=URL?>accueil"><i class="fas fa-home"></i></a></div>
                     <div><a href="<?=URL?>jeux">Jeux</a></div>
-                    <div><a href="<?=URL?>liste">Liste</a></div>
+                    <div><a href="<?=URL?>liste/<?= $_SESSION["id"] ?>">Liste</a></div>
                     <div><a href="<?=URL?>option" id="active">Option</a></div>
                     <?php if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}?>
                 </div>

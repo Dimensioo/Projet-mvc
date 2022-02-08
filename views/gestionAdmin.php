@@ -18,15 +18,13 @@
         <nav>
             <div id="nav1">
                 <div><h1>Game List <i class="fas fa-gamepad"></i></h1></div>
-                <?php
-                    include('controllers/connected.php');
-                ?>
+                <?php include('controllers/connected.php') ?>
             </div>
             <div id="nav2">
                 <div>
                     <div><a href="<?=URL?>accueil"><i class="fas fa-home"></i></a></div>
                     <div><a href="<?=URL?>jeux">Jeux</a></div>
-                    <div><a href="<?=URL?>liste">Liste</a></div>
+                    <div><a href="<?=URL?>liste/<?= $_SESSION["id"] ?>">Liste</a></div>
                     <div><a href="<?=URL?>option">Option</a></div>
                     <div><a href="<?=URL?>admin" id="active">Admin</a></div>
                 </div>

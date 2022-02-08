@@ -6,4 +6,4 @@ $database = new Database(); //connexion a la base de donnée
 $db = $database->getConnection();
 
 $completer = new Completer($db);
-$listGameUser = $completer->readCompleter($user["id_user"]);
+$listGameUser = $completer->readCompleter($_SESSION['id']);

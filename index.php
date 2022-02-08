@@ -45,10 +45,10 @@ try {
                 break;  
             case "liste":
                 if ($_SESSION && $_SESSION["pseudo"]) {
-                    require "./views/liste.php";
+                    require "./controllers/readUser.php";
                     break;
                 }
-                else if(empty($_SESSION)) {
+                if(empty($_SESSION)) {
                     require "./views/errorConnexion.php";
                     break;
                 }

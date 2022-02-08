@@ -35,7 +35,7 @@ class Completer {
             ));
             $test = $req->fetch();
             if($test){
-                echo "<p>Ce jeu est déja dans votre liste</p>";
+                echo "<h4>Ce jeu est déja dans votre liste</h4>";
             }
             else {
                 try {
@@ -49,7 +49,7 @@ class Completer {
                         'achievement' => $this->achievement_completer
                     ));
                     if($req){
-                        echo "<p>Jeu ajouter à votre liste !</p>";
+                        echo "<h4>Jeu ajouter à votre liste !</h4>";
                     }
                 }
                 catch(Exception $e) {
@@ -64,7 +64,7 @@ class Completer {
 
     public function readCompleter($userId) {
         try {
-            $req = $this->conn->prepare("SELECT * FROM completer WHERE id_user = :user ORDER BY note_completer DESC");
+            $req = $this->conn->prepare("SELECT * FROM completer INNER JOIN game ON completer.id_game = game.id_game WHERE id_user = :user ORDER BY note_completer DESC");
             $req->execute(array('user'=>$userId));
             while($donnees = $req->fetch()) {
                 $userGames[] = $donnees;
@@ -148,6 +148,25 @@ class Completer {
             $req->execute(array('game'=>$gameId));
             $avg = $req->fetch();
             return $avg['note_avg'];
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    public function updateCompleter() {
+        try {
+            $req = $this->conn->prepare("UPDATE completer SET temps_completer = :temps, note_completer = :note, achievement_completer = :achievement WHERE id_game = :game AND id_user = :user");
+            $req->execute(array(
+                "game"=> $this->id_game,
+                "user"=> $this->id_user,
+                "temps"=> $this->temps_completer,
+                "note"=> $this->note_completer,
+                "achievement"=> $this->achievement_completer
+            ));
+            if($req){
+                echo "<h4>Le jeu a bien été modifié !</h4>";
+            }
         }
         catch(Exception $e) {
             die('Erreur : '.$e->getMessage());
