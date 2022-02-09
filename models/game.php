@@ -25,23 +25,23 @@ class Game {
     public function set_id_editeur($new){$this->id_editeur = $new;}
 
     //constructeur
-    public function __construct(){
+    public function __construct() {
         $db = new Database(); //connexion a la base de donnée
         $this->conn = $db->getConnection();
     }
 
     //méthodes
 
-    public function createGame(){
+    public function createGame() {
         try{
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE nom_game = :nom");
             $req->execute(array('nom'=>$this->nom_game));
             $test = $req->fetch();
-            if($test){
+            if($test) {
                 echo "<p>Ce jeu existe déja</p>";
             }
             else{
-                try{
+                try {
                     $req = $this->conn->prepare("INSERT INTO ".$this->table." (nom_game, date_game, description_game, img_game, id_editeur)
                         VALUES (:nom, :date, :description, :img, :editeur)");
                     $req->execute(array(
@@ -51,7 +51,7 @@ class Game {
                         'img'=> $this->img_game,
                         'editeur'=> $this->id_editeur
                     ));
-                    if($req){
+                    if($req) {
                         echo "<p>Jeu ajouter à la base de données</p>";
                     }
                 }
@@ -107,7 +107,7 @@ class Game {
         }
     }
 
-    public function readLastGame(){
+    public function readLastGame() {
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." ORDER BY id_game DESC LIMIT 5");
             $req->execute();
@@ -121,7 +121,7 @@ class Game {
         }
     }
 
-    public function deleteGame(){
+    public function deleteGame() {
         try {
             $req = $this->conn->prepare("DELETE FROM ".$this->table." WHERE nom_game = ?");
             $req->execute(array($this->nom_game));

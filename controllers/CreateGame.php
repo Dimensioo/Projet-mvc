@@ -11,7 +11,7 @@ if(isset($_POST['nom_game'], $_POST['date_game'], $_POST['description_game'], $_
     $filename = "images/img_jeux/" . $uniqueName . $fileExt; //modification du non du fichier pour indiquer le chemin ou enregistrer
     $resultat = move_uploaded_file($tmpName, $filename); //Enregistrement de l'image
 
-    if($resultat){ //creation du jeu en bdd si l'upload de l'image à reussi
+    if($resultat) { //creation du jeu en bdd si l'upload de l'image à reussi
         $game = new Game; //creation de l'objet
         $editeur = new Editeur;
 

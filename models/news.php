@@ -19,23 +19,23 @@ class News {
     public function set_id_user($new){$this->id_user = $new;}
 
     //constructeur
-    public function __construct(){
+    public function __construct() {
         $db = new Database(); //connexion a la base de donnée
         $this->conn = $db->getConnection();
     }
 
     //méthodes
 
-    public function createNews(){
-        try{
+    public function createNews() {
+        try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE titre_news = :titre");
             $req->execute(array('titre'=>$this->titre_news));
             $test = $req->fetch();
-            if($test){
+            if($test) {
                 echo "<p>Cette news existe déja</p>";
             }
             else{
-                try{
+                try {
                     $req = $this->conn->prepare("INSERT INTO ".$this->table." (titre_news, contenu_news, id_user) 
                         VALUES (:titre, :contenu, :user)");
                     $req->execute(array(
@@ -43,7 +43,7 @@ class News {
                         'contenu' => $this->contenu_news,
                         'user' => $this->id_user
                     ));
-                    if($req){
+                    if($req) {
                         echo "<p>News créer</p>";
                     }
                 }
@@ -61,7 +61,7 @@ class News {
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table."");
             $req->execute();
-            while($donnees = $req->fetch()){
+            while($donnees = $req->fetch()) {
                 $news[] = $donnees;
             }
             return $news;
@@ -72,10 +72,10 @@ class News {
     }
 
     public function deleteNews(){
-        try{
+        try {
             $req = $this->conn->prepare("DELETE FROM ".$this->table." WHERE titre_news = ?");
             $req->execute(array($this->titre_news));
-            if($req){
+            if($req) {
                 echo "<p>News suprimer</p>";
             }
         }

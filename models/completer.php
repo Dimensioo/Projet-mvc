@@ -22,7 +22,7 @@ class Completer {
     public function set_achievement_completer($new){$this->achievement_completer = $new;}
 
     //constructeur
-    public function __construct(){
+    public function __construct() {
         $db = new Database(); //connexion a la base de donnée
         $this->conn = $db->getConnection();
     }
@@ -36,7 +36,7 @@ class Completer {
                 'user' => $this->id_user
             ));
             $test = $req->fetch();
-            if($test){
+            if($test) {
                 echo "<h4>Ce jeu est déja dans votre liste</h4>";
             }
             else {
@@ -50,7 +50,7 @@ class Completer {
                         'note' => $this->note_completer,
                         'achievement' => $this->achievement_completer
                     ));
-                    if($req){
+                    if($req) {
                         echo "<h4>Jeu ajouter à votre liste !</h4>";
                     }
                 }
@@ -78,7 +78,7 @@ class Completer {
         }
     }
 
-    public function totalGameUser($userId){
+    public function totalGameUser($userId) {
         $totalGame = 0;
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE id_user = :user");
@@ -93,7 +93,7 @@ class Completer {
         }
     }
 
-    public function totalPlayTime($userId){
+    public function totalPlayTime($userId) {
         try {
             $req = $this->conn->prepare("SELECT SUM(temps_completer) AS temps_total FROM ".$this->table." WHERE id_user = :user");
             $req->execute(array('user'=>$userId));
@@ -105,7 +105,7 @@ class Completer {
         }
     }
 
-    public function totalAchievement($userId){
+    public function totalAchievement($userId) {
         try {
             $req = $this->conn->prepare("SELECT SUM(achievement_completer) AS achievement_total FROM ".$this->table." WHERE id_user = :user");
             $req->execute(array('user'=>$userId));
@@ -166,7 +166,7 @@ class Completer {
                 "note"=> $this->note_completer,
                 "achievement"=> $this->achievement_completer
             ));
-            if($req){
+            if($req) {
                 echo "<h4>Le jeu a bien été modifié !</h4>";
             }
         }
@@ -182,7 +182,7 @@ class Completer {
                 "game"=>$this->id_game,
                 "user"=>$this->id_user
             ));
-            if($req){
+            if($req) {
                 echo "<h4>Jeu suprimer de votre liste !</h4>";
             }
         }

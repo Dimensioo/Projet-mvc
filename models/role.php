@@ -13,7 +13,7 @@ class Role {
     public function set_nom_role($new){$this->nom_role = $new;}
 
     //constructeur
-    public function __construct(){
+    public function __construct() {
         $db = new Database(); //connexion a la base de donnée
         $this->conn = $db->getConnection();
     }
