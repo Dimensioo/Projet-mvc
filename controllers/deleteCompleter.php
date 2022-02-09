@@ -7,7 +7,7 @@ if(isset($_POST['nom_game'])){
     $game = new Game;
     $game = $game->readGameByName($_POST["nom_game"]);
 
-    $completer = new Completer($db); //creation de l'objet
+    $completer = new Completer; //creation de l'objet
     $completer->set_id_game($game['id_game']); //assignation dans les attributs de l'objet
     $completer->set_id_user($_SESSION["id"]);
 
