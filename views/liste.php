@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste</title>
+    <title>Liste - <?= $user['pseudo_user'] ?></title>
     <link rel="stylesheet" href="<?=URL?>styles/projet.css">
     <link rel="stylesheet" href="<?=URL?>styles/header.css">
     <link rel="stylesheet" href="<?=URL?>styles/autre.css">
