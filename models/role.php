@@ -2,6 +2,7 @@
 class Role {
     // Connection
     private $conn;
+    private $table = 'role';
 
     //Atributs
     private $id_role;
@@ -12,8 +13,9 @@ class Role {
     public function set_nom_role($new){$this->nom_role = $new;}
 
     //constructeur
-    public function __construct($db){
-        $this->conn = $db;
+    public function __construct(){
+        $db = new Database(); //connexion a la base de donnée
+        $this->conn = $db->getConnection();
     }
 
     //méthodes

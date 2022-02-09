@@ -15,10 +15,10 @@ if(isset($_POST['nom_game'], $_POST['date_game'], $_POST['description_game'], $_
         $game = new Game; //creation de l'objet
         $editeur = new Editeur;
 
-        $game->set_nom_game($_POST['nom_game']); //assignation dans les attributs de l'objet
-        $game->set_date_game($_POST['date_game']);
-        $game->set_description_game($_POST['description_game']);
-        $editeur->set_nom_editeur($_POST['id_editeur']);
+        $game->set_nom_game(htmlspecialchars(strip_tags(trim($_POST['nom_game'])))); //assignation dans les attributs de l'objet
+        $game->set_date_game(htmlspecialchars(strip_tags(trim($_POST['date_game']))));
+        $game->set_description_game(htmlspecialchars(strip_tags(trim($_POST['description_game']))));
+        $editeur->set_nom_editeur(htmlspecialchars(strip_tags(trim($_POST['id_editeur']))));
         $game->set_id_editeur($editeur->readEditeur());
         $game->set_img_game($filename);
         
