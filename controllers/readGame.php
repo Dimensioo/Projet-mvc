@@ -2,10 +2,7 @@
 include_once('config.php');
 include_once('models/game.php');
 
-$database = new Database(); //connexion a la base de donnée
-$db = $database->getConnection();
-
-$game = new Game($db);
+$game = new Game;
 $game = $game->readGameById($url[2]);
 
 if($game && $url[1] == "description"){

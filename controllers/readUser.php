@@ -2,10 +2,7 @@
 include_once('config.php');
 include_once('models/user.php');
 
-$database = new Database(); //connexion a la base de donnée
-$db = $database->getConnection();
-
-$user = new User($db);
+$user = new User;
 $idUser = $user->readUserById($url[1]);
 
 if ($url[1] == "modifier") {

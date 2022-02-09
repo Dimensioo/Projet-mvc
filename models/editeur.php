@@ -2,6 +2,7 @@
 class Editeur {
     // Connection
     private $conn;
+    private $table = 'editeur';
 
     //Atributs
     private $id_editeur;
@@ -12,15 +13,16 @@ class Editeur {
     public function set_nom_editeur($new){$this->nom_editeur = $new;}
 
     //constructeur
-    public function __construct($db){
-        $this->conn = $db;
+    public function __construct(){
+        $db = new Database(); //connexion a la base de donnée
+        $this->conn = $db->getConnection();
     }
 
     //méthodes
 
     public function createEditeur(){
         try{
-            $req = $this->conn->prepare("SELECT * FROM editeur WHERE nom_editeur = :nom");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE nom_editeur = :nom");
             $req->execute(array('nom'=>$this->nom_editeur));
             $test = $req->fetch();
             if($test){
@@ -28,7 +30,7 @@ class Editeur {
             }
             else{
                 try{
-                    $req = $this->conn->prepare("INSERT INTO editeur (nom_editeur) VALUES (:nom)");
+                    $req = $this->conn->prepare("INSERT INTO ".$this->table." (nom_editeur) VALUES (:nom)");
                     $req->execute(array('nom'=> $this->nom_editeur,));
                     if($req){
                         echo "<p>Editeur ajouter à la base de données</p>";
@@ -46,7 +48,7 @@ class Editeur {
 
     public function readEditeur(){
         try{
-            $req = $this->conn->prepare("SELECT * FROM editeur WHERE nom_editeur = :nom");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE nom_editeur = :nom");
             $req->execute(array('nom'=>$this->nom_editeur));
             $test = $req->fetch();
             return $test['id_editeur'];
@@ -58,7 +60,7 @@ class Editeur {
 
     public function readEditeuryById($id){
         try{
-            $req = $this->conn->prepare("SELECT * FROM editeur WHERE id_editeur = :id");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE id_editeur = :id");
             $req->execute(array('id'=>$id));
             $result = $req->fetch();
             return $result;
@@ -70,7 +72,7 @@ class Editeur {
 
     public function readAllEditeur() {
         try {
-            $req = $this->conn->prepare("SELECT * FROM editeur ORDER BY nom_editeur");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." ORDER BY nom_editeur");
             $req->execute();
             while($donnees = $req->fetch()){
                 $editeur[] = $donnees;
@@ -84,7 +86,7 @@ class Editeur {
 
     public function deleteEditeur(){
         try{
-            $req = $this->conn->prepare("DELETE FROM editeur WHERE nom_editeur = ?");
+            $req = $this->conn->prepare("DELETE FROM ".$this->table." WHERE nom_editeur = ?");
             $req->execute(array($this->nom_editeur));
             if($req){
                 echo "<p>Editeur suprimer</p>";

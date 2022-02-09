@@ -2,6 +2,7 @@
 class Completer {
     // Connection
     private $conn;
+    private $table = 'completer';
 
     //Atributs
     private $id_game;
@@ -21,14 +22,15 @@ class Completer {
     public function set_achievement_completer($new){$this->achievement_completer = $new;}
 
     //constructeur
-    public function __construct($db){
-        $this->conn = $db;
+    public function __construct(){
+        $db = new Database(); //connexion a la base de donnée
+        $this->conn = $db->getConnection();
     }
 
     //méthodes
     public function createCompleter() {
         try {
-            $req = $this->conn->prepare("SELECT * FROM completer WHERE id_game = :game AND id_user = :user");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE id_game = :game AND id_user = :user");
             $req->execute(array(
                 'game' => $this->id_game,
                 'user' => $this->id_user
@@ -39,7 +41,7 @@ class Completer {
             }
             else {
                 try {
-                    $req = $this->conn->prepare("INSERT INTO completer (id_game, id_user, temps_completer, note_completer, achievement_completer)
+                    $req = $this->conn->prepare("INSERT INTO ".$this->table." (id_game, id_user, temps_completer, note_completer, achievement_completer)
                         VALUES (:game, :user, :temps, :note, :achievement)");
                     $req->execute(array(
                         'game' => $this->id_game,
@@ -64,7 +66,7 @@ class Completer {
 
     public function readCompleter($userId) {
         try {
-            $req = $this->conn->prepare("SELECT * FROM completer INNER JOIN game ON completer.id_game = game.id_game WHERE id_user = :user ORDER BY nom_game ASC");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." INNER JOIN game ON ".$this->table.".id_game = game.id_game WHERE id_user = :user ORDER BY nom_game ASC");
             $req->execute(array('user'=>$userId));
             while($donnees = $req->fetch()) {
                 $userGames[] = $donnees;
@@ -79,7 +81,7 @@ class Completer {
     public function totalGameUser($userId){
         $totalGame = 0;
         try {
-            $req = $this->conn->prepare("SELECT * FROM completer WHERE id_user = :user");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE id_user = :user");
             $req->execute(array('user'=>$userId));
             while($req->fetch()) {
                 $totalGame++;
@@ -93,7 +95,7 @@ class Completer {
 
     public function totalPlayTime($userId){
         try {
-            $req = $this->conn->prepare("SELECT SUM(temps_completer) AS temps_total FROM completer WHERE id_user = :user");
+            $req = $this->conn->prepare("SELECT SUM(temps_completer) AS temps_total FROM ".$this->table." WHERE id_user = :user");
             $req->execute(array('user'=>$userId));
             $playTime = $req->fetch();
             return $playTime['temps_total'];
@@ -105,7 +107,7 @@ class Completer {
 
     public function totalAchievement($userId){
         try {
-            $req = $this->conn->prepare("SELECT SUM(achievement_completer) AS achievement_total FROM completer WHERE id_user = :user");
+            $req = $this->conn->prepare("SELECT SUM(achievement_completer) AS achievement_total FROM ".$this->table." WHERE id_user = :user");
             $req->execute(array('user'=>$userId));
             $achievement = $req->fetch();
             return $achievement['achievement_total'];
@@ -117,7 +119,7 @@ class Completer {
 
     public function averageNote($userId) {
         try {
-            $req = $this->conn->prepare("SELECT AVG(note_completer) AS note_avg FROM completer WHERE id_user = :user");
+            $req = $this->conn->prepare("SELECT AVG(note_completer) AS note_avg FROM ".$this->table." WHERE id_user = :user");
             $req->execute(array('user'=>$userId));
             $avg = $req->fetch();
             return $avg['note_avg'];
@@ -130,7 +132,7 @@ class Completer {
     public function totalUser($gameId) {
         $totalUser = 0;
         try {
-            $req = $this->conn->prepare("SELECT * FROM completer WHERE id_game = :game");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE id_game = :game");
             $req->execute(array('game'=>$gameId));
             while($req->fetch()) {
                 $totalUser++;
@@ -144,7 +146,7 @@ class Completer {
 
     public function globalNote($gameId) {
         try {
-            $req = $this->conn->prepare("SELECT AVG(note_completer) AS note_avg FROM completer WHERE id_game = :game");
+            $req = $this->conn->prepare("SELECT AVG(note_completer) AS note_avg FROM ".$this->table." WHERE id_game = :game");
             $req->execute(array('game'=>$gameId));
             $avg = $req->fetch();
             return $avg['note_avg'];
@@ -156,7 +158,7 @@ class Completer {
 
     public function updateCompleter() {
         try {
-            $req = $this->conn->prepare("UPDATE completer SET temps_completer = :temps, note_completer = :note, achievement_completer = :achievement WHERE id_game = :game AND id_user = :user");
+            $req = $this->conn->prepare("UPDATE ".$this->table." SET temps_completer = :temps, note_completer = :note, achievement_completer = :achievement WHERE id_game = :game AND id_user = :user");
             $req->execute(array(
                 "game"=> $this->id_game,
                 "user"=> $this->id_user,
@@ -175,7 +177,7 @@ class Completer {
 
     public function deleteCompleter() {
         try {
-            $req = $this->conn->prepare("DELETE FROM completer WHERE id_game = :game AND id_user = :user");
+            $req = $this->conn->prepare("DELETE FROM ".$this->table." WHERE id_game = :game AND id_user = :user");
             $req->execute(array(
                 "game"=>$this->id_game,
                 "user"=>$this->id_user

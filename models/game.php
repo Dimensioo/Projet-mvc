@@ -2,6 +2,7 @@
 class Game {
     // Connection
     private $conn;
+    private $table = 'game';
 
     //Atributs
     private $id_game;
@@ -24,15 +25,16 @@ class Game {
     public function set_id_editeur($new){$this->id_editeur = $new;}
 
     //constructeur
-    public function __construct($db){
-        $this->conn = $db;
+    public function __construct(){
+        $db = new Database(); //connexion a la base de donnée
+        $this->conn = $db->getConnection();
     }
 
     //méthodes
 
     public function createGame(){
         try{
-            $req = $this->conn->prepare("SELECT * FROM game WHERE nom_game = :nom");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE nom_game = :nom");
             $req->execute(array('nom'=>$this->nom_game));
             $test = $req->fetch();
             if($test){
@@ -40,7 +42,7 @@ class Game {
             }
             else{
                 try{
-                    $req = $this->conn->prepare("INSERT INTO game (nom_game, date_game, description_game, img_game, id_editeur)
+                    $req = $this->conn->prepare("INSERT INTO ".$this->table." (nom_game, date_game, description_game, img_game, id_editeur)
                         VALUES (:nom, :date, :description, :img, :editeur)");
                     $req->execute(array(
                         'nom'=> $this->nom_game,
@@ -65,7 +67,7 @@ class Game {
 
     public function readGameByID($id) {
         try {
-            $req = $this->conn->prepare("SELECT * FROM game INNER JOIN editeur ON game.id_editeur = editeur.id_editeur WHERE id_game = :id");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." INNER JOIN editeur ON ".$this->table.".id_editeur = editeur.id_editeur WHERE id_game = :id");
             $req->execute(array('id'=>$id));
             $result = $req->fetch();
             if($result) {
@@ -79,7 +81,7 @@ class Game {
 
     public function readGameByName($name) {
         try {
-            $req = $this->conn->prepare("SELECT * FROM game INNER JOIN editeur ON game.id_editeur = editeur.id_editeur WHERE nom_game = :nom");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." INNER JOIN editeur ON ".$this->table.".id_editeur = editeur.id_editeur WHERE nom_game = :nom");
             $req->execute(array('nom'=>$name));
             $result = $req->fetch();
             if($result) {
@@ -93,7 +95,7 @@ class Game {
 
     public function readAllGame() {
         try {
-            $req = $this->conn->prepare("SELECT * FROM game INNER JOIN editeur ON game.id_editeur = editeur.id_editeur ORDER BY nom_game");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." INNER JOIN editeur ON ".$this->table.".id_editeur = editeur.id_editeur ORDER BY nom_game");
             $req->execute();
             while($donnees = $req->fetch()) {
                 $games[] = $donnees;
@@ -107,7 +109,7 @@ class Game {
 
     public function readLastGame(){
         try {
-            $req = $this->conn->prepare("SELECT * FROM game ORDER BY id_game DESC LIMIT 5");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." ORDER BY id_game DESC LIMIT 5");
             $req->execute();
             while($donnees = $req->fetch()) {
                 $LastGames[] = $donnees;
@@ -121,7 +123,7 @@ class Game {
 
     public function deleteGame(){
         try {
-            $req = $this->conn->prepare("DELETE FROM game WHERE nom_game = ?");
+            $req = $this->conn->prepare("DELETE FROM ".$this->table." WHERE nom_game = ?");
             $req->execute(array($this->nom_game));
             if($req){
                 echo "<p>Jeu suprimer</p>";

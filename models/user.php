@@ -2,6 +2,7 @@
 class User {
     // Connection
     private $conn;
+    private $table = 'user';
 
     //Atributs
     private $id_user;
@@ -24,8 +25,9 @@ class User {
     public function set_id_role($new){$this->id_role = $new;}
 
     //constructeur
-    public function __construct($db){
-        $this->conn = $db;
+    public function __construct(){
+        $db = new Database(); //connexion a la base de donnée
+        $this->conn = $db->getConnection();
     }
 
     //méthodes
@@ -33,7 +35,7 @@ class User {
     public function createUser(){
         try {
             $this->mdp_user = password_hash($this->mdp_user, PASSWORD_DEFAULT);
-            $req = $this->conn->prepare("SELECT * FROM user WHERE pseudo_user = :pseudo"); //verification si le pseudo existe déja
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE pseudo_user = :pseudo"); //verification si le pseudo existe déja
             $req->execute(array('pseudo'=>$this->pseudo_user));
             $test_Pseudo = $req->fetch();
             if($test_Pseudo) {
@@ -41,7 +43,7 @@ class User {
             }
             else {
                 try{
-                    $req = $this->conn->prepare("SELECT * FROM user WHERE email_user = :email"); //verification si l'e-mail existe déja
+                    $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE email_user = :email"); //verification si l'e-mail existe déja
                     $req->execute(array('email'=>$this->email_user));
                     $test_email = $req->fetch();
                     if($test_email){
@@ -49,7 +51,7 @@ class User {
                     }
                     else {
                         try {
-                            $req = $this->conn->prepare("INSERT INTO user (pseudo_user, email_user, mdp_user, img_user, id_role) 
+                            $req = $this->conn->prepare("INSERT INTO ".$this->table." (pseudo_user, email_user, mdp_user, img_user, id_role) 
                                 VALUES (:pseudo, :email, :mdp,  'images/img_users/default_user.png', 1)"); //creation de l'utilisateur dans la bdd
                             $req->execute(array(
                                 'pseudo' => $this->pseudo_user,
@@ -77,7 +79,7 @@ class User {
 
     public function readUser(){
         try{
-            $req = $this->conn->prepare("SELECT * FROM user WHERE pseudo_user = :pseudo");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE pseudo_user = :pseudo");
             $req->execute(array('pseudo'=>$this->pseudo_user));
             $test = $req->fetch();
             return $test['id_user'];
@@ -89,7 +91,7 @@ class User {
 
     public function readUserByID($id) {
         try {
-            $req = $this->conn->prepare("SELECT * FROM user WHERE id_user = :id");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE id_user = :id");
             $req->execute(array('id'=>$id));
             $result = $req->fetch();
             if($result) {
@@ -103,7 +105,7 @@ class User {
 
     public function login(){            
         try {
-            $req = $this->conn->prepare("SELECT * FROM user WHERE email_user = ?"); //verification si l'e-mail existe
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE email_user = ?"); //verification si l'e-mail existe
             $req->execute(array($this->email_user));
             $test = $req->fetch();
             if($test) {
@@ -130,7 +132,7 @@ class User {
 
     public function updatePseudo(){
         try{
-            $req = $this->conn->prepare("SELECT * FROM user WHERE email_user = ?");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE email_user = ?");
             $req->execute(array($_SESSION['email']));
             $test = $req->fetch();
             if (password_verify($this->mdp_user, $test['mdp_user'])){ //verification du mot de passe
@@ -139,7 +141,7 @@ class User {
                 }
                 else {
                     try{
-                        $req = $this->conn->prepare("SELECT * FROM user WHERE pseudo_user = :pseudo"); //verification si le pseudo est deja utlisé par un autre utilisateur
+                        $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE pseudo_user = :pseudo"); //verification si le pseudo est deja utlisé par un autre utilisateur
                         $req->execute(array('pseudo'=>$this->pseudo_user));
                         $test_Pseudo = $req->fetch();
                         if($test_Pseudo) {
@@ -147,7 +149,7 @@ class User {
                         }
                         else {
                             try{
-                                $req = $this->conn->prepare("UPDATE user SET pseudo_user = :pseudo WHERE email_user = :email"); //modification pseudo
+                                $req = $this->conn->prepare("UPDATE ".$this->table." SET pseudo_user = :pseudo WHERE email_user = :email"); //modification pseudo
                                 $req->execute(array(
                                     'pseudo'=>$this->pseudo_user,
                                     'email'=>$_SESSION['email']
@@ -179,7 +181,7 @@ class User {
 
     public function updateImg(){
         try {
-            $req = $this->conn->prepare("UPDATE user SET img_user = :img WHERE email_user = :email");
+            $req = $this->conn->prepare("UPDATE ".$this->table." SET img_user = :img WHERE email_user = :email");
             $req->execute(array(
                 "img"=> $this->img_user,
                 "email"=> $_SESSION["email"]
@@ -197,7 +199,7 @@ class User {
 
     public function updateMail(){
         try {
-            $req = $this->conn->prepare("SELECT * FROM user WHERE email_user = ?");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE email_user = ?");
             $req->execute(array($_SESSION['email']));
             $test = $req->fetch();
             if (password_verify($this->mdp_user, $test['mdp_user'])){ //verification du mot de passe
@@ -206,7 +208,7 @@ class User {
                 }
                 else {
                     try{
-                        $req = $this->conn->prepare("SELECT * FROM user WHERE email_user = :email"); //verification si l'e-mail est deja utlisé par un autre utilisateur
+                        $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE email_user = :email"); //verification si l'e-mail est deja utlisé par un autre utilisateur
                         $req->execute(array('email'=>$this->email_user));
                         $test_email = $req->fetch();
                         if($test_email) {
@@ -214,7 +216,7 @@ class User {
                         }
                         else {
                             try{
-                                $req = $this->conn->prepare("UPDATE user SET email_user = :new_email WHERE email_user = :email"); //modification e-mail
+                                $req = $this->conn->prepare("UPDATE ".$this->table." SET email_user = :new_email WHERE email_user = :email"); //modification e-mail
                                 $req->execute(array(
                                     'new_email'=>$this->email_user,
                                     'email'=>$_SESSION['email']
@@ -246,13 +248,13 @@ class User {
 
     public function UpdateMdp($new_mdp){
         try{
-            $req = $this->conn->prepare("SELECT * FROM user WHERE email_user = ?");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE email_user = ?");
             $req->execute(array($_SESSION['email']));
             $test = $req->fetch();        
             if(password_verify($this->mdp_user, $test['mdp_user'])) { //verification du mot de passe
                 $new_mdp = password_hash($new_mdp, PASSWORD_DEFAULT);
                 try{
-                    $req = $this->conn->prepare("UPDATE user SET mdp_user = :mdp WHERE email_user = :email"); //modification mot de passe
+                    $req = $this->conn->prepare("UPDATE ".$this->table." SET mdp_user = :mdp WHERE email_user = :email"); //modification mot de passe
                     $req->execute(array(
                         'mdp'=>$new_mdp,
                         'email'=>$_SESSION['email']
@@ -277,7 +279,7 @@ class User {
 
     public function deleteUser(){
         try{
-            $req = $this->conn->prepare("SELECT * FROM user WHERE email_user = ?");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE email_user = ?");
             $req->execute(array($_SESSION['email']));
             $test = $req->fetch();        
             if(password_verify($this->mdp_user, $test['mdp_user'])) { //verification mot de passe

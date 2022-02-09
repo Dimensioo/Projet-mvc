@@ -2,6 +2,7 @@
 class News {
     // Connection
     private $conn;
+    private $table = 'news';
 
     //Atributs
     private $id_news;
@@ -18,15 +19,16 @@ class News {
     public function set_id_user($new){$this->id_user = $new;}
 
     //constructeur
-    public function __construct($db){
-        $this->conn = $db;
+    public function __construct(){
+        $db = new Database(); //connexion a la base de donnée
+        $this->conn = $db->getConnection();
     }
 
     //méthodes
 
     public function createNews(){
         try{
-            $req = $this->conn->prepare("SELECT * FROM news WHERE titre_news = :titre");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE titre_news = :titre");
             $req->execute(array('titre'=>$this->titre_news));
             $test = $req->fetch();
             if($test){
@@ -34,7 +36,7 @@ class News {
             }
             else{
                 try{
-                    $req = $this->conn->prepare("INSERT INTO news (titre_news, contenu_news, id_user) 
+                    $req = $this->conn->prepare("INSERT INTO ".$this->table." (titre_news, contenu_news, id_user) 
                         VALUES (:titre, :contenu, :user)");
                     $req->execute(array(
                         'titre' => $this->titre_news,
@@ -57,7 +59,7 @@ class News {
 
     public function readAllNews() {
         try {
-            $req = $this->conn->prepare("SELECT * FROM news");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table."");
             $req->execute();
             while($donnees = $req->fetch()){
                 $news[] = $donnees;
@@ -71,7 +73,7 @@ class News {
 
     public function deleteNews(){
         try{
-            $req = $this->conn->prepare("DELETE FROM news WHERE titre_news = ?");
+            $req = $this->conn->prepare("DELETE FROM ".$this->table." WHERE titre_news = ?");
             $req->execute(array($this->titre_news));
             if($req){
                 echo "<p>News suprimer</p>";

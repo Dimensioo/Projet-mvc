@@ -2,9 +2,6 @@
 include_once('config.php');
 include_once('models/user.php');
 
-$database = new Database(); //connexion a la base de donnée
-$db = $database->getConnection();
-
 if(isset($_FILES["new_pic"])){
     $filename = $_FILES["new_pic"]["name"]; //recup nom du fichier
     $fileExt = "." . strtolower(substr(strchr($filename, "."), 1)); //conversion extension du fichier en lower case
@@ -14,7 +11,7 @@ if(isset($_FILES["new_pic"])){
     $resultat = move_uploaded_file($tmpName, $filename); //Enregistrement de l'image
 
     if($resultat){ //update de l'image bdd si l'upload de l'image à reussi
-        $user = new User($db); //creation de l'objet
+        $user = new User; //creation de l'objet
         $user->set_img_user($filename); //assignation dans les attributs de l'objet
 
         $user->updateImg(); //fonction update image utilisateur
