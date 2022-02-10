@@ -51,7 +51,14 @@ nav h1 {
     box-shadow: 0px -5px 5px lightgray;
 }
 
-#nav2 div {
+#nav2 form {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #282A35;
+}
+
+#nav2 div, #nav2 form {
     display: inherit;
     height: inherit;
 }
@@ -64,13 +71,12 @@ nav a {
     padding: 0px 20px;
 }
 
-#nav2 input, #nav2 button {
+#nav2 input, #nav2 button, #nav2 form {
     height: inherit;
+    border-radius: 0;
 }
 
-#nav2 input {
-    width: 300px;
-}
+
 
 #nav2 button {
     width: 50px;

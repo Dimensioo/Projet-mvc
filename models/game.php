@@ -133,4 +133,20 @@ class Game {
             die('Erreur : '.$e->getMessage());
         }
     }
+
+    public function search(){
+        try {
+            $req = $this->conn->prepare('SELECT * FROM '.$this->table.' WHERE nom_game LIKE "%'.$this->nom_game.'%" ORDER BY nom_game');
+            $req->execute();
+            while($donnees = $req->fetch()) {
+                $search[] = $donnees;
+            }
+            if(!empty($search)) {
+                return $search;
+            }
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
 }

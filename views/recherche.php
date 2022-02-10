@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Description - <?= $game["nom_game"]?></title>
+    <title>Recherche</title>
     <link rel="stylesheet" href="<?=URL?>styles/projet.css">
     <link rel="stylesheet" href="<?=URL?>styles/header.css">
     <link rel="stylesheet" href="<?=URL?>styles/autre.css">
     <link rel="stylesheet" href="<?=URL?>styles/anim.css">
-    <link rel="stylesheet" href="<?=URL?>styles/posFooter.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="icon" type="image/png" href="<?=URL?>images/favicon.png"/>
     <script src="https://kit.fontawesome.com/3df32f415a.js" crossorigin="anonymous"></script>
@@ -47,38 +46,31 @@
                     </form>
                 </div>
             </div>
-        </nav>
+        </nav>  
     </header>
     <div id=container>
         <aside></aside>
-        <div>
-            <div id="description"> <!--Page de description Jeu-->
-                <div id="descriptionStat"> <!--1er colone avec image et stats-->
+        <div id="listGame"> <!--List game-->
+            <h2>Resultat de votre recherche <i class="fas fa-scroll"></i></h2>
+            <?php
+                require "./controllers/search.php";
+                if($result) :
+                foreach ($result as $game) : 
+            ?>
+            <div>
+                <div><a href="<?=URL?>jeux/description/<?= $game["id_game"]?>"><img src="../<?= $game["img_game"]?>" alt="<?= $game["nom_game"]?>" class="sizeup" height="200px"></a></div>
+                <article>
                     <div>
-                        <img src="../../<?= $game["img_game"]?>" alt="<?= $game["nom_game"]?>" class="sizeup" width="200px">
+                        <a href="<?=URL?>jeux/description/<?= $game["id_game"]?>"><h3><?= $game["nom_game"]?></h3></a>
+                        <a href="<?=URL?>jeux/ajout/<?= $game["id_game"]?>" class="sizeup">Ajouter à votre liste</a>
                     </div>
-                    <div>
-                        <?php require "./controllers/readSummaryGame.php"; ?>
-                        <h3><i class="fas fa-star-half-alt"></i> Note :</h3>
-                        <p><?= round($globalNote, 2) ?> / 10</p>
-                        <h3><i class="fas fa-trophy"></i> Classement :</h3>
-                        <p>#__</p>
-                        <h3>Nombre d'Utilisateur :</h3>
-                        <p><?= $totalUser ?></p>
-                    </div>
-                </div>
-                <div id="descriptionData"> <!--2eme colone avec informations-->
-                    <div>
-                        <h2><?= $game["nom_game"]?></h2>
-                        <a href="<?=URL?>jeux/ajout/<?= $game["id_game"] ?>" class="sizeup">Ajouter à votre liste</a>
-                    </div>
-                    <div>
-                        <h3>Editeur : <?= $game["nom_editeur"] ?></h3>
-                        <h3>Date de sortie : <?= $game["date_game"] ?></h3>
-                    </div>
-                    <p><?= $game["description_game"] ?></p>
-                </div>
+                    <p id="listDate"><b>Date de sortie : </b><?= $game["date_game"]?></p>
+                    <p><?= $game["description_game"]?></p>
+                </article>
             </div>
+            <?php endforeach; else :?>
+            <h3>Aucun Jeu ne correspond à votre recherhce</h3>
+            <?php endif ?>
         </div>
         <aside></aside>
     </div>

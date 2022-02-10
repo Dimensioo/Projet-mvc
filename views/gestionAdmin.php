@@ -37,8 +37,10 @@
                     <div><a href="<?=URL?>admin" id="active">Admin</a></div>
                 </div>
                 <div>
-                    <div><input type="search" name="recherche" placeholder="Rechercher un jeu"></div>
-                    <div><button><i class="material-icons">search</i></button></div>
+                    <form action="<?=URL?>recherche/" method="POST">
+                        <div><input type="search" name="search" placeholder="Rechercher un jeu" required></div>
+                        <div><input type="submit" value="Rechercher"></div>
+                    </form>
                 </div>
             </div>
         </nav>  
@@ -54,7 +56,7 @@
                     <input type="date" name="date_game" required>
                     <input type="text" name="description_game" placeholder="Description" required>
                     <select name="id_editeur" required>
-                        <option>Selectioner un éditeur</option>
+                        <option disabled selected>Selectioner un éditeur</option>
                         <?php
                             require "./controllers/readAllEditeur.php";
                             foreach ($editeurs as $editeur) : 
@@ -69,7 +71,7 @@
                 <form action="#" method="post"> <!--Supresion d'un jeu-->
                     <h3>Suprimer Jeu</h3>
                     <select name="nom_game2" required>
-                        <option>Selectioner un jeu</option>
+                        <option disabled selected>Selectioner un jeu</option>
                         <?php
                             require "./controllers/readAllGame.php";
                             foreach ($games as $game) : 
@@ -92,7 +94,7 @@
                 <form action="#" method="post"> <!--Supresion d'un editeur-->
                     <h3>Suprimer editeur</h3>
                     <select name="nom_editeur2" required>
-                        <option>Selectioner un editeur</option>
+                        <option disabled selected>Selectioner un editeur</option>
                         <?php
                             require "./controllers/readAllEditeur.php";
                             foreach ($editeurs as $editeur) : 
@@ -116,7 +118,7 @@
                 <form action="#" method="post"> <!--Supresion news-->
                     <h3>Suprimer News</h3>
                     <select name="nom_news" required>
-                        <option>Selectioner une news</option>
+                        <option disabled selected>Selectioner une news</option>
                         <?php
                             require "./controllers/readAllNews.php";
                             foreach ($news as $new) : 

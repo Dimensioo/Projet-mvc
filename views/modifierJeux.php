@@ -38,8 +38,10 @@
                     <?php if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}?>
                 </div>
                 <div>
-                    <div><input type="search" name="recherche" placeholder="Rechercher un jeu"></div>
-                    <div><button><i class="material-icons">search</i></button></div>
+                    <form action="<?=URL?>recherche/" method="POST">
+                        <div><input type="search" name="search" placeholder="Rechercher un jeu" required></div>
+                        <div><input type="submit" value="Rechercher"></div>
+                    </form>
                 </div>
             </div>
         </nav>  
@@ -57,6 +59,7 @@
                 <form action="#" method="post">
                     <h3>Selectioner le jeu à modifier</h3>
                     <select name="nom_game" required>
+                    <option disabled selected>Selectioner le jeu</option>
                         <?php foreach ($listGameUser as $game) :?>
                         <option><?= $game["nom_game"]?></option>
                         <?php endforeach; ?>

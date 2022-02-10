@@ -45,6 +45,9 @@ try {
                 else {
                     throw new Exception;
                 }
+            case "recherche" :
+                require "./views/recherche.php";
+                break;
             case "liste":
                 if($_SESSION && $_SESSION["pseudo"]) {
                     require "./controllers/readUser.php";
