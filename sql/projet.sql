@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2022 at 05:48 PM
+-- Generation Time: Feb 10, 2022 at 11:06 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -46,7 +46,6 @@ INSERT INTO `completer` (`id_game`, `id_user`, `temps_completer`, `note_complete
 (11, 30, 254, 10, 50),
 (13, 30, 156, 10, 146),
 (14, 30, 90, 10, 25),
-(14, 31, 58, 9, 50),
 (17, 30, 95, 0, 50),
 (20, 30, 90, 5, 14),
 (21, 30, 47, 8, 19),
@@ -79,7 +78,9 @@ INSERT INTO `editeur` (`id_editeur`, `nom_editeur`) VALUES
 (20, 'Bethesda'),
 (21, 'Team Cherry'),
 (22, 'Square Enix'),
-(23, 'Electronic Arts');
+(23, 'Electronic Arts'),
+(24, 'CAPCOM'),
+(25, 'ZA/UM');
 
 -- --------------------------------------------------------
 
@@ -115,7 +116,9 @@ INSERT INTO `game` (`id_game`, `nom_game`, `date_game`, `description_game`, `img
 (19, 'Portal 2', '2011-04-19', 'Portal 2 nous vient tout droit du jeu original culte Portal primé à plus de 70 reprises pour sa jouabilité, son scénario et sa musique.  La partie solo de Portal 2 présente un ensemble de nouveaux personnages, de nouveaux éléments et de nouvelles chambres de test plus vastes. Les joueurs vont pouvoir parcourir des parties inconnues des laboratoires d\'Aperture Science et retrouver GLaDOS, l\'ordinateur maléfique du jeu original.  Le mode de coopération du jeu comprend une campagne autonome avec une histoire spécifique, des chambres de test et deux nouveaux personnages. Ce nouveau mode va remettre en question vos connaissances des portals. Il va falloir non seulement agir mais également penser en mode coopératif.', 'images/img_jeux/7578c3f0d6ce1ff81039e351c26b8a9c.jpg', 16),
 (20, 'Portal', '2007-10-10', 'Portal est un nouveau jeu solo signé Valve. Avec pour décor les mystérieux laboratoires Aperture Science, Portal s\'impose par son côté innovant et garantit aux joueurs un gameplay et une longévité à toute épreuve.', 'images/img_jeux/31cc7bce0fbda59724d417f38f8b2802.jpg', 16),
 (21, 'Dishonored', '2012-10-09', 'Dishonored est un jeu d\'action / infiltration immersif, dans lequel vous incarnez un assassin aux pouvoirs surnaturels poussé par un désir de vengeance. Éliminez vos cibles grâce à un système de combat dynamique permettant de combiner les innombrables pouvoirs surnaturels, armes et gadgets à votre disposition. Traquez vos ennemis à la faveur de l\'obscurité ou foncez tête baissée, l\'arme au poing. Définissez votre style de jeu et élaborez votre vengeance. Vos choix façonneront votre expérience.', 'images/img_jeux/e492e050b44031d2ec2aef322bf318b6.jpg', 20),
-(22, 'Apex Legends', '2019-02-04', 'Apex Legends est le célèbre jeu de tir gratuit avec des héros créé par Respawn Entertainment. Maîtrisez une équipe de personnages légendaires dotés de capacités surpuissantes, et découvrez une jouabilité novatrice d\'une grande profondeur tactique dans cette nouvelle évolution du genre.', 'images/img_jeux/10a28d6f772aa3607be27b838b5e7bfe.jpg', 23);
+(22, 'Apex Legends', '2019-02-04', 'Apex Legends est le célèbre jeu de tir gratuit avec des héros créé par Respawn Entertainment. Maîtrisez une équipe de personnages légendaires dotés de capacités surpuissantes, et découvrez une jouabilité novatrice d\'une grande profondeur tactique dans cette nouvelle évolution du genre.', 'images/img_jeux/10a28d6f772aa3607be27b838b5e7bfe.jpg', 23),
+(23, 'Monster Hunter: World', '2018-08-09', 'Bienvenue dans le Nouveau Monde ! &quot;Monster Hunter: World&quot; offre une dimension de jeu et une liberté sans commune mesure avec les précédents épisodes. Les chasseurs pourront utiliser un arsenal varié pour chasser un bestiaire unique dans un monde fabuleux !', 'images/img_jeux/2e9ca234a8620d962595b2173f6d8e79.jpg', 24),
+(26, 'Disco Elysium', '2019-10-15', 'Disco Elysium est un jeu de rôle révolutionnaire dans un monde ouvert. Vous êtes un enquêteur, avec un système de talents unique en son genre et tout un pan urbain à arpenter. Interrogez des personnages inoubliables, résolvez des crimes ou acceptez des pots-de-vin. Libre à vous d’incarner un héros ou une épave humaine irrécupérable.', 'images/img_jeux/7def333b88e617fc0a80d38fa93956dc.jpg', 25);
 
 -- --------------------------------------------------------
 
@@ -170,6 +173,7 @@ CREATE TABLE `user` (
   `email_user` varchar(100) NOT NULL,
   `mdp_user` varchar(100) NOT NULL,
   `img_user` varchar(100) NOT NULL,
+  `date_user` date DEFAULT NULL,
   `id_role` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -177,11 +181,12 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `pseudo_user`, `email_user`, `mdp_user`, `img_user`, `id_role`) VALUES
-(30, 'Dimensio', 'walther.maxime@gmail.com', '$2y$10$wRbI0eEIaDZicfytYKRp0u4sN9StOKliX8KL45fAN49ctGk2kuMQ2', 'images/img_users/0b4fd8bcff882acf9f22a1d22a0bcfa4.jpg', 2),
-(31, 'test', 'test@test', '$2y$10$kOvKcPTDatJ5n4n0LNUtOej5HnCVkul7ef6B5H.Wdb5dNp.0E8zGO', 'images/img_users/default_user.png', 1),
-(32, 'solo', 'solo@solo', '$2y$10$toTBQ43.3mf2bJiNhqxm3uXqv64U3hemUyZYzK/eHghFgsFdlXk4W', 'images/img_users/default_user.png', 1),
-(33, 'Admin', 'admin@admin', '$2y$10$NHvqMykypMPAANIhvEz6aepudOVCbLJIsK8ob4miBuoWP72u8d3ni', 'images/img_users/9656c3018f0b1cbd688eec5ec82db006.jpg', 2);
+INSERT INTO `user` (`id_user`, `pseudo_user`, `email_user`, `mdp_user`, `img_user`, `date_user`, `id_role`) VALUES
+(30, 'Dimensio', 'walther.maxime@gmail.com', '$2y$10$wRbI0eEIaDZicfytYKRp0u4sN9StOKliX8KL45fAN49ctGk2kuMQ2', 'images/img_users/f3c4242db195bfea64a9af1e370ce552.jpg', '2021-11-25', 2),
+(31, 'test', 'test@test', '$2y$10$kOvKcPTDatJ5n4n0LNUtOej5HnCVkul7ef6B5H.Wdb5dNp.0E8zGO', 'images/img_users/dd9dcae3c6865b53f38736b721eaf607.jpg', '2022-01-01', 1),
+(32, 'solo', 'solo@solo', '$2y$10$toTBQ43.3mf2bJiNhqxm3uXqv64U3hemUyZYzK/eHghFgsFdlXk4W', 'images/img_users/default_user.png', '2022-01-01', 1),
+(33, 'Admin', 'admin@admin', '$2y$10$NHvqMykypMPAANIhvEz6aepudOVCbLJIsK8ob4miBuoWP72u8d3ni', 'images/img_users/9656c3018f0b1cbd688eec5ec82db006.jpg', '2022-02-01', 2),
+(37, 'date', 'date@date', '$2y$10$YUQ72zdWqGgx/8BnUQTabOwrliokSaMYBfUlZ7UhkyaYTVKptp9OO', 'images/img_users/default_user.png', '2022-02-10', 1);
 
 --
 -- Indexes for dumped tables
@@ -235,13 +240,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `editeur`
 --
 ALTER TABLE `editeur`
-  MODIFY `id_editeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_editeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -259,7 +264,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Constraints for dumped tables

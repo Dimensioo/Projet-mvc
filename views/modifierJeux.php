@@ -59,7 +59,7 @@
                 <form action="#" method="post">
                     <h3>Selectioner le jeu à modifier</h3>
                     <select name="nom_game" required>
-                    <option disabled selected>Selectioner le jeu</option>
+                    <option disabled selected>Selectioner un jeu</option>
                         <?php foreach ($listGameUser as $game) :?>
                         <option><?= $game["nom_game"]?></option>
                         <?php endforeach; ?>

@@ -56,7 +56,7 @@
                 <div>
                     <p><b>Pseudo : </b><?php if($_SESSION){echo $_SESSION['pseudo'];}?></p>
                     <p><b>Adresse E-mail : </b><?php if($_SESSION){echo $_SESSION['email'];}?></p>
-                    <p><b>Inscrit depuis le :</b></p>
+                    <p><b>Inscrit depuis le : </b><?php if($_SESSION){echo $_SESSION['date'];}?></p>
                 </div>
                 <div>
                     <?php //Affichage image de profil utilisateur

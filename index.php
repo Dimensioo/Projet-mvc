@@ -77,8 +77,13 @@ try {
                     throw new Exception;
                 }
             case "connexion":
-                require "./views/connexion.php";
-                break;
+                if($_SESSION && $_SESSION["pseudo"]) {
+                    throw new Exception;
+                }
+                else {
+                    require "./views/connexion.php";
+                    break;
+                }
             case "logout":
                 require "./controllers/logout.php";
                 break;

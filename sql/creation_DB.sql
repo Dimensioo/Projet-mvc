@@ -13,6 +13,7 @@ create table `user` (
     email_user varchar(100) not null,
     mdp_user varchar(100) not null,
     img_user varchar(100) not null,
+    date_user date not null,
     id_role int
 );
 

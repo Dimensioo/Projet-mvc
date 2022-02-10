@@ -20,6 +20,9 @@ class User {
     private $img_user;
     public function get_img_user(){return $this->img_user;}
     public function set_img_user($new){$this->img_user = $new;}
+    private $date_user;
+    public function get_date_user(){return $this->date_user;}
+    public function set_date_user($new){$this->date_user = $new;}
     private $id_role;
     public function get_id_role(){return $this->id_role;}
     public function set_id_role($new){$this->id_role = $new;}
@@ -51,12 +54,13 @@ class User {
                     }
                     else {
                         try {
-                            $req = $this->conn->prepare("INSERT INTO ".$this->table." (pseudo_user, email_user, mdp_user, img_user, id_role) 
-                                VALUES (:pseudo, :email, :mdp,  'images/img_users/default_user.png', 1)"); //creation de l'utilisateur dans la bdd
+                            $req = $this->conn->prepare("INSERT INTO ".$this->table." (pseudo_user, email_user, mdp_user, img_user, date_user, id_role) 
+                                VALUES (:pseudo, :email, :mdp,  'images/img_users/default_user.png', :date, 1)"); //creation de l'utilisateur dans la bdd
                             $req->execute(array(
                                 'pseudo' => $this->pseudo_user,
                                 'email' => $this->email_user,
-                                'mdp' => $this->mdp_user
+                                'mdp' => $this->mdp_user,
+                                'date' => date('Y-m-d', time())
                             ));
                             if($req) {
                                 echo "<p>Compte créer avec succés !<br>Veuillez vous connecter</p>";
@@ -115,6 +119,7 @@ class User {
                     $_SESSION['email'] = $test['email_user'];
                     $_SESSION['role'] = $test['id_role'];
                     $_SESSION['image'] = $test['img_user'];
+                    $_SESSION['date'] = $test['date_user'];
                     header("location: ".URL."accueil");
                 }
                 else {
