@@ -71,7 +71,9 @@ class Completer {
             while($donnees = $req->fetch()) {
                 $userGames[] = $donnees;
             }
-            return $userGames;
+            if(!empty($userGames)) {
+                return $userGames;
+            }
         }
         catch(Exception $e) {
             die('Erreur : '.$e->getMessage());

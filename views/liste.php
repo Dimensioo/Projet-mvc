@@ -86,6 +86,7 @@
                     </tr>
                     <?php
                         require "./controllers/readCompleter.php";
+                        if(!empty($listGameUser)) :
                         foreach ($listGameUser as $completer) : 
                     ?>
                     <tr>
@@ -97,7 +98,7 @@
                         <td><?= $completer["achievement_completer"]?></td>
                         <td><?= $completer["note_completer"]?> / 10</td>
                     </tr>
-                    <?php endforeach; ?>
+                    <?php endforeach; endif; ?>
                 </table><br>
             </div>
             <?php 
