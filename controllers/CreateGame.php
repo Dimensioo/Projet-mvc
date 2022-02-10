@@ -3,7 +3,7 @@ include_once('config.php');
 include_once('models/game.php');
 include_once('models/editeur.php');
 
-if(isset($_POST['nom_game'], $_POST['date_game'], $_POST['description_game'], $_POST['id_editeur'], $_FILES["img_game"])) {
+if(isset($_POST['nom_game']) && isset($_POST['date_game']) && isset($_POST['description_game']) && isset($_POST['id_editeur']) && isset($_FILES["img_game"])) {
     $filename = $_FILES["img_game"]["name"]; //recup nom du fichier
     $fileExt = "." . strtolower(substr(strchr($filename, "."), 1)); //conversion extension du fichier en lower case
     $tmpName = $_FILES["img_game"]["tmp_name"]; //recup nom temporaire du fichier

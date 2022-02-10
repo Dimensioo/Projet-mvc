@@ -2,7 +2,7 @@
 include_once('config.php');
 include_once('models/user.php');
 
-if(isset($_POST['new_mdp'], $_POST['verif_mdp'])) {
+if(isset($_POST['new_mdp']) && isset($_POST['verif_mdp'])) {
     if($_POST['new_mdp'] == $_POST['verif_mdp']) {
         echo "<script>alert(\"Veuillez saisir un mot de passe different\")</script>";
     }

@@ -3,7 +3,7 @@ include_once('config.php');
 include_once('models/game.php');
 include_once('models/completer.php');
 
-if(isset($_POST['nom_game'], $_POST['temps_completer'], $_POST['note_completer'], $_POST['achievement_completer'])) {
+if(isset($_POST['nom_game']) && isset($_POST['temps_completer']) && isset($_POST['note_completer']) && isset($_POST['achievement_completer'])) {
     $game = new Game;
     $game = $game->readGameByName(htmlspecialchars(strip_tags(trim($_POST["nom_game"]))));
     
