@@ -49,19 +49,23 @@
         <div id="admin">
             <h2>Supprimer un jeu de ma liste</h2>
             <div>
+                <?php 
+                    require "./controllers/readCompleter_forUpdate.php"; 
+                    if(!empty($listGameUser)) :
+                ?>
                 <form action="#" method="post">
                     <h3>Selectioner le jeu à supprimer</h3>
                     <select name="nom_game" required>
-                        <?php
-                            require "./controllers/readCompleter_forUpdate.php";
-                            foreach ($listGameUser as $game) : 
-                        ?>
+                        <?php foreach ($listGameUser as $game) : ?>
                         <option><?= $game["nom_game"]?></option>
                         <?php endforeach; ?>
                     </select><br>
                     <input type="submit" value="Supprimer" class="sizeup">
                     <?php include('controllers/deleteCompleter.php') ?>
                 </form>
+                <?php else : ?>
+                <h4>Vous n'avez aucun jeu dans votre liste</h4>
+                <?php endif ?>
             </div>
         </div>
         <aside></aside>
