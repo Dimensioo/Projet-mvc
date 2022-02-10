@@ -46,8 +46,13 @@ try {
                     throw new Exception;
                 }
             case "recherche" :
-                require "./views/recherche.php";
-                break;
+                if(!empty($_POST["search"])) {
+                    require "./views/recherche.php";
+                    break;
+                }
+                else {
+                    throw new Exception;
+                }
             case "liste":
                 if($_SESSION && $_SESSION["pseudo"]) {
                     require "./controllers/readUser.php";
