@@ -19,7 +19,15 @@
         <nav>
             <div id="nav1">
                 <div><h1>Game List <i class="fas fa-gamepad"></i></h1></div>
-                <?php include('controllers/connected.php') ?>
+                <?php
+                    if(isset($_SESSION["pseudo"])) { //afichage quand utilisateur connéctée
+                        echo "<div><p>Bienvenue ", $_SESSION['pseudo'], "</p></div>";
+                        echo "<div class=\"sizeup\"><a href=\"".URL."logout\">Déconnexion</a></div>";
+                    }
+                    else { //afichage quand utilisateur déconectée
+                        echo "<div class=\"sizeup\"><a href=\"".URL."connexion\">Se connecter / S'inscrire</a></div>";
+                    } 
+                ?>
             </div>
             <div id="nav2">
                 <div>
