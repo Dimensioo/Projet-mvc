@@ -156,7 +156,6 @@ class User {
                                 ));
                                 if($req) {
                                     $_SESSION['pseudo'] = $this->pseudo_user;
-                                    header("Refresh:0; url=./option");
                                     echo "<script>alert(\"Pseudo modifié\")</script>";
                                 }
                             }
@@ -188,7 +187,6 @@ class User {
             ));
             if($req) {
                 $_SESSION["image"] = $this->img_user;
-                header("Refresh:0; url=./option");
                 echo "<script>alert(\"Image de profil mise à jour\")</script>";
             }
         }
@@ -223,7 +221,6 @@ class User {
                                 ));
                                 if($req) {
                                     $_SESSION['email'] = $this->email_user;
-                                    header("Refresh:0; url=./option");
                                     echo "<script>alert(\"E-mail modifié\")</script>";
                                 }
                             }
@@ -260,7 +257,6 @@ class User {
                         'email'=>$_SESSION['email']
                     ));
                     if($req) {
-                        header("Refresh:0; url=./option");
                         echo "<script>alert(\"Mot de passe modifié\")</script>";
                     }
                 }

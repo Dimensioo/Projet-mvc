@@ -62,8 +62,7 @@
                         <option><?= $editeur["nom_editeur"]?></option>
                         <?php endforeach; ?>
                     </select>
-                    <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-                    <input type="file" name="img_game" accept=".jpg, .png" required>
+                    <input type="file" name="img_game" accept=".jpeg, .jpg, .png" required>
                     <input type="submit" value="Ajouter" class="sizeup">
                     <?php include('controllers/createGame.php') ?>
                 </form>

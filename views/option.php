@@ -85,8 +85,7 @@
             </form>
             <form action="" method="post" class="invisible" id="change_pic" enctype="multipart/form-data"> <!--formulaire modification image de profil -->
                 <label for="new_pic">Nouvelle image de profil</label><br>
-                <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-                <input type="file" accept=".jpg, .png" name="new_pic" required><br>
+                <input type="file" accept=".jpeg, .jpg, .png" name="new_pic" required><br>
                 <input type="submit" value="Modifier Image de profil" class="sizeup">
                 <?php include('controllers/updateImg.php') ?>
             </form>
