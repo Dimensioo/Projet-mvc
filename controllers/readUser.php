@@ -3,7 +3,8 @@ include_once('config.php');
 include_once('models/user.php');
 
 $user = new User;
-$idUser = $user->readUserById($url[1]);
+$user->set_id_user($url[1]);
+$idUser = $user->readUserById();
 
 if ($url[1] == "modifier") {
     require "./views/modifierJeux.php"; //affichage page de modification du jeu dans la liste utilisateur

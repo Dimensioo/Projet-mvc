@@ -93,10 +93,10 @@ class User {
         }
     }
 
-    public function readUserByID($id) {
+    public function readUserByID() {
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE id_user = :id");
-            $req->execute(array('id'=>$id));
+            $req->execute(array('id'=>$this->id_user));
             $result = $req->fetch();
             if($result) {
                 return $result;

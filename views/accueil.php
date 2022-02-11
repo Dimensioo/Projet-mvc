@@ -83,46 +83,15 @@
                 <section id="ranking"> <!--Best ranked game-->
                     <h2>Classement <i class="fas fa-trophy"></i></h2>
                     <div>
-                        <div>
-                            <img src="https://picsum.photos/90/120?random=1" alt="image du jeu" class="sizeup">
-                            <h3>1 Titre jeu</h3>
-                        </div>
-                        <div>
-                            <img src="https://picsum.photos/90/120?random=2" alt="image du jeu" class="sizeup">
-                            <h3>2 Titre jeu</h3>
-                        </div>
-                        <div>
-                            <img src="https://picsum.photos/90/120?random=3" alt="image du jeu" class="sizeup">
-                            <h3>3 Titre jeu</h3>
-                        </div>
-                        <div>
-                            <img src="https://picsum.photos/90/120?random=4" alt="image du jeu" class="sizeup">
-                            <h3>4 Titre jeu</h3>
-                        </div>
-                        <div>
-                            <img src="https://picsum.photos/90/120?random=5" alt="image du jeu" class="sizeup">
-                            <h3>5 Titre jeu</h3>
-                        </div>
-                        <section class="invisible" id="rank6">
-                            <img src="https://picsum.photos/90/120?random=6" alt="image du jeu" class="sizeup">
-                            <h3>6 Titre jeu</h3>
-                        </section>
-                        <section class="invisible" id="rank7">
-                            <img src="https://picsum.photos/90/120?random=7" alt="image du jeu" class="sizeup">
-                            <h3>7 Titre jeu</h3>
-                        </section>
-                        <section class="invisible" id="rank8">
-                            <img src="https://picsum.photos/90/120?random=8" alt="image du jeu" class="sizeup">
-                            <h3>8 Titre jeu</h3>
-                        </section>
-                        <section class="invisible" id="rank9">
-                            <img src="https://picsum.photos/90/120?random=9" alt="image du jeu" class="sizeup">
-                            <h3>9 Titre jeu</h3>
-                        </section>
-                        <section class="invisible" id="rank10">
-                            <img src="https://picsum.photos/90/120?random=10" alt="image du jeu" class="sizeup">
-                            <h3>10 Titre jeu</h3>
-                        </section>
+                        <?php 
+                            include "./controllers/readRanking.php";
+                            foreach($rank as $game) :
+                        ?>
+                        <div><a href="<?=URL?>jeux/description/<?= $game["id_game"]?>">
+                            <img src="<?= $game["img_game"] ?>" alt="image du jeu" class="sizeup" height="150px" width="100px"></a>
+                            <h3><?= $game['nom_game'] ?></h3>
+                           </div>
+                        <?php endforeach;?>
                     </div>
                     <p><a onClick="displayRank()" href="#" id="buttonRank">Voir plus...</a></p>
                 </section>
