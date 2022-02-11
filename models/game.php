@@ -65,10 +65,10 @@ class Game {
         }
     }
 
-    public function readGameByID($id) {
+    public function readGameByID() {
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." INNER JOIN editeur ON ".$this->table.".id_editeur = editeur.id_editeur WHERE id_game = :id");
-            $req->execute(array('id'=>$id));
+            $req->execute(array('id'=>$this->id_game));
             $result = $req->fetch();
             if($result) {
                 return $result;
@@ -79,10 +79,10 @@ class Game {
         }
     }
 
-    public function readGameByName($name) {
+    public function readGameByName() {
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." INNER JOIN editeur ON ".$this->table.".id_editeur = editeur.id_editeur WHERE nom_game = :nom");
-            $req->execute(array('nom'=>$name));
+            $req->execute(array('nom'=>$this->nom_game));
             $result = $req->fetch();
             if($result) {
                 return $result;

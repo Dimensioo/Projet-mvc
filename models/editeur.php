@@ -58,10 +58,10 @@ class Editeur {
         }
     }
 
-    public function readEditeuryById($id) {
+    public function readEditeuryById() {
         try{
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE id_editeur = :id");
-            $req->execute(array('id'=>$id));
+            $req->execute(array('id'=>$this->id_editeur));
             $result = $req->fetch();
             return $result;
         }

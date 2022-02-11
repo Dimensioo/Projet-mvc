@@ -5,7 +5,8 @@ include_once('models/completer.php');
 
 if(isset($_POST['nom_game']) && isset($_POST['temps_completer']) && isset($_POST['note_completer']) && isset($_POST['achievement_completer'])) {
     $game = new Game;
-    $game = $game->readGameByName(htmlspecialchars(strip_tags(trim($_POST["nom_game"]))));
+    $game->set_nom_game(htmlspecialchars(strip_tags(trim($_POST["nom_game"]))));
+    $game = $game->readGameByName();
     
     $completer = new Completer; //creation de l'objet
     $completer->set_id_game($game['id_game']); //assignation dans les attributs de l'objet

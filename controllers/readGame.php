@@ -3,7 +3,8 @@ include_once('config.php');
 include_once('models/game.php');
 
 $game = new Game;
-$game = $game->readGameById($url[2]);
+$game->set_id_game($url[2]);
+$game = $game->readGameById();
 
 if($game && $url[1] == "description") {
     require "./views/description.php"; //affichage page de description du jeu

@@ -3,4 +3,5 @@ include_once('config.php');
 include_once('models/completer.php');
 
 $completer = new Completer;
-$listGameUser = $completer->readCompleter($_SESSION['id']);
+$completer->set_id_user($_SESSION['id']);
+$listGameUser = $completer->readCompleter();

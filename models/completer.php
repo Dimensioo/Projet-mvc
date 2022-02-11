@@ -64,10 +64,10 @@ class Completer {
         }
     }
 
-    public function readCompleter($userId) {
+    public function readCompleter() {
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." INNER JOIN game ON ".$this->table.".id_game = game.id_game WHERE id_user = :user ORDER BY nom_game ASC");
-            $req->execute(array('user'=>$userId));
+            $req->execute(array('user'=>$this->id_user));
             while($donnees = $req->fetch()) {
                 $userGames[] = $donnees;
             }
@@ -80,11 +80,11 @@ class Completer {
         }
     }
 
-    public function totalGameUser($userId) {
+    public function totalGameUser() {
         $totalGame = 0;
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE id_user = :user");
-            $req->execute(array('user'=>$userId));
+            $req->execute(array('user'=>$this->id_user));
             while($req->fetch()) {
                 $totalGame++;
             }
@@ -95,10 +95,10 @@ class Completer {
         }
     }
 
-    public function totalPlayTime($userId) {
+    public function totalPlayTime() {
         try {
             $req = $this->conn->prepare("SELECT SUM(temps_completer) AS temps_total FROM ".$this->table." WHERE id_user = :user");
-            $req->execute(array('user'=>$userId));
+            $req->execute(array('user'=>$this->id_user));
             $playTime = $req->fetch();
             return $playTime['temps_total'];
         }
@@ -107,10 +107,10 @@ class Completer {
         }
     }
 
-    public function totalAchievement($userId) {
+    public function totalAchievement() {
         try {
             $req = $this->conn->prepare("SELECT SUM(achievement_completer) AS achievement_total FROM ".$this->table." WHERE id_user = :user");
-            $req->execute(array('user'=>$userId));
+            $req->execute(array('user'=>$this->id_user));
             $achievement = $req->fetch();
             return $achievement['achievement_total'];
         }
@@ -119,10 +119,10 @@ class Completer {
         }
     }
 
-    public function averageNote($userId) {
+    public function averageNote() {
         try {
             $req = $this->conn->prepare("SELECT AVG(note_completer) AS note_avg FROM ".$this->table." WHERE id_user = :user");
-            $req->execute(array('user'=>$userId));
+            $req->execute(array('user'=>$this->id_user));
             $avg = $req->fetch();
             return $avg['note_avg'];
         }
@@ -131,11 +131,11 @@ class Completer {
         }
     }
 
-    public function totalUser($gameId) {
+    public function totalUser() {
         $totalUser = 0;
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE id_game = :game");
-            $req->execute(array('game'=>$gameId));
+            $req->execute(array('game'=>$this->id_game));
             while($req->fetch()) {
                 $totalUser++;
             }
@@ -146,10 +146,10 @@ class Completer {
         }
     }
 
-    public function globalNote($gameId) {
+    public function globalNote() {
         try {
             $req = $this->conn->prepare("SELECT AVG(note_completer) AS note_avg FROM ".$this->table." WHERE id_game = :game");
-            $req->execute(array('game'=>$gameId));
+            $req->execute(array('game'=>$this->id_game));
             $avg = $req->fetch();
             return $avg['note_avg'];
         }
