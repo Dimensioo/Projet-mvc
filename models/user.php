@@ -87,7 +87,7 @@ class User {
             $req->execute(array('pseudo'=>$this->pseudo_user));
             $test = $req->fetch();
             if($test) {
-                return $test['id_user'];
+                return $test;
             }
         }
         catch(Exception $e) {

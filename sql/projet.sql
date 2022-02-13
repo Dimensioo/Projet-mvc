@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2022 at 11:06 PM
+-- Generation Time: Feb 13, 2022 at 11:34 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -42,14 +42,16 @@ CREATE TABLE `completer` (
 INSERT INTO `completer` (`id_game`, `id_user`, `temps_completer`, `note_completer`, `achievement_completer`) VALUES
 (7, 30, 210, 10, 50),
 (8, 30, 400, 5, 174),
-(10, 30, 147, 9, 39),
+(10, 30, 147, 8, 50),
 (11, 30, 254, 10, 50),
+(12, 33, 314, 2, 78),
 (13, 30, 156, 10, 146),
 (14, 30, 90, 10, 25),
 (17, 30, 95, 0, 50),
 (20, 30, 90, 5, 14),
 (21, 30, 47, 8, 19),
-(22, 30, 2, 6, 0);
+(22, 30, 2, 6, 0),
+(23, 33, 97, 7, 14);
 
 -- --------------------------------------------------------
 
@@ -80,7 +82,8 @@ INSERT INTO `editeur` (`id_editeur`, `nom_editeur`) VALUES
 (22, 'Square Enix'),
 (23, 'Electronic Arts'),
 (24, 'CAPCOM'),
-(25, 'ZA/UM');
+(25, 'ZA/UM'),
+(27, 'Amazon Games');
 
 -- --------------------------------------------------------
 
@@ -118,7 +121,8 @@ INSERT INTO `game` (`id_game`, `nom_game`, `date_game`, `description_game`, `img
 (21, 'Dishonored', '2012-10-09', 'Dishonored est un jeu d\'action / infiltration immersif, dans lequel vous incarnez un assassin aux pouvoirs surnaturels poussé par un désir de vengeance. Éliminez vos cibles grâce à un système de combat dynamique permettant de combiner les innombrables pouvoirs surnaturels, armes et gadgets à votre disposition. Traquez vos ennemis à la faveur de l\'obscurité ou foncez tête baissée, l\'arme au poing. Définissez votre style de jeu et élaborez votre vengeance. Vos choix façonneront votre expérience.', 'images/img_jeux/e492e050b44031d2ec2aef322bf318b6.jpg', 20),
 (22, 'Apex Legends', '2019-02-04', 'Apex Legends est le célèbre jeu de tir gratuit avec des héros créé par Respawn Entertainment. Maîtrisez une équipe de personnages légendaires dotés de capacités surpuissantes, et découvrez une jouabilité novatrice d\'une grande profondeur tactique dans cette nouvelle évolution du genre.', 'images/img_jeux/10a28d6f772aa3607be27b838b5e7bfe.jpg', 23),
 (23, 'Monster Hunter: World', '2018-08-09', 'Bienvenue dans le Nouveau Monde ! &quot;Monster Hunter: World&quot; offre une dimension de jeu et une liberté sans commune mesure avec les précédents épisodes. Les chasseurs pourront utiliser un arsenal varié pour chasser un bestiaire unique dans un monde fabuleux !', 'images/img_jeux/2e9ca234a8620d962595b2173f6d8e79.jpg', 24),
-(26, 'Disco Elysium', '2019-10-15', 'Disco Elysium est un jeu de rôle révolutionnaire dans un monde ouvert. Vous êtes un enquêteur, avec un système de talents unique en son genre et tout un pan urbain à arpenter. Interrogez des personnages inoubliables, résolvez des crimes ou acceptez des pots-de-vin. Libre à vous d’incarner un héros ou une épave humaine irrécupérable.', 'images/img_jeux/7def333b88e617fc0a80d38fa93956dc.jpg', 25);
+(26, 'Disco Elysium', '2019-10-15', 'Disco Elysium est un jeu de rôle révolutionnaire dans un monde ouvert. Vous êtes un enquêteur, avec un système de talents unique en son genre et tout un pan urbain à arpenter. Interrogez des personnages inoubliables, résolvez des crimes ou acceptez des pots-de-vin. Libre à vous d’incarner un héros ou une épave humaine irrécupérable.', 'images/img_jeux/7def333b88e617fc0a80d38fa93956dc.jpg', 25),
+(29, 'Lost Ark', '2022-02-11', 'Embarquez-vous dans une odyssée en quête de l\'Arche perdue dans un monde vaste et dynamique : explorez de nouvelles terres, cherchez des trésors perdus et relevez le défi de combats trépidants dans ce RPG free-to-play bourré d\'action.', 'images/img_jeux/d184b7ba4d4e64d6788b3ed77f067471.jpg', 27);
 
 -- --------------------------------------------------------
 
@@ -139,7 +143,7 @@ CREATE TABLE `news` (
 
 INSERT INTO `news` (`id_news`, `titre_news`, `contenu_news`, `id_user`) VALUES
 (3, 'Titre news 1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt explicabo saepe earum optio rem, laudantium ea architecto. Odit corrupti, veniam, voluptate distinctio, repudiandae quibusdam atque sed in ipsa asperiores labore error. Labore necessitatibus, magnam ab perspiciatis voluptas fugit rem, delectus harum voluptates facilis quasi et repellendus enim nesciunt vel rerum! Magnam fugit optio recusandae voluptates sit consectetur atque blanditiis dignissimos! Architecto, harum quod nemo dolorum expedita, necessitatibus delectus doloribus placeat, odio minus ea blanditiis cum enim itaque aliquid. Voluptatibus aliquam a dolorum esse minima nesciunt ipsam libero ipsa eveniet. Culpa sapiente hic maiores impedit assumenda. Tempora exercitationem commodi numquam repellendus eaque, laboriosam sunt sint, possimus beatae voluptate vel a quod, sed dicta est sit. Totam, fugit distinctio eaque dolorum autem harum aperiam facere nam sunt quasi nobis rem aspernatur! Nobis, ab sint! Repellendus obcaecati tempore distinctio esse porro cum aliquid quaerat nulla nemo, repudiandae repellat. Velit laudantium nobis reprehenderit sequi accusantium assumenda eum laboriosam praesentium deserunt atque incidunt accusamus, voluptatibus distinctio dolor dicta deleniti ad impedit iure dolore odio facilis hic odit, esse aspernatur? Nemo id accusantium optio. Porro, quisquam tempora laboriosam aperiam illo sequi quas est dicta accusantium facere ea hic eius? Vitae placeat incidunt omnis, in deleniti numquam!', 30),
-(4, 'Titre news 2', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt explicabo saepe earum optio rem, laudantium ea architecto. Odit corrupti, veniam, voluptate distinctio, repudiandae quibusdam atque sed in ipsa asperiores labore error. Labore necessitatibus, magnam ab perspiciatis voluptas fugit rem, delectus harum voluptates facilis quasi et repellendus enim nesciunt vel rerum! Magnam fugit optio recusandae voluptates sit consectetur atque blanditiis dignissimos! Architecto, harum quod nemo dolorum expedita, necessitatibus delectus doloribus placeat, odio minus ea blanditiis cum enim itaque aliquid. Voluptatibus aliquam a dolorum esse minima nesciunt ipsam libero ipsa eveniet. Culpa sapiente hic maiores impedit assumenda. Tempora exercitationem commodi numquam repellendus eaque, laboriosam sunt sint, possimus beatae voluptate vel a quod, sed dicta est sit. Totam, fugit distinctio eaque dolorum autem harum aperiam facere nam sunt quasi nobis rem aspernatur! Nobis, ab sint! Repellendus obcaecati tempore distinctio esse porro cum aliquid quaerat nulla nemo, repudiandae repellat. Velit laudantium nobis reprehenderit sequi accusantium assumenda eum laboriosam praesentium deserunt atque incidunt accusamus, voluptatibus distinctio dolor dicta deleniti ad impedit iure dolore odio facilis hic odit, esse aspernatur? Nemo id accusantium optio. Porro, quisquam tempora laboriosam aperiam illo sequi quas est dicta accusantium facere ea hic eius? Vitae placeat incidunt omnis, in deleniti numquam!', 30),
+(4, 'Titre news 2', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam adipisci quod facilis consectetur beatae eos ducimus! Expedita repudiandae ut, quisquam laborum quae vero ex deserunt rerum praesentium harum, natus beatae recusandae qui reprehenderit ad rem amet, quis repellat neque excepturi accusamus consequatur assumenda! Voluptatum tempore corrupti nemo voluptates vel corporis eveniet eius accusamus quae officia, voluptate quo ipsam nobis est consequuntur odio nesciunt vitae commodi hic, eaque accusantium! Voluptas culpa, laboriosam esse, a, assumenda labore quam nobis veniam sequi reiciendis vero laborum aliquid nisi mollitia! At optio, quia reprehenderit pariatur, dolor laudantium tempora blanditiis nesciunt ex eum voluptatibus fugit facere eaque inventore a enim, perspiciatis praesentium alias in accusamus voluptatem. Expedita, mollitia quae? Quaerat dolores eos praesentium magnam maxime cum est soluta omnis id sint cupiditate at ab esse numquam inventore cumque, autem, sequi ullam veritatis dicta aperiam, ducimus qui enim atque? Eveniet vel repudiandae illum at. Rem vitae repellat facilis voluptate tempore debitis illo quaerat mollitia maxime perferendis quas, optio hic voluptatum natus recusandae, pariatur vel incidunt cum eaque porro praesentium ad nobis. Quasi eveniet odit ullam nulla quod. Nesciunt est, eos sequi voluptate corrupti reiciendis ipsa. Labore, magni veniam quasi eius numquam molestias rem minima? Cum, odio nam?', 30),
 (5, 'Titre news 3', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto corrupti saepe, sunt quidem quo pariatur? Vero, quia. Suscipit non obcaecati laboriosam ipsum eius voluptas voluptatibus quo, nam ex error dolore nostrum facere, sit totam praesentium ea mollitia sunt! Saepe voluptates reprehenderit minima nulla assumenda magnam optio officia laborum iure soluta. Deleniti aliquid officiis debitis exercitationem aliquam quibusdam fugit assumenda. Autem harum veritatis doloremque, cumque repudiandae magnam, eum quia, sunt fuga ea rem aspernatur? Sapiente, quae veritatis suscipit odit neque vitae. Eius laboriosam impedit exercitationem dignissimos dolor assumenda corporis maxime eligendi odit amet animi provident, tempora facilis! Nemo eum totam amet nulla corporis rerum harum vitae fugit unde maxime consequuntur assumenda quae aut nesciunt, eveniet voluptatibus, a, expedita quas vel doloremque officia. Quod sequi veniam voluptas, itaque sit beatae nulla at dicta nobis provident cum accusantium eius! Alias consequuntur asperiores assumenda corrupti sed ut nemo tempore eaque similique. Autem unde praesentium debitis pariatur reprehenderit quod nostrum aliquid voluptates rem fugit, enim officia quae voluptas minima saepe, doloribus eum laboriosam mollitia, illo dolorum placeat libero? Temporibus eos quasi numquam laudantium facilis quas ducimus laboriosam velit! Iste aliquam fuga cupiditate velit praesentium laborum molestiae odio at porro magnam provident eius ullam debitis ratione illum ad quo dolore sequi, dolor quae tempora! Aperiam, ullam necessitatibus? Voluptates modi in ad libero rem amet officiis laborum ipsum qui est! Eos magnam doloremque laboriosam, magni ut commodi non officia quas optio animi quod voluptates maxime facilis enim deserunt voluptas! Aliquid eveniet fugiat maxime quidem tempora impedit numquam rem totam, quod consequuntur maiores ducimus voluptatum, quo, explicabo aut odio dignissimos possimus nostrum quis? Totam voluptatibus voluptates labore dolores ipsa harum laborum! Minima, iure vitae totam reprehenderit quaerat quis consequuntur ratione minus, harum cum voluptatibus eum laborum veniam debitis. Provident nam animi enim nihil mollitia repudiandae? Ullam temporibus ea debitis fuga repellat distinctio, repellendus eius? Tenetur porro nesciunt ea mollitia beatae possimus nisi quos quae, blanditiis libero magni facere quasi ipsam odio earum quaerat consequatur neque suscipit, doloremque accusantium quia animi modi! Ut adipisci neque, nulla ea dignissimos iusto qui voluptates accusamus corporis dolor voluptatem? Itaque provident ipsum enim esse suscipit cupiditate, debitis numquam, excepturi sunt earum temporibus illo veritatis, rerum asperiores. Possimus asperiores, beatae rerum modi esse, quod, delectus sequi totam voluptatem praesentium in tenetur. Voluptate consequuntur quo voluptates fugiat praesentium, adipisci recusandae, fugit inventore odio cumque eveniet! Necessitatibus nemo ipsum minima deserunt corrupti. Dolor nobis officiis natus ipsam sunt odit blanditiis quia voluptatibus, qui optio dolore reiciendis possimus exercitationem impedit. Repellat modi fuga rem temporibus ratione corrupti itaque beatae esse voluptates reprehenderit nesciunt saepe et quas harum odit, soluta, dolores officiis, optio impedit sint obcaecati. Expedita repellendus repudiandae earum hic labore ipsa, mollitia harum voluptatem iste, fuga ex incidunt aliquid totam debitis at. Mollitia obcaecati alias minima sit animi dolores consequatur praesentium, nesciunt temporibus nam eligendi assumenda fugiat quasi dignissimos laudantium neque labore excepturi dolorem qui sequi aperiam? Quo eum atque natus quidem incidunt doloremque est ratione facere, doloribus molestias labore nemo accusantium consectetur provident. Maiores, quidem!', 30);
 
 -- --------------------------------------------------------
@@ -182,7 +186,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `pseudo_user`, `email_user`, `mdp_user`, `img_user`, `date_user`, `id_role`) VALUES
-(30, 'Dimensio', 'walther.maxime@gmail.com', '$2y$10$wRbI0eEIaDZicfytYKRp0u4sN9StOKliX8KL45fAN49ctGk2kuMQ2', 'images/img_users/f3c4242db195bfea64a9af1e370ce552.jpg', '2021-11-25', 2),
+(30, 'Dimensio', 'walther.maxime@gmail.com', '$2y$10$wRbI0eEIaDZicfytYKRp0u4sN9StOKliX8KL45fAN49ctGk2kuMQ2', 'images/img_users/ef304f439a5c5ddf96e64faca8c5929d.jpg', '2021-11-25', 2),
 (31, 'test', 'test@test', '$2y$10$kOvKcPTDatJ5n4n0LNUtOej5HnCVkul7ef6B5H.Wdb5dNp.0E8zGO', 'images/img_users/dd9dcae3c6865b53f38736b721eaf607.jpg', '2022-01-01', 1),
 (32, 'solo', 'solo@solo', '$2y$10$toTBQ43.3mf2bJiNhqxm3uXqv64U3hemUyZYzK/eHghFgsFdlXk4W', 'images/img_users/default_user.png', '2022-01-01', 1),
 (33, 'Admin', 'admin@admin', '$2y$10$NHvqMykypMPAANIhvEz6aepudOVCbLJIsK8ob4miBuoWP72u8d3ni', 'images/img_users/9656c3018f0b1cbd688eec5ec82db006.jpg', '2022-02-01', 2),
@@ -240,13 +244,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `editeur`
 --
 ALTER TABLE `editeur`
-  MODIFY `id_editeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_editeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `news`

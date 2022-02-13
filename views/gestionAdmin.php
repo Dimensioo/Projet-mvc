@@ -68,6 +68,35 @@
                     <input type="submit" value="Ajouter" class="sizeup">
                     <?php include('controllers/createGame.php') ?>
                 </form>
+                <form action="#" method="POST" enctype="multipart/form-data"> <!--Modfication d'un jeu de la BDD-->
+                    <h3>Modifier jeu</h3>
+                    <p>choisissez le jeu à modifier</p>
+                    <select name="modif_nom_game" required>
+                        <option disabled selected>Selectioner un jeu</option>
+                        <?php
+                            require "./controllers/readAllGame.php";
+                            foreach ($games as $game) : 
+                        ?>
+                        <option><?= $game["nom_game"]?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <p>Indiquer les nouvelles Informations</p>
+                    <input type="text" name="new_nom_game" placeholder="Non du jeu" required>
+                    <input type="date" name="modif_date_game" required>
+                    <input type="text" name="modif_description_game" placeholder="Description" required>
+                    <select name="modif_id_editeur" required>
+                        <option disabled selected>Selectioner un éditeur</option>
+                        <?php
+                            require "./controllers/readAllEditeur.php";
+                            foreach ($editeurs as $editeur) : 
+                        ?>
+                        <option><?= $editeur["nom_editeur"]?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <input type="file" name="modif_img_game" accept=".jpeg, .jpg, .png" required>
+                    <input type="submit" value="Modifier" class="sizeup">
+                    <?php include('controllers/updateGame.php') ?>
+                </form>
                 <form action="#" method="POST"> <!--Supresion d'un jeu-->
                     <h3>Suprimer Jeu</h3>
                     <select name="nom_game2" required>
@@ -91,7 +120,7 @@
                     <input type="submit" value="Ajouter" class="sizeup">
                     <?php include('controllers/createEditeur.php') ?>
                 </form>
-                <form action="#" method="POST">
+                <form action="#" method="POST"> <!--Modification editeur-->
                     <h3>Modifier Editeur</h3>
                     <select name="modif_nom_editeur" required>
                         <option disabled selected>Selectioner l'éditeur à modifier</option>
@@ -130,7 +159,7 @@
                     <textarea name="contenu_news" cols="120" rows="10" placeholder="Contenu" required></textarea>
                     <?php include('controllers/createNews.php') ?>
                 </form>
-                <form action="#" method="POST">
+                <form action="#" method="POST"> <!--Modification news-->
                     <h3>Modifier News</h3>
                     <p>choisissez la news à modifier</p>
                     <select name="modif_nom_news" required>
@@ -165,7 +194,7 @@
             </div>
             <h2>Gestion Rôles</h2>
             <div>
-                <form action="#" method="POST">
+                <form action="#" method="POST"> <!--Modification rôle utilisateur-->
                     <h3>Modifier rôle utilisateur</h3>
                     <select name="user" required>
                         <option disabled selected>Selectioner un utilisateur</option>

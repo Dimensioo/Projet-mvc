@@ -121,6 +121,26 @@ class Game {
         }
     }
 
+    public function updateGame() {
+        try {
+            $req = $this->conn->prepare("UPDATE game SET nom_game = :nom, date_game = :date, description_game = :description, img_game = :img, id_editeur = :editeur WHERE id_game = :id");
+            $req->execute(array(
+                'id'=>$this->id_game,
+                'nom'=>$this->nom_game,
+                'date'=>$this->date_game,
+                'description'=>$this->description_game,
+                'img'=>$this->img_game,
+                'editeur'=>$this->id_editeur
+            ));
+            if($req){
+                echo "<p>Jeu Modifier</p>";
+            }
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
     public function deleteGame() {
         try {
             $req = $this->conn->prepare("DELETE FROM ".$this->table." WHERE nom_game = ?");
