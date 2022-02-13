@@ -57,6 +57,20 @@ class News {
         }
     }
 
+    public function readNews() {
+        try {
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE titre_news = :titre");
+            $req->execute(array('titre'=>$this->titre_news));
+            $result = $req->fetch();
+            if($result) {
+                return $result;
+            }
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
     public function readAllNews() {
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table."");
@@ -65,6 +79,23 @@ class News {
                 $news[] = $donnees;
             }
             return $news;
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    public function updateNews() {
+        try {
+            $req = $this->conn->prepare("UPDATE ".$this->table." SET titre_news = :titre, contenu_news = :contenu WHERE id_news = :id");
+            $req->execute(array(
+                'id'=>$this->id_news,
+                'titre'=>$this->titre_news,
+                'contenu'=>$this->contenu_news
+            ));
+            if($req) {
+                echo "<p>News Modifier</p>";
+            }
         }
         catch(Exception $e) {
             die('Erreur : '.$e->getMessage());

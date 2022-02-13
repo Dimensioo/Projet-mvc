@@ -86,7 +86,9 @@ class User {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE pseudo_user = :pseudo");
             $req->execute(array('pseudo'=>$this->pseudo_user));
             $test = $req->fetch();
-            return $test['id_user'];
+            if($test) {
+                return $test['id_user'];
+            }
         }
         catch(Exception $e) {
             die('Erreur : '.$e->getMessage());

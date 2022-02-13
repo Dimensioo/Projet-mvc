@@ -131,6 +131,7 @@
                     <input type="text" name="modif_titre_news" placeholder="Titre" required>
                     <input type="submit" value="Modifier" class="sizeup"><br>
                     <textarea name="modif_contenu_news" cols="120" rows="10" placeholder="Contenu" required></textarea>
+                    <?php include('controllers/updateNews.php') ?>
                 </form>
                 <form action="#" method="POST"> <!--Supresion news-->
                     <h3>Suprimer News</h3>
