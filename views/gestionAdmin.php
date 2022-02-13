@@ -50,7 +50,7 @@
         <div id="admin">
             <h2>Gestion Jeux</h2> <!--Resumé information du compte-->
             <div>
-                <form action="#" method="post" enctype="multipart/form-data"> <!--Ajout d'un jeu a la DB-->
+                <form action="#" method="POST" enctype="multipart/form-data"> <!--Ajout d'un jeu a la DB-->
                     <h3>Ajouter Jeu</h3>
                     <input type="text" name="nom_game" placeholder="Non du jeu" required>
                     <input type="date" name="date_game" required>
@@ -68,7 +68,7 @@
                     <input type="submit" value="Ajouter" class="sizeup">
                     <?php include('controllers/createGame.php') ?>
                 </form>
-                <form action="#" method="post"> <!--Supresion d'un jeu-->
+                <form action="#" method="POST"> <!--Supresion d'un jeu-->
                     <h3>Suprimer Jeu</h3>
                     <select name="nom_game2" required>
                         <option disabled selected>Selectioner un jeu</option>
@@ -85,13 +85,13 @@
             </div>
             <h2>Gestion Editeur</h2>
             <div>
-                <form action="#" method="post"> <!--Ajout d'un editeur a la DB-->
+                <form action="#" method="POST"> <!--Ajout d'un editeur a la DB-->
                     <h3>Ajouter Editeur</h3>
                     <input type="text" name="nom_editeur" placeholder="Nom Editeur" required>
                     <input type="submit" value="Ajouter" class="sizeup">
                     <?php include('controllers/createEditeur.php') ?>
                 </form>
-                <form action="#" method="post"> <!--Supresion d'un editeur-->
+                <form action="#" method="POST"> <!--Supresion d'un editeur-->
                     <h3>Suprimer editeur</h3>
                     <select name="nom_editeur2" required>
                         <option disabled selected>Selectioner un editeur</option>
@@ -108,14 +108,31 @@
             </div>
             <h2>Gestion News</h2>
             <div>
-                <form action="#" method="post"> <!--Création news-->
+                <form action="#" method="POST"> <!--Création news-->
                     <h3>Ecrire News</h3>
                     <input type="text" name="titre_news" placeholder="Titre" required>
                     <input type="submit" value="Créer" class="sizeup"><br>
                     <textarea name="contenu_news" cols="120" rows="10" placeholder="Contenu" required></textarea>
                     <?php include('controllers/createNews.php') ?>
                 </form>
-                <form action="#" method="post"> <!--Supresion news-->
+                <form action="#" method="POST">
+                    <h3>Modifier News</h3>
+                    <h4>choisissez la news à modifier</h4>
+                    <select name="modif_nom_news" required>
+                        <option disabled selected>Selectioner une news</option>
+                        <?php
+                            require "./controllers/readAllNews.php";
+                            foreach ($news as $new) : 
+                        ?>
+                        <option><?= $new["titre_news"]?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <h4>Indiquer les nouvelles Informations</h4>
+                    <input type="text" name="modif_titre_news" placeholder="Titre" required>
+                    <input type="submit" value="Modifier" class="sizeup"><br>
+                    <textarea name="modif_contenu_news" cols="120" rows="10" placeholder="Contenu" required></textarea>
+                </form>
+                <form action="#" method="POST"> <!--Supresion news-->
                     <h3>Suprimer News</h3>
                     <select name="nom_news" required>
                         <option disabled selected>Selectioner une news</option>
