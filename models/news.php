@@ -94,7 +94,7 @@ class News {
                 'contenu'=>$this->contenu_news
             ));
             if($req) {
-                echo "<p>News Modifier</p>";
+                echo "<p>News modifier</p>";
             }
         }
         catch(Exception $e) {

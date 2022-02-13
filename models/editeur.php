@@ -84,6 +84,22 @@ class Editeur {
         }
     }
 
+    public function updateEditeur() {
+        try {
+            $req = $this->conn->prepare("UPDATE ".$this->table." SET nom_editeur = :nom WHERE id_editeur = :id");
+            $req->execute(array(
+                'id'=>$this->id_editeur,
+                'nom'=>$this->nom_editeur
+            ));
+            if($req) {
+                echo "<p>Editeur modifier</p>";
+            }
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
     public function deleteEditeur() {
         try{
             $req = $this->conn->prepare("DELETE FROM ".$this->table." WHERE nom_editeur = ?");

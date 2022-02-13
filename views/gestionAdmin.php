@@ -91,10 +91,25 @@
                     <input type="submit" value="Ajouter" class="sizeup">
                     <?php include('controllers/createEditeur.php') ?>
                 </form>
+                <form action="#" method="POST">
+                    <h3>Modifier Editeur</h3>
+                    <select name="modif_nom_editeur" required>
+                        <option disabled selected>Selectioner l'éditeur à modifier</option>
+                        <?php
+                            require "./controllers/readAllEditeur.php";
+                            foreach ($editeurs as $editeur) : 
+                        ?>
+                        <option><?= $editeur["nom_editeur"]?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <input type="text" name="new_nom_editeur" placeholder="Entrer nouveau nom éditeur" required>
+                    <input type="submit" value="Modifier" class="sizeup">
+                    <?php include('controllers/updateEditeur.php') ?>
+                </form>
                 <form action="#" method="POST"> <!--Supresion d'un editeur-->
                     <h3>Suprimer editeur</h3>
                     <select name="nom_editeur2" required>
-                        <option disabled selected>Selectioner un editeur</option>
+                        <option disabled selected>Selectioner un éditeur</option>
                         <?php
                             require "./controllers/readAllEditeur.php";
                             foreach ($editeurs as $editeur) : 
@@ -117,7 +132,7 @@
                 </form>
                 <form action="#" method="POST">
                     <h3>Modifier News</h3>
-                    <h4>choisissez la news à modifier</h4>
+                    <p>choisissez la news à modifier</p>
                     <select name="modif_nom_news" required>
                         <option disabled selected>Selectioner une news</option>
                         <?php
@@ -127,7 +142,7 @@
                         <option><?= $new["titre_news"]?></option>
                         <?php endforeach; ?>
                     </select>
-                    <h4>Indiquer les nouvelles Informations</h4>
+                    <p>Indiquer les nouvelles Informations</p>
                     <input type="text" name="modif_titre_news" placeholder="Titre" required>
                     <input type="submit" value="Modifier" class="sizeup"><br>
                     <textarea name="modif_contenu_news" cols="120" rows="10" placeholder="Contenu" required></textarea>
