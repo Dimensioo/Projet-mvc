@@ -109,6 +109,20 @@ class User {
         }
     }
 
+    public function readAllUser() {
+        try {
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." ORDER BY pseudo_user");
+            $req->execute();
+            while($donnees = $req->fetch()) {
+                $users[] = $donnees;
+            }
+            return $users;
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
     public function login(){            
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE email_user = ?"); //verification si l'e-mail existe
@@ -280,11 +294,42 @@ class User {
         }
     }
 
+    public function updateRoleUser() {
+        try {
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE pseudo_user = :pseudo AND id_role = :role");
+            $req->execute(array(
+                'pseudo'=>$this->pseudo_user,
+                'role'=>$this->id_role
+            ));
+            if($req->fetch()) {
+                echo "<p>Cette utilisateur possede déja ce rôle</p>";
+            }
+            else {
+                try {
+                    $req = $this->conn->prepare("UPDATE ".$this->table." SET id_role = :role WHERE pseudo_user = :pseudo");
+                    $req->execute(array(
+                        'pseudo'=>$this->pseudo_user,
+                        'role'=>$this->id_role
+                    ));
+                    if($req) {
+                        echo "<p>Rôle modifier</p>";
+                    }
+                }
+                catch(Exception $e) {
+                    die('Erreur : '.$e->getMessage());
+                }
+            }
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
     public function deleteUser() {
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE email_user = ?");
             $req->execute(array($_SESSION['email']));
-            $test = $req->fetch();        
+            $test = $req->fetch();      
             if(password_verify($this->mdp_user, $test['mdp_user'])) { //verification mot de passe
                 try {
                     $req = $this->conn->prepare("DELETE FROM user WHERE pseudo_user = ?"); //supresion utilisateur

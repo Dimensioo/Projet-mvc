@@ -152,7 +152,7 @@ class Game {
 
     public function ranking() {
         try {
-            $req = $this->conn->prepare("SELECT ".$this->table.".id_game, nom_game, img_game, date_game, AVG(note_completer) FROM ".$this->table." INNER JOIN completer ON ".$this->table.".id_game = completer.id_game GROUP BY nom_game ORDER BY note_completer DESC");
+            $req = $this->conn->prepare("SELECT ".$this->table.".id_game, nom_game, img_game, description_game, date_game, AVG(note_completer) FROM ".$this->table." INNER JOIN completer ON ".$this->table.".id_game = completer.id_game GROUP BY nom_game ORDER BY note_completer DESC, nom_game ASC");
             $req->execute();
             while($donnees = $req->fetch()) {
                 $rank[] = $donnees;
@@ -166,7 +166,7 @@ class Game {
 
     public function top5() {
         try {
-            $req = $this->conn->prepare("SELECT ".$this->table.".id_game, nom_game, img_game, date_game, AVG(note_completer) FROM ".$this->table." INNER JOIN completer ON ".$this->table.".id_game = completer.id_game GROUP BY nom_game ORDER BY note_completer DESC LIMIT 5");
+            $req = $this->conn->prepare("SELECT ".$this->table.".id_game, nom_game, img_game, description_game, date_game, AVG(note_completer) FROM ".$this->table." INNER JOIN completer ON ".$this->table.".id_game = completer.id_game GROUP BY nom_game ORDER BY note_completer DESC, nom_game ASC LIMIT 5");
             $req->execute();
             while($donnees = $req->fetch()) {
                 $rank[] = $donnees;

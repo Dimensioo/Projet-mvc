@@ -163,6 +163,32 @@
                     <?php include('controllers/deleteNews.php') ?>
                 </form>
             </div>
+            <h2>Gestion Rôles</h2>
+            <div>
+                <form action="#" method="POST">
+                    <h3>Modifier rôle utilisateur</h3>
+                    <select name="user" required>
+                        <option disabled selected>Selectioner un utilisateur</option>
+                        <?php
+                            require "./controllers/readAllUser.php";
+                            foreach ($users as $user) : 
+                        ?>
+                        <option><?= $user["pseudo_user"]?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <select name="role" required>
+                        <option disabled selected>Attribuer un rôle</option>
+                        <?php
+                            require "./controllers/readAllRole.php";
+                            foreach ($roles as $role) : 
+                        ?>
+                        <option><?= $role["type_role"]?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <input type="submit" value="Modifier" class="sizeup">
+                    <?php include('controllers/updateRoleUser.php') ?>
+                </form>
+            </div>
         </div>
         <aside></aside>
     </div>
