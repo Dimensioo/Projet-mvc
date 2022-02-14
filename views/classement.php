@@ -53,7 +53,7 @@
         <div id="listGame"> <!--List game-->
             <h2>Classement <i class="fas fa-trophy"></i></h2>
             <?php
-                require "./controllers/readRanking.php";
+                require "./controllers/read/readRanking.php";
                 foreach ($rank as $game) : 
             ?>
             <div>

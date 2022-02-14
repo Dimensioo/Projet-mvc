@@ -52,7 +52,7 @@
             <h2>Supprimer un jeu de ma liste</h2>
             <div>
                 <?php 
-                    require "./controllers/readCompleter_forUpdate.php"; 
+                    require "./controllers/read/readCompleter_forUpdate.php"; 
                     if(!empty($listGameUser)) :
                 ?>
                 <form action="#" method="post">
@@ -64,7 +64,7 @@
                         <?php endforeach; ?>
                     </select><br>
                     <input type="submit" value="Supprimer" class="sizeup">
-                    <?php include('controllers/deleteCompleter.php') ?>
+                    <?php include('controllers/delete/deleteCompleter.php') ?>
                 </form>
                 <?php else : ?>
                 <h4>Vous n'avez aucun jeu dans votre liste</h4>

@@ -56,7 +56,7 @@
                 <div>
                     <h2><i class="fas fa-user"></i> <?= $user['pseudo_user'] ?></h2>
                     <table>
-                        <?php require "./controllers/readSummaryUser.php"; ?>
+                        <?php require "./controllers/read/readSummaryUser.php"; ?>
                         <tr>
                             <td >Nombre de jeux :</td>
                             <td>Nombre total d'heures joués :</td>
@@ -87,12 +87,12 @@
                         <th>Note</th>
                     </tr>
                     <?php
-                        require "./controllers/readCompleter.php";
+                        require "./controllers/read/readCompleter.php";
                         if(!empty($listGameUser)) :
                         foreach ($listGameUser as $completer) : 
                     ?>
                     <tr>
-                        <?php require "./controllers/readList.php" ?>
+                        <?php require "./controllers/read/readList.php" ?>
                         <td><a href="<?=URL?>jeux/description/<?= $completer["id_game"]?>"><?= $completer["nom_game"]?></a></td>
                         <td><?= $idEditeur["nom_editeur"]?></td>
                         <td><?= $completer["date_game"]?></td>

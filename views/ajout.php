@@ -73,7 +73,7 @@
                     <label for="note_completer">Indiquer le nombre d'achievement obtenus : </label>
                     <input type="number" name="achievement_completer" placeholder="Achievements obtenus" required>
                     <input type="submit" value="Ajouter" class="sizeup">
-                    <?php include('controllers/createCompleter.php') ?>
+                    <?php include('controllers/create/createCompleter.php') ?>
                 </form>
             </div>
         </div>

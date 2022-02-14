@@ -22,7 +22,7 @@ try {
                 }
                 else if($url[1] == "description") {
                     if(!empty($url[2])) {
-                        require "./controllers/readGame.php";
+                        require "./controllers/read/readGame.php";
                         break;
                     }
                     else {
@@ -31,7 +31,7 @@ try {
                 }
                 else if ($url[1] == "ajout") {
                     if($_SESSION && $_SESSION["pseudo"] && !empty($url[2])) {
-                        require "./controllers/readGame.php";
+                        require "./controllers/read/readGame.php";
                         break;
                     }
                     else if(empty($_SESSION)) {
@@ -55,7 +55,7 @@ try {
                 }
             case "liste":
                 if($_SESSION && $_SESSION["pseudo"]) {
-                    require "./controllers/readUser.php";
+                    require "./controllers/read/readUser.php";
                     break;
                 }
                 if(empty($_SESSION)) {

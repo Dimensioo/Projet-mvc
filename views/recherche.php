@@ -53,7 +53,7 @@
         <div id="listGame"> <!--List game-->
             <h2>Resultat de votre recherche <i class="fas fa-scroll"></i></h2>
             <?php
-                require "./controllers/search.php";
+                require "./controllers/read/search.php";
                 if($result) :
                 foreach ($result as $game) : 
             ?>

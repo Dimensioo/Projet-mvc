@@ -53,7 +53,7 @@
             <h2>Modifier un jeu de ma liste</h2>
             <div>
                 <?php 
-                    require "./controllers/readCompleter_forUpdate.php"; 
+                    require "./controllers/read/readCompleter_forUpdate.php"; 
                     if(!empty($listGameUser)) :
                 ?>
                 <form action="#" method="post">
@@ -84,7 +84,7 @@
                     <label for="note_completer">Indiquer le nombre d'achievement obtenus : </label>
                     <input type="number" name="achievement_completer" placeholder="Achievements obtenus" required>
                     <input type="submit" value="Modifier" class="sizeup">
-                    <?php include('controllers/updateCompleter.php') ?>
+                    <?php include('controllers/update/updateCompleter.php') ?>
                 </form>
                 <?php else : ?>
                 <h4>Vous n'avez aucun jeu dans votre liste</h4>

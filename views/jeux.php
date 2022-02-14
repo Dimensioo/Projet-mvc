@@ -53,7 +53,7 @@
         <div id="listGame"> <!--List game-->
             <h2>Liste des jeux <i class="fas fa-scroll"></i></h2>
             <?php
-                require "./controllers/readAllGame.php";
+                require "./controllers/read/readAllGame.php";
                 foreach ($games as $game) : 
             ?>
             <div>

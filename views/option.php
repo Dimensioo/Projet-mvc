@@ -83,13 +83,13 @@
                 <label for="verif_mdp_pseudo">Entrer votre mot de passe</label><br>
                 <input type="password" name="verif_mdp_pseudo" required><br>
                 <input type="submit" value="Modifier Pseudo" class="sizeup">
-                <?php include('controllers/updatePseudo.php') ?>
+                <?php include('controllers/update/updatePseudo.php') ?>
             </form>
             <form action="" method="post" class="invisible" id="change_pic" enctype="multipart/form-data"> <!--formulaire modification image de profil -->
                 <label for="new_pic">Nouvelle image de profil</label><br>
                 <input type="file" accept=".jpeg, .jpg, .png" name="new_pic" required><br>
                 <input type="submit" value="Modifier Image de profil" class="sizeup">
-                <?php include('controllers/updateImg.php') ?>
+                <?php include('controllers/update/updateImg.php') ?>
             </form>
             <form action="" method="post" class="invisible" id="change_mail"> <!--formulaire modification e-mail -->
                 <label for="new_email">Nouveau E-mail</label><br>
@@ -97,7 +97,7 @@
                 <label for="verif_mdp_mail">Entrer votre mot de passe</label><br>
                 <input type="password" name="verif_mdp_mail" required><br>
                 <input type="submit" value="Modifier E-mail" class="sizeup">
-                <?php include('controllers/updateMail.php') ?>
+                <?php include('controllers/update/updateMail.php') ?>
             </form>
             <form action="" method="post" class="invisible" id="change_mdp"> <!--formulaire modification mot de passe -->
                 <label for="verif_mdp">Ancien mot de passe</label><br>
@@ -105,13 +105,13 @@
                 <label for="new_mdp">Nouveau mot de passe</label><br>
                 <input type="password" name="new_mdp" required><br>
                 <input type="submit" value="Modifier mot de passe" class="sizeup">
-                <?php include('controllers/updatePassword.php') ?>
+                <?php include('controllers/update/updatePassword.php') ?>
             </form>
             <form action="" method="post" class="invisible" id="delete_account"> <!--formulaire supression du compte -->
                 <label for="verif_del_mdp">Entrer votre mot de passe</label><br>
                 <input type="password" name="verif_del_mdp" required><br>
                 <input type="submit" value="Suprimer mon compte" class="sizeup">
-                <?php include('controllers/deleteUser.php') ?>
+                <?php include('controllers/delete/deleteUser.php') ?>
             </form>
         </div>
         <aside></aside>

@@ -71,7 +71,7 @@
                     <label for="mdp_user">Mot de passe :</label><br>
                     <input type="password" id="mdp" name="mdp_user" required><br>
                     <input type="submit" value="Créer un compte" class="sizeup">
-                    <?php include('controllers/createUser.php') ?>
+                    <?php include('controllers/create/createUser.php') ?>
                 </form>
             </div>
         </div>

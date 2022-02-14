@@ -58,7 +58,7 @@
                         <img src="../../<?= $game["img_game"]?>" alt="<?= $game["nom_game"]?>" class="sizeup" width="200px">
                     </div>
                     <div>
-                        <?php require "./controllers/readSummaryGame.php"; ?>
+                        <?php require "./controllers/read/readSummaryGame.php"; ?>
                         <h3><i class="fas fa-star-half-alt"></i> Note :</h3>
                         <p><?= round($globalNote, 2) ?> / 10</p>
                         <h3><i class="fas fa-trophy"></i> Classement :</h3>

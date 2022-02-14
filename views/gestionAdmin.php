@@ -58,7 +58,7 @@
                     <select name="id_editeur" required>
                         <option disabled selected>Selectioner un éditeur</option>
                         <?php
-                            require "./controllers/readAllEditeur.php";
+                            require "./controllers/read/readAllEditeur.php";
                             foreach ($editeurs as $editeur) : 
                         ?>
                         <option><?= $editeur["nom_editeur"]?></option>
@@ -66,7 +66,7 @@
                     </select>
                     <input type="file" name="img_game" accept=".jpeg, .jpg, .png" required>
                     <input type="submit" value="Ajouter" class="sizeup">
-                    <?php include('controllers/createGame.php') ?>
+                    <?php include('controllers/create/createGame.php') ?>
                 </form>
                 <form action="#" method="POST" enctype="multipart/form-data"> <!--Modfication d'un jeu de la BDD-->
                     <h3>Modifier jeu</h3>
@@ -74,7 +74,7 @@
                     <select name="modif_nom_game" required>
                         <option disabled selected>Selectioner un jeu</option>
                         <?php
-                            require "./controllers/readAllGame.php";
+                            require "./controllers/read/readAllGame.php";
                             foreach ($games as $game) : 
                         ?>
                         <option><?= $game["nom_game"]?></option>
@@ -87,7 +87,7 @@
                     <select name="modif_id_editeur" required>
                         <option disabled selected>Selectioner un éditeur</option>
                         <?php
-                            require "./controllers/readAllEditeur.php";
+                            require "./controllers/read/readAllEditeur.php";
                             foreach ($editeurs as $editeur) : 
                         ?>
                         <option><?= $editeur["nom_editeur"]?></option>
@@ -95,21 +95,21 @@
                     </select>
                     <input type="file" name="modif_img_game" accept=".jpeg, .jpg, .png" required>
                     <input type="submit" value="Modifier" class="sizeup">
-                    <?php include('controllers/updateGame.php') ?>
+                    <?php include('controllers/update/updateGame.php') ?>
                 </form>
                 <form action="#" method="POST"> <!--Supresion d'un jeu-->
                     <h3>Suprimer Jeu</h3>
                     <select name="nom_game2" required>
                         <option disabled selected>Selectioner un jeu</option>
                         <?php
-                            require "./controllers/readAllGame.php";
+                            require "./controllers/read/readAllGame.php";
                             foreach ($games as $game) : 
                         ?>
                         <option><?= $game["nom_game"]?></option>
                         <?php endforeach; ?>
                     </select>
                     <input type="submit" value="Suprimer" class="sizeup">
-                    <?php include('controllers/deleteGame.php') ?>
+                    <?php include('controllers/delete/deleteGame.php') ?>
                 </form>
             </div>
             <h2>Gestion Editeur</h2>
@@ -118,14 +118,14 @@
                     <h3>Ajouter Editeur</h3>
                     <input type="text" name="nom_editeur" placeholder="Nom Editeur" required>
                     <input type="submit" value="Ajouter" class="sizeup">
-                    <?php include('controllers/createEditeur.php') ?>
+                    <?php include('controllers/create/createEditeur.php') ?>
                 </form>
                 <form action="#" method="POST"> <!--Modification editeur-->
                     <h3>Modifier Editeur</h3>
                     <select name="modif_nom_editeur" required>
                         <option disabled selected>Selectioner l'éditeur à modifier</option>
                         <?php
-                            require "./controllers/readAllEditeur.php";
+                            require "./controllers/read/readAllEditeur.php";
                             foreach ($editeurs as $editeur) : 
                         ?>
                         <option><?= $editeur["nom_editeur"]?></option>
@@ -133,21 +133,21 @@
                     </select>
                     <input type="text" name="new_nom_editeur" placeholder="Entrer nouveau nom éditeur" required>
                     <input type="submit" value="Modifier" class="sizeup">
-                    <?php include('controllers/updateEditeur.php') ?>
+                    <?php include('controllers/update/updateEditeur.php') ?>
                 </form>
                 <form action="#" method="POST"> <!--Supresion d'un editeur-->
                     <h3>Suprimer editeur</h3>
                     <select name="nom_editeur2" required>
                         <option disabled selected>Selectioner un éditeur</option>
                         <?php
-                            require "./controllers/readAllEditeur.php";
+                            require "./controllers/read/readAllEditeur.php";
                             foreach ($editeurs as $editeur) : 
                         ?>
                         <option><?= $editeur["nom_editeur"]?></option>
                         <?php endforeach; ?>
                     </select>
                     <input type="submit" value="Suprimer" class="sizeup">
-                    <?php include('controllers/deleteEditeur.php') ?>
+                    <?php include('controllers/delete/deleteEditeur.php') ?>
                 </form>
             </div>
             <h2>Gestion News</h2>
@@ -157,7 +157,7 @@
                     <input type="text" name="titre_news" placeholder="Titre" required>
                     <input type="submit" value="Créer" class="sizeup"><br>
                     <textarea name="contenu_news" cols="120" rows="10" placeholder="Contenu" required></textarea>
-                    <?php include('controllers/createNews.php') ?>
+                    <?php include('controllers/create/createNews.php') ?>
                 </form>
                 <form action="#" method="POST"> <!--Modification news-->
                     <h3>Modifier News</h3>
@@ -165,7 +165,7 @@
                     <select name="modif_nom_news" required>
                         <option disabled selected>Selectioner une news</option>
                         <?php
-                            require "./controllers/readAllNews.php";
+                            require "./controllers/read/readAllNews.php";
                             foreach ($news as $new) : 
                         ?>
                         <option><?= $new["titre_news"]?></option>
@@ -175,21 +175,21 @@
                     <input type="text" name="modif_titre_news" placeholder="Titre" required>
                     <input type="submit" value="Modifier" class="sizeup"><br>
                     <textarea name="modif_contenu_news" cols="120" rows="10" placeholder="Contenu" required></textarea>
-                    <?php include('controllers/updateNews.php') ?>
+                    <?php include('controllers/update/updateNews.php') ?>
                 </form>
                 <form action="#" method="POST"> <!--Supresion news-->
                     <h3>Suprimer News</h3>
                     <select name="nom_news" required>
                         <option disabled selected>Selectioner une news</option>
                         <?php
-                            require "./controllers/readAllNews.php";
+                            require "./controllers/read/readAllNews.php";
                             foreach ($news as $new) : 
                         ?>
                         <option><?= $new["titre_news"]?></option>
                         <?php endforeach; ?>
                     </select>
                     <input type="submit" value="Suprimer" class="sizeup">
-                    <?php include('controllers/deleteNews.php') ?>
+                    <?php include('controllers/delete/deleteNews.php') ?>
                 </form>
             </div>
             <h2>Gestion Rôles</h2>
@@ -199,7 +199,7 @@
                     <select name="user" required>
                         <option disabled selected>Selectioner un utilisateur</option>
                         <?php
-                            require "./controllers/readAllUser.php";
+                            require "./controllers/read/readAllUser.php";
                             foreach ($users as $user) : 
                         ?>
                         <option><?= $user["pseudo_user"]?></option>
@@ -208,14 +208,14 @@
                     <select name="role" required>
                         <option disabled selected>Attribuer un rôle</option>
                         <?php
-                            require "./controllers/readAllRole.php";
+                            require "./controllers/read/readAllRole.php";
                             foreach ($roles as $role) : 
                         ?>
                         <option><?= $role["type_role"]?></option>
                         <?php endforeach; ?>
                     </select>
                     <input type="submit" value="Modifier" class="sizeup">
-                    <?php include('controllers/updateRoleUser.php') ?>
+                    <?php include('controllers/update/updateRoleUser.php') ?>
                 </form>
             </div>
         </div>

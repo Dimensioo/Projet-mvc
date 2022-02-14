@@ -58,7 +58,7 @@
                     <h2>Dernier ajout </h2>
                     <div>
                         <?php
-                            require "./controllers/readLastGame.php";
+                            require "./controllers/read/readLastGame.php";
                             foreach ($lastGames as $lastGame) :
                         ?>
                         <div class="sizeup"><a href="<?=URL?>jeux/description/<?= $lastGame["id_game"]?>"> 
@@ -71,7 +71,7 @@
                 <section id="news"> <!--Newsfeed-->
                     <h2>News <i class="far fa-newspaper"></i></h2>
                     <?php
-                        require "./controllers/readAllNews.php";
+                        require "./controllers/read/readAllNews.php";
                         foreach ($news as $new) : 
                     ?>
                     <h3><?= $new['titre_news'] ?></h3>
@@ -84,7 +84,7 @@
                     <h2>Classement <i class="fas fa-trophy"></i></h2>
                     <div>
                         <?php 
-                            include "./controllers/readTop5.php";
+                            include "./controllers/read/readTop5.php";
                             foreach($rank as $game) :
                         ?>
                         <div><a href="<?=URL?>jeux/description/<?= $game["id_game"]?>">
