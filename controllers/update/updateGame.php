@@ -34,7 +34,8 @@ if(isset($_POST['modif_nom_game']) && isset($_POST['new_nom_game']) && isset($_P
                 $game->set_date_game(htmlspecialchars(strip_tags(trim($_POST['modif_date_game']))));
                 $game->set_description_game(htmlspecialchars(strip_tags(trim($_POST['modif_description_game']))));
                 $editeur->set_nom_editeur(htmlspecialchars(strip_tags(trim($_POST['modif_id_editeur']))));
-                $game->set_id_editeur($editeur->readEditeur());
+                $result = $editeur->readEditeur();
+                $game->set_id_editeur($result['id_editeur']);
                 $game->set_img_game($filename);
 
                 $game->updateGame();

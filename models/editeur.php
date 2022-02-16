@@ -50,8 +50,8 @@ class Editeur {
         try{
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE nom_editeur = :nom");
             $req->execute(array('nom'=>$this->nom_editeur));
-            $test = $req->fetch();
-            return $test['id_editeur'];
+            $result = $req->fetch();
+            return $result;
         }
         catch(Exception $e) {
             die('Erreur : '.$e->getMessage());
