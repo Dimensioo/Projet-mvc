@@ -98,7 +98,7 @@
                     <?php include('controllers/update/updateGame.php') ?>
                 </form>
                 <form action="#" method="POST"> <!--Supresion d'un jeu-->
-                    <h3>Suprimer Jeu</h3>
+                    <h3>Supprimer Jeu</h3>
                     <select name="nom_game2" required>
                         <option disabled selected>Selectioner un jeu</option>
                         <?php
@@ -108,7 +108,7 @@
                         <option><?= $game["nom_game"]?></option>
                         <?php endforeach; ?>
                     </select>
-                    <input type="submit" value="Suprimer" class="sizeup">
+                    <input type="submit" value="Supprimer" class="sizeup">
                     <?php include('controllers/delete/deleteGame.php') ?>
                 </form>
             </div>
@@ -136,7 +136,7 @@
                     <?php include('controllers/update/updateEditeur.php') ?>
                 </form>
                 <form action="#" method="POST"> <!--Supresion d'un editeur-->
-                    <h3>Suprimer editeur</h3>
+                    <h3>Supprimer editeur</h3>
                     <select name="nom_editeur2" required>
                         <option disabled selected>Selectioner un éditeur</option>
                         <?php
@@ -146,7 +146,7 @@
                         <option><?= $editeur["nom_editeur"]?></option>
                         <?php endforeach; ?>
                     </select>
-                    <input type="submit" value="Suprimer" class="sizeup">
+                    <input type="submit" value="Supprimer" class="sizeup">
                     <?php include('controllers/delete/deleteEditeur.php') ?>
                 </form>
             </div>
@@ -178,7 +178,7 @@
                     <?php include('controllers/update/updateNews.php') ?>
                 </form>
                 <form action="#" method="POST"> <!--Supresion news-->
-                    <h3>Suprimer News</h3>
+                    <h3>Supprimer News</h3>
                     <select name="nom_news" required>
                         <option disabled selected>Selectioner une news</option>
                         <?php
@@ -188,7 +188,7 @@
                         <option><?= $new["titre_news"]?></option>
                         <?php endforeach; ?>
                     </select>
-                    <input type="submit" value="Suprimer" class="sizeup">
+                    <input type="submit" value="Supprimer" class="sizeup">
                     <?php include('controllers/delete/deleteNews.php') ?>
                 </form>
             </div>

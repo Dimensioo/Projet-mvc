@@ -63,7 +63,7 @@
                     <?php include('controllers/login.php') ?>
                 </form>
                 <form id=creationCompte action="#" method="POST"> <!--Create Account-->
-                    <legend><h2>Creer votre compte</h2></legend>
+                    <legend><h2>Créer votre compte</h2></legend>
                     <label for="pseudo_user">Pseudo :</label><br>
                     <input type="text" id="pseudo" name="pseudo_user" required><br>
                     <label for="email_user">Adresse E-mail :</label><br>

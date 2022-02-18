@@ -85,9 +85,9 @@ class User {
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE pseudo_user = :pseudo");
             $req->execute(array('pseudo'=>$this->pseudo_user));
-            $test = $req->fetch();
-            if($test) {
-                return $test;
+            $result = $req->fetch();
+            if($result) {
+                return $result;
             }
         }
         catch(Exception $e) {
@@ -139,11 +139,11 @@ class User {
                     header("location: ".URL."accueil");
                 }
                 else {
-                    echo "<p>Invalid password</p>";
+                    echo "<p>Mot de passe ou E-mail incorrect</p>";
                 }
             }
             else {
-                echo "<p>Invalid Mail</p>";
+                echo "<p>Mot de passe ou E-mail incorrect</p>";
             }
         }
         catch(Exception $e) {
@@ -191,7 +191,7 @@ class User {
                 }
             }
             else {
-                echo "<script>alert(\"Invalid password\")</script>";
+                echo "<script>alert(\"Mot de passe incorrect\")</script>";
             }
         }
         catch(Exception $e) {
@@ -256,7 +256,7 @@ class User {
                 }
             }
             else {
-                echo "<script>alert(\"Invalid password\")</script>";
+                echo "<script>alert(\"Mot de passe incorrect\")</script>";
             }
         }
         catch(Exception $e) {
@@ -286,7 +286,7 @@ class User {
                 }
             }        
             else {
-                echo "<script>alert(\"Invalid password\")</script>";
+                echo "<script>alert(\"Mot de passe incorrect\")</script>";
             }
         }
         catch(Exception $e) {
@@ -343,7 +343,7 @@ class User {
                 }
             }
             else {
-                echo "<script>alert(\"Invalid password\")</script>";
+                echo "<script>alert(\"Mot de passe incorrect\")</script>";
             }
         }
         catch(Exception $e) {

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="icon" type="image/png" href="<?=URL?>images/favicon.png"/>
     <script src="https://kit.fontawesome.com/3df32f415a.js" crossorigin="anonymous"></script>
-    <script src="<?=URL?>js/displayOption.js" defer></script>
+    <script src="<?=URL?>script/displayOption.js" defer></script>
 </head>
 <body>
     <header>
