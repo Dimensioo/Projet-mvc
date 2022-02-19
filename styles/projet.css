@@ -221,6 +221,14 @@ th, td {
     white-space: nowrap;
 }
 
+tr a {
+    color: white;
+}
+
+tr a:hover {
+    color: #3093CD;
+}
+
 td a {
     color: black;
 }

@@ -64,10 +64,10 @@ class Completer {
         }
     }
 
-    public function readCompleter() {
+    public function readCompleter($sort) {
         try {
-            $req = $this->conn->prepare("SELECT * FROM ".$this->table." INNER JOIN game ON ".$this->table.".id_game = game.id_game WHERE id_user = :user ORDER BY nom_game ASC");
-            $req->execute(array('user'=>$this->id_user));
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." INNER JOIN game ON ".$this->table.".id_game = game.id_game INNER JOIN editeur ON game.id_editeur = editeur.id_editeur WHERE id_user = :user ORDER BY ".$sort." ASC");
+            $req->execute(array('user'=>$this->id_user,));
             while($donnees = $req->fetch()) {
                 $userGames[] = $donnees;
             }

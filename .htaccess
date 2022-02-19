@@ -4,3 +4,10 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^(.*)$ index.php?page=$1
+
+Options -Indexes
+
+<FilesMatch "^(?!index\.php$).+\.php$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>

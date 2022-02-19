@@ -52,7 +52,7 @@
         <aside></aside>
         <div>
             <div id="userStat"> <!--User summary-->
-                <img src="../<?= $user['img_user'] ?>" alt="Image de profil" height=250px><!-- Affichage image de profil utilisateur -->
+                <img src="<?php if(!empty($url[2])){echo "../";}?>../<?= $user['img_user'] ?>" alt="Image de profil" height=250px><!-- Affichage image de profil utilisateur -->
                 <div>
                     <h2><i class="fas fa-user"></i> <?= $user['pseudo_user'] ?></h2>
                     <table>
@@ -79,12 +79,12 @@
             <div id="userList"> <!--User game list-->
                 <table> 
                     <tr>
-                        <th>Non du jeu</th>
-                        <th>Editeur</th>
-                        <th>Date de sortie</th>
-                        <th>Temps de jeu</th>
-                        <th>Succès</th>
-                        <th>Note</th>
+                        <th><a href="<?=URL?>liste/<?= $url[1] ?>/name">Non du jeu <?php if(!empty($url[2]) && $url[2]=="name"){echo "<i class=\"fa fa-caret-down\"></i>";} ?></a></th>
+                        <th><a href="<?=URL?>liste/<?= $url[1] ?>/editeur">Editeur <?php if(!empty($url[2]) && $url[2]=="editeur"){echo "<i class=\"fa fa-caret-down\"></i>";} ?></a></th>
+                        <th><a href="<?=URL?>liste/<?= $url[1] ?>/date">Date de sortie <?php if(!empty($url[2]) && $url[2]=="date"){echo "<i class=\"fa fa-caret-down\"></i>";} ?></a></th>
+                        <th><a href="<?=URL?>liste/<?= $url[1] ?>/time">Temps de jeu <?php if(!empty($url[2]) && $url[2]=="time"){echo "<i class=\"fa fa-caret-down\"></i>";} ?></a></th>
+                        <th><a href="<?=URL?>liste/<?= $url[1] ?>/achievement">Succès <?php if(!empty($url[2]) && $url[2]=="achievement"){echo "<i class=\"fa fa-caret-down\"></i>";} ?></a></th>
+                        <th><a href="<?=URL?>liste/<?= $url[1] ?>/note">Note <?php if(!empty($url[2]) && $url[2]=="note"){echo "<i class=\"fa fa-caret-down\"></i>";} ?></a></th>
                     </tr>
                     <?php
                         require "./controllers/read/readCompleter.php";
