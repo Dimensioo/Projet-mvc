@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2022 at 11:34 PM
+-- Generation Time: Feb 19, 2022 at 04:33 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -44,6 +44,7 @@ INSERT INTO `completer` (`id_game`, `id_user`, `temps_completer`, `note_complete
 (8, 30, 400, 5, 174),
 (10, 30, 147, 8, 50),
 (11, 30, 254, 10, 50),
+(12, 30, 398, 9, 96),
 (12, 33, 314, 2, 78),
 (13, 30, 156, 10, 146),
 (14, 30, 90, 10, 25),
@@ -51,7 +52,8 @@ INSERT INTO `completer` (`id_game`, `id_user`, `temps_completer`, `note_complete
 (20, 30, 90, 5, 14),
 (21, 30, 47, 8, 19),
 (22, 30, 2, 6, 0),
-(23, 33, 97, 7, 14);
+(23, 33, 97, 7, 14),
+(29, 30, 20, 5, 25);
 
 -- --------------------------------------------------------
 
@@ -83,7 +85,10 @@ INSERT INTO `editeur` (`id_editeur`, `nom_editeur`) VALUES
 (23, 'Electronic Arts'),
 (24, 'CAPCOM'),
 (25, 'ZA/UM'),
-(27, 'Amazon Games');
+(27, 'Amazon Games'),
+(28, 'Hello Games'),
+(29, 'Digital Extremes'),
+(30, 'CD PROJEKT RED');
 
 -- --------------------------------------------------------
 
@@ -121,8 +126,14 @@ INSERT INTO `game` (`id_game`, `nom_game`, `date_game`, `description_game`, `img
 (21, 'Dishonored', '2012-10-09', 'Dishonored est un jeu d\'action / infiltration immersif, dans lequel vous incarnez un assassin aux pouvoirs surnaturels poussé par un désir de vengeance. Éliminez vos cibles grâce à un système de combat dynamique permettant de combiner les innombrables pouvoirs surnaturels, armes et gadgets à votre disposition. Traquez vos ennemis à la faveur de l\'obscurité ou foncez tête baissée, l\'arme au poing. Définissez votre style de jeu et élaborez votre vengeance. Vos choix façonneront votre expérience.', 'images/img_jeux/e492e050b44031d2ec2aef322bf318b6.jpg', 20),
 (22, 'Apex Legends', '2019-02-04', 'Apex Legends est le célèbre jeu de tir gratuit avec des héros créé par Respawn Entertainment. Maîtrisez une équipe de personnages légendaires dotés de capacités surpuissantes, et découvrez une jouabilité novatrice d\'une grande profondeur tactique dans cette nouvelle évolution du genre.', 'images/img_jeux/10a28d6f772aa3607be27b838b5e7bfe.jpg', 23),
 (23, 'Monster Hunter: World', '2018-08-09', 'Bienvenue dans le Nouveau Monde ! &quot;Monster Hunter: World&quot; offre une dimension de jeu et une liberté sans commune mesure avec les précédents épisodes. Les chasseurs pourront utiliser un arsenal varié pour chasser un bestiaire unique dans un monde fabuleux !', 'images/img_jeux/2e9ca234a8620d962595b2173f6d8e79.jpg', 24),
-(26, 'Disco Elysium', '2019-10-15', 'Disco Elysium est un jeu de rôle révolutionnaire dans un monde ouvert. Vous êtes un enquêteur, avec un système de talents unique en son genre et tout un pan urbain à arpenter. Interrogez des personnages inoubliables, résolvez des crimes ou acceptez des pots-de-vin. Libre à vous d’incarner un héros ou une épave humaine irrécupérable.', 'images/img_jeux/7def333b88e617fc0a80d38fa93956dc.jpg', 25),
-(29, 'Lost Ark', '2022-02-11', 'Embarquez-vous dans une odyssée en quête de l\'Arche perdue dans un monde vaste et dynamique : explorez de nouvelles terres, cherchez des trésors perdus et relevez le défi de combats trépidants dans ce RPG free-to-play bourré d\'action.', 'images/img_jeux/d184b7ba4d4e64d6788b3ed77f067471.jpg', 27);
+(24, 'The Witcher 3: Wild Hunt', '2015-05-18', 'Porté par son scénario, The Witcher 3: Wild Hunt est un jeu de rôles en monde ouvert, dévoilant un univers fantastique visuellement bluffant et plein de choix déterminants. Dans The Witcher, vous incarnez Geralt de Riv, un chasseur de monstres professionnel chargé de retrouver l\'enfant de la prophétie dans un vaste monde ouvert, rempli de villes marchandes, d\'îles pirates, de cols montagneux dangereux et de cavernes oubliées à explorer.', 'images/img_jeux/6fc396c342f2fd125c4b5675ac614447.jpg', 30),
+(29, 'Lost Ark', '2022-02-11', 'Embarquez-vous dans une odyssée en quête de l\'Arche perdue dans un monde vaste et dynamique : explorez de nouvelles terres, cherchez des trésors perdus et relevez le défi de combats trépidants dans ce RPG free-to-play bourré d\'action.', 'images/img_jeux/d184b7ba4d4e64d6788b3ed77f067471.jpg', 27),
+(30, 'Dishonored: Death of the Outsider', '2017-09-15', 'Les développeurs maintes fois récompensés d\'Arkane® Studios reviennent avec Dishonored® : La mort de l\'Outsider, un jeu à part entière qui ne requiert pas Dishonored 2. Devenez un assassin surnaturel en incarnant la célèbre Billie Lurk. Retrouvez votre mentor Daud et préparez ensemble le plus grand assassinat de tous les temps. Dishonored® : La mort de l\'Outsider reprend tous les codes de la série Dishonored, notamment le système de combat fluide, une conception de niveaux exceptionnelle et un scénario évoluant suivant vos choix. La mort de l\'Outsider offre une parfaite entrée en matière pour les joueurs découvrant la série Dishonored et une extension originale du gameplay et de l\'univers pour les fans inconditionnels.', 'images/img_jeux/926702be2d9a9b8ce6798158f9dbed6e.jpg', 20),
+(33, 'No Man\'s Sky', '2016-08-12', 'Inspiré par l\'aventure et l\'imagination qui nous fascinent dans les films de science-fiction classique, No Man\'s Sky vous présente une galaxie à explorer, remplie de planètes et de formes de vie uniques, dans un environnement bourré de danger et d\'action.  Dans No Man\'s Sky, chaque étoile est la lumière d\'un soleil lointain, en orbite duquel se trouvent des planètes pleines de vie. Et vous pouvez aller où vous voulez. Volez sans interruption de l\'espace à la surface des planètes, sans écran de chargement ni limite. Dans cet univers infini généré de manière dynamique, vous découvrirez des lieux et des créatures qu\'aucun autre joueur n\'a jamais vus... et qui n\'existeront peut-être jamais ailleurs.', 'images/img_jeux/9c9e90daefddd3a46d14c6e8110f389b.jpg', 28),
+(34, 'Dishonored 2', '2016-11-11', 'Trouvez votre place dans un monde où mysticisme et industrie s\'affrontent. Choisirez-vous d\'incarner l\'Impératrice Emily Kaldwin ou le Protecteur royal, Corvo Attano ? Allez-vous progresser dans le jeu sans être vu ou mettre à profit son système de combat dévastateur ? Peut-être opterez-vous pour une combinaison des deux ? Comment utiliserez-vous les pouvoirs, les armes et les gadgets spécifiques à votre personnage pour éliminer vos ennemis ? L\'histoire évolue avec vos choix et vous mènera d\'intrigue en intrigue au fil de missions soignées.', 'images/img_jeux/601b2ad5427a0a4d76ce83f60a9ed499.jpg', 20),
+(36, 'Warframe', '2013-03-25', 'Réveillez-vous en tant que guerrier implacable et combattez aux côtés de vos amis dans ce jeu d\'action en ligne gratuit basé sur un scénario original. Affrontez des factions belligérantes à travers un système interplanétaire tentaculaire en suivant les conseils de la mystérieuse Lotus. Améliorez votre Warframe, construisez un Arsenal destructeur et réalisez votre véritable potentiel à travers des mondes ouverts immenses dans ce jeu de tir passionnant à la troisième personne.', 'images/img_jeux/f2185e7e210e5113d0c77a9521d53bcb.jpg', 29),
+(37, 'Cyberpunk 2077', '2020-12-10', 'Cyberpunk 2077 est un RPG d\'action-aventure en monde ouvert qui se déroule dans la mégalopole de Night City, où vous incarnez un cyber-mercenaire qui livre un combat sans merci pour sa survie. Avec des améliorations et du contenu additionnel gratuit, personnalisez entièrement votre personnage et votre style de jeu en accomplissant des boulots, améliorez votre réputation et déverrouillez des améliorations. Les relations que vous nouerez et les choix que vous ferez auront un impact sur l\'histoire et le monde qui vous entoure. C\'est ici que se forgent les légendes. Quelle sera la vôtre ?', 'images/img_jeux/40f71d8b5a8d0ac3261cb79d4a3f7a24.jpg', 30),
+(38, 'Disco Elysium', '2019-10-15', 'Disco Elysium est un jeu de rôle révolutionnaire dans un monde ouvert. Vous êtes un enquêteur, avec un système de talents unique en son genre et tout un pan urbain à arpenter. Interrogez des personnages inoubliables, résolvez des crimes ou acceptez des pots-de-vin. Libre à vous d’incarner un héros ou une épave humaine irrécupérable.', 'images/img_jeux/7def333b88e617fc0a80d38fa93956dc.jpg', 25);
 
 -- --------------------------------------------------------
 
@@ -244,13 +255,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `editeur`
 --
 ALTER TABLE `editeur`
-  MODIFY `id_editeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_editeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -268,7 +279,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Constraints for dumped tables
