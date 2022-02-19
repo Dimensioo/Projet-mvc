@@ -24,8 +24,10 @@ if(isset($_FILES["new_pic"])) {
                 $user = new User; //creation de l'objet
                 $user->set_pseudo_user($_SESSION['pseudo']);
                 $result = $user->readUser();
+                if($result['img_user'] != 'images/img_users/default_user.png'){
+                    unlink($result['img_user']); //suppresion de l'image
+                }
                 $user->set_img_user($filename); //assignation dans les attributs de l'objet
-
                 $user->updateImg(); //fonction update image utilisateur
             }
         }
