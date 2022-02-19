@@ -78,6 +78,9 @@ try {
                     require "./views/classement.php";
                     break;
                 }
+                else {
+                    throw new Exception;
+                }
             case "option":
                 if($_SESSION && $_SESSION["pseudo"]) {
                     require "./views/option.php";

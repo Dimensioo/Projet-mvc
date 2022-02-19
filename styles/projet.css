@@ -302,6 +302,18 @@ td a:hover {
     background-color: red;
 }
 
+#option a:last-of-type:hover {
+    background-color: rgb(130, 0, 0);
+}
+
+#option input[value='Suprimer mon compte'] {
+    background-color: red;
+}
+
+#option input[value='Suprimer mon compte']:hover {
+    background-color: rgb(130, 0, 0);
+}
+
 /*Ecran de connexion*/
 #formulaire {
     margin-top: 100px;

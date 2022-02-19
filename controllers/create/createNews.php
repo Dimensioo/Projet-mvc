@@ -10,7 +10,7 @@ if(isset($_POST['titre_news']) && isset($_POST['contenu_news'])) {
     $news->set_titre_news(htmlspecialchars(strip_tags(trim($_POST['titre_news'])))); //assignation dans les attributs de l'objet
     $news->set_contenu_news(htmlspecialchars(strip_tags(trim($_POST['contenu_news']))));
     $user->set_pseudo_user($_SESSION['pseudo']);
-    $user->readUser();
+    $user = $user->readUser();
     $news->set_id_user($user['id_user']);
     
     $news->createNews(); //fonction creation news

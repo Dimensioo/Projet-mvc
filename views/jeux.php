@@ -75,7 +75,7 @@
                 <?php if(empty($page)) :?>
                 <a href="<?=URL?>jeux/page/2" id="modify" >Page Suivante</a>
                 <?php endif; if($page > 1 && $page <= $nbrPage) : ?>
-                <a href="<?=URL?>jeux/page/<?= $page-1 ?>" id="modify" >Page précédante</a>
+                <a href="<?=URL?>jeux/page/<?= $page-1 ?>" id="modify" >Page précédente</a>
                 <?php endif; if($page< $nbrPage) : ?>
                 <a href="<?=URL?>jeux/page/<?= $page+1 ?>" id="modify" >Page Suivante</a>
                 <?php endif; ?>

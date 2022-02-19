@@ -73,7 +73,7 @@ class News {
 
     public function readAllNews() {
         try {
-            $req = $this->conn->prepare("SELECT * FROM ".$this->table."");
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." ORDER BY id_news DESC");
             $req->execute();
             while($donnees = $req->fetch()) {
                 $news[] = $donnees;
