@@ -200,6 +200,22 @@ class Game {
         }
     }
 
+    public function rankingPage($limit, $offset) {
+        try {
+            $req = $this->conn->prepare("SELECT ".$this->table.".id_game, nom_game, img_game, description_game, date_game, AVG(note_completer) FROM ".$this->table." INNER JOIN completer ON ".$this->table.".id_game = completer.id_game GROUP BY nom_game ORDER BY AVG(note_completer) DESC, nom_game ASC LIMIT ".$limit." OFFSET ".$offset."");
+            $req->execute();
+            while($donnees = $req->fetch()) {
+                $rank[] = $donnees;
+            }
+            if(!empty($rank)){
+                return $rank;
+            }
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
     public function top5() {
         try {
             $req = $this->conn->prepare("SELECT ".$this->table.".id_game, nom_game, img_game, description_game, date_game, AVG(note_completer) FROM ".$this->table." INNER JOIN completer ON ".$this->table.".id_game = completer.id_game GROUP BY nom_game ORDER BY AVG(note_completer) DESC, nom_game ASC LIMIT 5");

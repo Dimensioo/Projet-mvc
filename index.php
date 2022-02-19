@@ -70,8 +70,14 @@ try {
                     throw new Exception;
                 }
             case "classement" :
-                require "./views/classement.php";
-                break;
+                if(empty($url[1])) {
+                    require "./views/classement.php";
+                    break;
+                }
+                if($url[1] == "page") {
+                    require "./views/classement.php";
+                    break;
+                }
             case "option":
                 if($_SESSION && $_SESSION["pseudo"]) {
                     require "./views/option.php";
