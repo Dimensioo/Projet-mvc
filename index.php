@@ -20,6 +20,10 @@ try {
                     require "./views/jeux.php";
                     break;
                 }
+                if($url[1] == "page") {
+                    require "./views/jeux.php";
+                    break;
+                }
                 else if($url[1] == "description") {
                     if(!empty($url[2])) {
                         require "./controllers/read/readGame.php";

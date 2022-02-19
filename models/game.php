@@ -107,6 +107,22 @@ class Game {
         }
     }
 
+    public function readPageGame($limit, $offset) {
+        try {
+            $req = $this->conn->prepare("SELECT * FROM ".$this->table." INNER JOIN editeur ON ".$this->table.".id_editeur = editeur.id_editeur ORDER BY nom_game LIMIT ".$limit." OFFSET ".$offset."");
+            $req->execute();
+            while($donnees = $req->fetch()) {
+                $page[] = $donnees;
+            }
+            if(!empty($page)){
+                return $page;
+            }
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
     public function readLastGame() {
         try {
             $req = $this->conn->prepare("SELECT * FROM ".$this->table." ORDER BY id_game DESC LIMIT 5");

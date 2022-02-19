@@ -29,7 +29,8 @@ if(isset($_POST['nom_game']) && isset($_POST['date_game']) && isset($_POST['desc
                 $game->set_date_game(htmlspecialchars(strip_tags(trim($_POST['date_game']))));
                 $game->set_description_game(htmlspecialchars(strip_tags(trim($_POST['description_game']))));
                 $editeur->set_nom_editeur(htmlspecialchars(strip_tags(trim($_POST['id_editeur']))));
-                $game->set_id_editeur($editeur->readEditeur());
+                $editeur = $editeur->readEditeur();
+                $game->set_id_editeur($editeur['id_editeur']);
                 $game->set_img_game($filename);
                 
                 $game->createGame(); //fonction creation du jeu
