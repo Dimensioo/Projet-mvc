@@ -68,7 +68,7 @@ aside {
     max-width: 150px;
 }
 
-#ranking img {
+#ranking img, #release img {
     border: 1px solid black;
 }
 
@@ -112,6 +112,7 @@ aside {
     border-radius: 5px;
     margin: 10px;
     flex: 1 1 0;
+    border: 1px solid black;
 }
 
 #listGame article {
