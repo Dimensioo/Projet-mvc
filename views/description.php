@@ -62,7 +62,7 @@
                         <h3><i class="fas fa-star-half-alt"></i> Note :</h3>
                         <p><?= round($globalNote, 2) ?> / 10</p>
                         <h3><i class="fas fa-trophy"></i> Classement :</h3>
-                        <p>#__</p>
+                        <p># <?= $position ?? "__" ?></p>
                         <h3>Nombre d'Utilisateur :</h3>
                         <p><?= $totalUser ?></p>
                     </div>
