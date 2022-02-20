@@ -192,4 +192,14 @@ class Completer {
             die('Erreur : '.$e->getMessage());
         }
     }
+
+    public function deleteAllCompleter() {
+        try {
+            $req = $this->conn->prepare("DELETE FROM ".$this->table." WHERE id_user = :user");
+            $req->execute(array("user"=>$this->id_user));
+        }
+        catch(Exception $e) {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
 }
