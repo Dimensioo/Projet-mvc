@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="<?=URL?>styles/projet.css">
     <link rel="stylesheet" href="<?=URL?>styles/header.css">
     <link rel="stylesheet" href="<?=URL?>styles/anim.css">
-    <link rel="stylesheet" href="<?=URL?>styles/posFooter.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="icon" type="image/png" href="<?=URL?>images/favicon.png"/>
     <script src="https://kit.fontawesome.com/3df32f415a.js" crossorigin="anonymous"></script>
