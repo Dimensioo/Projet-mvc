@@ -100,9 +100,6 @@
         <aside></aside>
     </div>
     <footer>
-        <a href="https://twitter.com"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="https://facebook.com"><i class="fab fa-facebook-f"></i> facebook</a>
-        <a href="https://youtube.com"><i class="fab fa-youtube"></i> Youtube</a>
         <a href="https://github.com/Dimensioo"><i class="fab fa-github"></i> GitHub</a>
     </footer>
 </body>

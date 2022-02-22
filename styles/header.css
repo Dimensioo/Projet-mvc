@@ -71,12 +71,10 @@ nav a {
     padding: 0px 20px;
 }
 
-#nav2 input, #nav2 button, #nav2 form {
+#nav2 input, #nav2 form {
     height: inherit;
     border-radius: 0;
 }
-
-
 
 #nav2 button {
     width: 50px;
@@ -111,7 +109,7 @@ footer a:hover {
 @media screen and (max-width:400px) {
     #nav1 {
         flex-direction: column;
-        height: 100px;
+        min-height: 90px;
     }
 }
 
@@ -125,9 +123,8 @@ footer a:hover {
         justify-content: space-between;
     }
 
-    nav h1, #nav1 a {
-        margin-left: 0px;
-        margin-right: 0px;
+    nav h1, #nav1 a, #nav1 p {
+        margin: 0px;
     }
 
     #nav2 input, #nav2 div, #nav2 a {
@@ -135,8 +132,12 @@ footer a:hover {
         justify-content: center;
     }
 
-    #nav2 button, #nav2 input {
-        height: 35px;
+    #nav2 form {
+        width: 100%;
+    }
+
+    nav form input {
+        margin: 0px;
     }
 
     nav a {

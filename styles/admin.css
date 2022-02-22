@@ -51,6 +51,10 @@ aside {
     display: flex;
 }
 
+form textarea {
+    width: 90%;
+}
+
 form input, form textarea, form select{
     margin: 15px 0px;
     padding: 10px 20px;

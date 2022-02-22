@@ -156,7 +156,7 @@
                     <h3>Ecrire News</h3>
                     <input type="text" name="titre_news" placeholder="Titre" required>
                     <input type="submit" value="Créer" class="sizeup"><br>
-                    <textarea name="contenu_news" cols="120" rows="10" placeholder="Contenu" required></textarea>
+                    <textarea name="contenu_news" rows="10" placeholder="Contenu" required></textarea>
                     <?php include('controllers/create/createNews.php') ?>
                 </form>
                 <form action="#" method="POST"> <!--Modification news-->
@@ -174,7 +174,7 @@
                     <p>Indiquer les nouvelles Informations</p>
                     <input type="text" name="modif_titre_news" placeholder="Titre" required>
                     <input type="submit" value="Modifier" class="sizeup"><br>
-                    <textarea name="modif_contenu_news" cols="120" rows="10" placeholder="Contenu" required></textarea>
+                    <textarea name="modif_contenu_news" rows="10" placeholder="Contenu" required></textarea>
                     <?php include('controllers/update/updateNews.php') ?>
                 </form>
                 <form action="#" method="POST"> <!--Supresion news-->
@@ -222,9 +222,6 @@
         <aside></aside>
     </div>
     <footer>
-        <a href="https://twitter.com"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="https://facebook.com"><i class="fab fa-facebook-f"></i> facebook</a>
-        <a href="https://youtube.com"><i class="fab fa-youtube"></i> Youtube</a>
         <a href="https://github.com/Dimensioo"><i class="fab fa-github"></i> GitHub</a>
     </footer>
 </body>
