@@ -42,7 +42,7 @@ class User {
             $req->execute(array('pseudo'=>$this->pseudo_user));
             $test_Pseudo = $req->fetch();
             if($test_Pseudo) {
-                echo "<p>Pseudo deja utilisé</p>";
+                echo "<p>Pseudo ou e-mail déjà utilisé</p>";
             }
             else {
                 try {
@@ -50,7 +50,7 @@ class User {
                     $req->execute(array('email'=>$this->email_user));
                     $test_email = $req->fetch();
                     if($test_email) {
-                        echo "<p>E-mail deja utilisé</p>";
+                        echo "<p>Pseudo ou e-mail déjà utilisé</p>";
                     }
                     else {
                         try {
@@ -162,7 +162,7 @@ class User {
                 }
                 else {
                     try {
-                        $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE pseudo_user = :pseudo"); //verification si le pseudo est deja utlisé par un autre utilisateur
+                        $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE pseudo_user = :pseudo"); //verification si le pseudo est déjà utlisé par un autre utilisateur
                         $req->execute(array('pseudo'=>$this->pseudo_user));
                         $test_Pseudo = $req->fetch();
                         if($test_Pseudo) {
@@ -227,7 +227,7 @@ class User {
                 }
                 else {
                     try {
-                        $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE email_user = :email"); //verification si l'e-mail est deja utlisé par un autre utilisateur
+                        $req = $this->conn->prepare("SELECT * FROM ".$this->table." WHERE email_user = :email"); //verification si l'e-mail est déjà utlisé par un autre utilisateur
                         $req->execute(array('email'=>$this->email_user));
                         $test_email = $req->fetch();
                         if($test_email) {

@@ -4,7 +4,7 @@ include_once('models/user.php');
 
 if(isset($_FILES["new_pic"])) {
     $maxSize = 1000000; //taille maximum du fichier
-    $validExt = array('.jpg','.jpeg', '.png'); //extension de fichier accepté
+    $validExt = array('.jpg', '.jpeg', '.png'); //extension de fichier accepté
 
     if($_FILES['new_pic']['size'] > $maxSize) { //verif taille du fichier
         echo "<script>alert(\"Taille de l'image trop grande\")</script>";

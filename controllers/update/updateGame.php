@@ -5,7 +5,7 @@ include_once('models/editeur.php');
 
 if(isset($_POST['modif_nom_game']) && isset($_POST['new_nom_game']) && isset($_POST['modif_date_game']) && isset($_POST['modif_description_game']) && isset($_POST['modif_id_editeur']) && isset($_FILES["modif_img_game"])) {
     $maxSize = 1000000; //taille maximum du fichier
-    $validExt = array('.jpg','.jpeg', '.png'); //extension de fichier accepté
+    $validExt = array('.jpg', '.jpeg', '.png'); //extension de fichier accepté
 
     if($_FILES['modif_img_game']['size'] > $maxSize) { //verif taille du fichier
         echo "<p>Taille de l'image trop grande</p>";
