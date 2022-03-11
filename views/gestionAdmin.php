@@ -75,7 +75,7 @@
                         <option disabled selected>Selectioner un jeu</option>
                         <?php
                             require "./controllers/read/readAllGame.php";
-                            foreach ($games as $game) : 
+                            foreach ($totalGame as $game) : 
                         ?>
                         <option><?= $game["nom_game"]?></option>
                         <?php endforeach; ?>
@@ -103,7 +103,7 @@
                         <option disabled selected>Selectioner un jeu</option>
                         <?php
                             require "./controllers/read/readAllGame.php";
-                            foreach ($games as $game) : 
+                            foreach ($totalGame as $game) : 
                         ?>
                         <option><?= $game["nom_game"]?></option>
                         <?php endforeach; ?>
