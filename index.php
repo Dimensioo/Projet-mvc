@@ -30,7 +30,7 @@ try {
                         break;
                     }
                     else {
-                        throw new Exception;
+                        throw new Exception("La page n'existe pas");
                     }
                 }
                 else if ($url[1] == "ajout") {
@@ -39,15 +39,14 @@ try {
                         break;
                     }
                     else if(empty($_SESSION)) {
-                        require "./views/errorConnexion.php";
-                        break;
+                        throw new Exception("Vous devez être connecté pour réaliser cette action !");
                     }
                     else {
-                        throw new Exception;
+                        throw new Exception("La page n'existe pas");
                     }
                 }
                 else {
-                    throw new Exception;
+                    throw new Exception("La page n'existe pas");
                 }
             case "recherche" :
                 if(!empty($_POST["search"])) {
@@ -55,7 +54,7 @@ try {
                     break;
                 }
                 else {
-                    throw new Exception;
+                    throw new Exception("La page n'existe pas");
                 }
             case "liste":
                 if($_SESSION && $_SESSION["pseudo"]) {
@@ -63,11 +62,10 @@ try {
                     break;
                 }
                 if(empty($_SESSION)) {
-                    require "./views/errorConnexion.php";
-                    break;
+                    throw new Exception("Vous devez être connecté pour réaliser cette action !");
                 }
                 else {
-                    throw new Exception;
+                    throw new Exception("La page n'existe pas");
                 }
             case "classement" :
                 if(empty($url[1])) {
@@ -79,7 +77,7 @@ try {
                     break;
                 }
                 else {
-                    throw new Exception;
+                    throw new Exception("La page n'existe pas");
                 }
             case "option":
                 if($_SESSION && $_SESSION["pseudo"]) {
@@ -87,7 +85,7 @@ try {
                     break;
                 }
                 else {
-                    throw new Exception;
+                    throw new Exception("La page n'existe pas");
                 }
             case "admin":
                 if($_SESSION && $_SESSION["role"] == 2) {
@@ -95,11 +93,11 @@ try {
                     break;
                 }
                 else {
-                    throw new Exception;
+                    throw new Exception("La page n'existe pas");
                 }
             case "connexion":
                 if($_SESSION && $_SESSION["pseudo"]) {
-                    throw new Exception;
+                    throw new Exception("La page n'existe pas");
                 }
                 else {
                     require "./views/connexion.php";
@@ -109,10 +107,11 @@ try {
                 require "./controllers/logout.php";
                 break;
             default:
-                throw new Exception;
+                throw new Exception("La page n'existe pas");
         }
     }
 }
 catch (Exception $e) {
-    require "views/error404.php";
+    $error = $e->getMessage();
+    require "views/error.php";
 }

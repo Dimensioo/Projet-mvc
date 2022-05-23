@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erreur Connexion</title>
-    <link rel="stylesheet" href="<?=URL?>styles/projet.css">
-    <link rel="stylesheet" href="<?=URL?>styles/header.css">
-    <link rel="stylesheet" href="<?=URL?>styles/anim.css">
+    <title><?= $title ?></title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <?= $style ?>
     <link rel="icon" type="image/png" href="<?=URL?>images/favicon.png"/>
     <script src="https://kit.fontawesome.com/3df32f415a.js" crossorigin="anonymous"></script>
     <script src="<?=URL?>js/displayRanking.js" defer></script>
+    <script src="<?=URL?>script/displayOption.js" defer></script>
 </head>
 <body>
     <header>
@@ -19,24 +18,28 @@
             <div id="nav1">
                 <div><h1>Game List <i class="fas fa-gamepad"></i></h1></div>
                 <?php
-                    if(isset($_SESSION["pseudo"])) { //afichage quand utilisateur connéctée
+                    if(isset($_SESSION["pseudo"])) { //afichage quand utilisateur connécté
                         echo "<div><p>Bienvenue ", $_SESSION['pseudo'], "</p></div>";
                         echo "<div class=\"sizeup\"><a href=\"".URL."logout\">Déconnexion</a></div>";
                     }
-                    else { //afichage quand utilisateur déconectée
+                    else { //afichage quand utilisateur déconecté
                         echo "<div class=\"sizeup\"><a href=\"".URL."connexion\">Se connecter / S'inscrire</a></div>";
-                    } 
+                    }
                 ?>
             </div>
             <div id="nav2">
                 <div>
-                    <div><a href="<?=URL?>accueil"><i class="fas fa-home"></i></a></div>
-                    <div><a href="<?=URL?>jeux">Jeux</a></div>
+                    <?php if(empty($url)){$url[0] = 'accueil';} ?>
+                    <div><a href="<?=URL?>accueil" <?php if($url[0] && $url[0] == 'accueil'){echo 'id="active"';}?>><i class="fas fa-home"></i></a></div>
+                    <div><a href="<?=URL?>jeux" <?php if($url[0] == 'jeux' || $url[0] == 'recherche' || $url[0] == 'classement'){echo 'id="active"';}?>>Jeux</a></div>
                     <?php 
-                        if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."liste/".$_SESSION["id"]."\">Liste</a></div>";}
+                        if($_SESSION && $_SESSION["pseudo"] && $url[0] != 'liste'){echo "<div><a href=\"".URL."liste/".$_SESSION["id"]."\">Liste</a></div>";}
+                        else if($_SESSION && $_SESSION['pseudo'] && $url[0] == 'liste'){echo "<div><a href=\"".URL."liste/".$_SESSION["id"]."\" id=\"active\">Liste</a></div>";}
                         else{echo "<div><a href=\"".URL."liste\">Liste</a></div>";}
-                        if($_SESSION && $_SESSION["pseudo"]){echo "<div><a href=\"".URL."option\">Option</a></div>";}
-                        if($_SESSION && $_SESSION['role'] == 2){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}
+                        if($_SESSION && $_SESSION['pseudo'] && $url[0] != 'option'){echo "<div><a href=\"".URL."option\">Option</a></div>";}
+                        if($_SESSION && $_SESSION["pseudo"] && $url[0] == 'option'){echo "<div><a href=\"".URL."option\" id=\"active\">Option</a></div>";}
+                        if($_SESSION && $_SESSION['role'] == 2 && $url[0] != 'admin'){echo "<div><a href=\"".URL."admin\">Admin</a></div>";}
+                        if($_SESSION && $_SESSION['role'] == 2 && $url[0] == 'admin'){echo "<div><a href=\"".URL."admin\" id=\"active\">Admin</a></div>";}
                     ?>
                 </div>
                 <div>
@@ -48,15 +51,8 @@
             </div>
         </nav>  
     </header>
-    <div id="container">
-        <aside></aside>
-        <div>
-            <div>
-                <h1><i class="fas fa-times"></i> ERREUR</h1>
-                <h4>Vous devez être connecté pour réaliser cette action !</h4>
-            </div>
-        </div>
-        <aside></aside>
+    <div id=container>
+        <?= $content ?>
     </div>
     <footer>
         <a href="https://github.com/Dimensioo"><i class="fab fa-github"></i> GitHub</a>

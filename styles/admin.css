@@ -31,8 +31,17 @@ a {
     /*min-height: 744px;*/
 }
 
+#container a {
+    margin: 15px 0px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: #0A71B3;
+    border: none;
+    color: white;
+}
+
 #container a:hover {
-    color: #3093CD;
+    background: #3093CD;
 }
 
 #container>div {
