@@ -1,4 +1,9 @@
 /*CSS specifique à la page d'administration*/
+* {
+    scroll-behavior: smooth;
+    scroll-margin-top: 250px;
+}
+
 html, body {
     height: 100%;
 }

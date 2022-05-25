@@ -172,6 +172,7 @@
             <?php include('controllers/update/updateRoleUser.php') ?>
         </form>
     </div>
+    <a href="#admin" id="up">Retour Haut de page <i class="fas fa-arrow-up"></i></a>
 </div>
 <aside></aside>
 

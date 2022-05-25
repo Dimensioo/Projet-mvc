@@ -22,6 +22,7 @@
     <?php endforeach; else :?>
     <h3>Aucun Jeu ne correspond à votre recherhce</h3>
     <?php endif ?>
+    <a href="#listGame" id="up">Retour Haut de page <i class="fas fa-arrow-up"></i></a>
 </div>
 <aside></aside>
 

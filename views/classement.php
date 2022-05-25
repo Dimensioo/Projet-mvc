@@ -31,6 +31,7 @@
         <a href="<?=URL?>classement/page/<?= $page+1 ?>" id="modify" >Page Suivante</a>
         <?php endif; ?>
     </section><br>
+    <a href="#listGame" id="up">Retour Haut de page <i class="fas fa-arrow-up"></i></a>
 </div>
 <aside></aside>
 

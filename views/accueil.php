@@ -27,6 +27,7 @@
             <p><?= $new['contenu_news'] ?></p>
             <?php endforeach; ?>
         </section>
+        <a href="#container" id="up">Retour Haut de page <i class="fas fa-arrow-up"></i></a>
     </div>
     <div id="body2">
         <section id="ranking"> <!--Best ranked game-->
